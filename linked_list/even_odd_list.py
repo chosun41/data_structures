@@ -1,5 +1,6 @@
 from lll import LinkedList,Node
 
+# even list followed by odd list from original input
 def even_odd_merge(L: LinkedList):
     
     curr = L.head

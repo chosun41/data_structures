@@ -1,5 +1,7 @@
 from stack import Stack
 
+# find how long a price has been <= current value (span)
+
 def findingSpans(A):
     
     D = Stack()

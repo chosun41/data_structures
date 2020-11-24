@@ -1,5 +1,6 @@
 from lll import LinkedList,Node
 
+# insert into ordered linked list by data value
 def orderedInsert(L1, item):
     
     current = L1.head

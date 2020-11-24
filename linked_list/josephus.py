@@ -1,5 +1,7 @@
 from cll import LinkedList,Node
 
+# kill every m person out of a group of size n, who remains
+# start from index 0
 def getJosephusPosition(n, m):
     
     # create circular linked list

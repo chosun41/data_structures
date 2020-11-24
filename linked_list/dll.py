@@ -1,3 +1,5 @@
+# doubly linked list
+
 class Node:
     # Constructor to initialize data
     # If data is not given by user,its taken as None 

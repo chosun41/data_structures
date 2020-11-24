@@ -1,5 +1,6 @@
 from stack import Stack
 
+# reverse polish notation evaluate to integer
 def evaluate_rpn(expression: str) -> int:
 
     rpn_stack=Stack()

@@ -1,3 +1,5 @@
+# stack as a linked list
+
 class Node:
     # constructor
     def __init__(self):

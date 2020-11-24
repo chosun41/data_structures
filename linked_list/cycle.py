@@ -1,5 +1,6 @@
 from lll import LinkedList,Node
 
+# detect if cycle exists
 def has_cycle(L1: LinkedList):
 
     # start at same place
@@ -19,6 +20,7 @@ def has_cycle(L1: LinkedList):
             
     return None
 
+# which node starts the cycle
 def cycle_start(L1: LinkedList):
 
     if L1.head == None or L1.head.next == None:
@@ -41,6 +43,7 @@ def cycle_start(L1: LinkedList):
 
     return slow.get_data()  # beginning of loop
 
+# length of a cycle
 def cycle_length(L1: LinkedList):
                  
     if L1.head == None or L1.head.next == None:

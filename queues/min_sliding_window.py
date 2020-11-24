@@ -1,6 +1,7 @@
 from collections import deque
 
 # also contains appendleft in addition to popleft for deque
+# produce minimum value for every sliding window of size k
  
 def MinSlidingWindow(A, k):
     

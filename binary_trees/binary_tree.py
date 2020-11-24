@@ -88,8 +88,8 @@ def preorderIterative(root, result):
     while stack:
         node = stack.pop()
         result.append(node.data)
-        if node.left: stack.append(node.left)
         if node.right: stack.append(node.right)
+        if node.left: stack.append(node.left)
             
     return result
 
@@ -164,10 +164,19 @@ if __name__ == '__main__':
     root.getLeft().insertRight(5)
     root.getRight().insertLeft(6)
     root.getRight().insertRight(7)
+    root.getLeft().getLeft().insertLeft(8)
+    root.getLeft().getLeft().insertRight(9)
+    root.getLeft().getRight().insertLeft(10)
+    root.getLeft().getRight().insertRight(11)
+    root.getRight().getLeft().insertLeft(12)
+    root.getRight().getLeft().insertRight(13)
+    root.getRight().getRight().insertLeft(14)
+    root.getRight().getRight().insertRight(15)
     
-    #    1 
-    #  2   3
-    # 4 5 6 7
+    #           1 
+    #      2          3
+    #   4    5     6     7
+    # 8  9 10 11 12 13 14 15
     
     print(preorderRecursive(root,[]))
     print(preorderIterative(root,[]))

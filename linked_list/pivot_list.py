@@ -1,5 +1,6 @@
 from lll import LinkedList,Node
 
+# pivot a linked lsit around a number x
 def list_pivoting(l:LinkedList,x:int):
 
     # 3 nodes with head and iteration pointers(tail)
