@@ -3,6 +3,7 @@ sys.path.append('../queues')
 from queues import Queue
 
 class BinaryTree:
+    
     def __init__(self, data):
         self.data = data  # root node
         self.left = None  # left child
@@ -25,23 +26,22 @@ class BinaryTree:
     # get right child of a node
     def setRight(self, right):
         self.right = right
-        
-        
-    def insertLeft(self, newNode):
+          
+    def insertLeft(self, val):
         if self.left == None:
-            self.left = BinaryTree(newNode)
+            self.left = BinaryTree(val)
         # makes current left a left of new left
         else:
-            temp = BinaryTree(newNode)
+            temp = BinaryTree(val)
             temp.left = self.left
             self.left = temp
 
-    def insertRight(self, newNode):
+    def insertRight(self, val):
         if self.right == None:
-            self.right = BinaryTree(newNode)
+            self.right = BinaryTree(val)
         # makes current right a right of new right
         else:
-            temp = BinaryTree(newNode)
+            temp = BinaryTree(val)
             temp.right = self.right
             self.right = temp
 
