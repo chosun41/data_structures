@@ -1,5 +1,7 @@
 from binary_tree import BinaryTree
 
+# structurally same mean data doesn't have to agree, but the tree structure should be
+
 def areStructurullySameTrees(root1, root2):
     
     # both have leaves, nothing more to process

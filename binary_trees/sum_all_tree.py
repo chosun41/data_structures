@@ -3,6 +3,8 @@ sys.path.append('../queues')
 from queues import Queue
 from binary_tree import BinaryTree
 
+# sum all nodes in tree
+
 def sumInBinaryTreeRecursive(root):
     if(root == None) :
            return 0

@@ -1,6 +1,6 @@
 from binary_tree import BinaryTree
 
-# A simple function to print leaf nodes of a Binary Tree 
+# nodes around the exterior of binary tree
 
 exterior = []
 

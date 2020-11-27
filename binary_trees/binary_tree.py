@@ -2,6 +2,7 @@ import sys
 sys.path.append('../queues')
 from queues import Queue
 
+# classic binary tree, no heirarchical order
 class BinaryTree:
     
     def __init__(self, data):

@@ -3,7 +3,7 @@ import sys
 sys.path.append('../queues')
 from queues import Queue
 
-# bst is different from binary tree in that to the left is < and to the right > root value
+# bst (binary search tree) is different from binary tree in that to the left is < and to the right > root value
 
 class BST:
     def __init__(self, data):
@@ -233,10 +233,10 @@ def levelOrder(root, result):
         n = q.dequeue()  # dequeue FIFO
         result.append(n.data)
         if n.left is not None:
-        q.enqueue(n.left)
+            q.enqueue(n.left)
 
         if n.right is not None:
-        q.enqueue(n.right)
+            q.enqueue(n.right)
         
     return result
 

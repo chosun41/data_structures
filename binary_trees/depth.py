@@ -1,5 +1,7 @@
 from binary_tree import BinaryTree
 
+# depth of binary tree
+
 def maxDepthRecursive(root):
     if root == None:
         return 0
