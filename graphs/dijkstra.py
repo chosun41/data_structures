@@ -1,5 +1,5 @@
 from graph_list import Graph,DiGraph
-import heapq
+import heapdict 
 
 # dijkstra shortest path algorithm along with heap
 # time: O(E log V) b/c E edges and log V  for heap updates. if not with heap then O(E + V^2)
@@ -10,7 +10,7 @@ import heapq
 # just extracts previous to a list
 def shortest(v, path):
     if v.previous:
-        path.append(v.previous.getVertexID())
+        path.insert(0,v.previous.getVertexID())
         shortest(v.previous, path)
     return
 
@@ -18,15 +18,17 @@ def dijkstra(G, source):
     
     # Set the distance for the source node to zero (from infinity)
     source.setDistance(0)
+        
+    # Put list pair into the priority queue (distance, vertex)
+    # heapdict allows you to mimic a priority queue and easily update priorities w/o heapifying each time
+    unvisitedQueue = heapdict.heapdict() 
+    for v in G:
+        unvisitedQueue[v.id]=v.getDistance()
 
-    # Put tuple pair into the priority queue (distance, vertex)
-    unvisitedQueue = [(v.getDistance(), v) for v in G]
-    heapq.heapify(unvisitedQueue)
-
-    while len(unvisitedQueue):
+    while unvisitedQueue:
         # Pops a vertex with the smallest distance 
-        uv = heapq.heappop(unvisitedQueue)
-        current = uv[1] # index 1 is vertex
+        uv = unvisitedQueue.popitem()
+        current=G.getVertex(uv[0])
         current.setVisited() # mark current as visited=True
 
         # for next in v.adjacent: every one of its neighbors
@@ -41,15 +43,13 @@ def dijkstra(G, source):
             if newDist < next.getDistance():
                 next.setDistance(newDist)
                 next.setPrevious(current)
+                unvisitedQueue[next.id] = newDist
+                
                 print('Updated : current = %s next = %s newDist = %s' \
                         % (current.getVertexID(), next.getVertexID(), next.getDistance()))
             else:
                 print('Not updated : current = %s next = %s newDist = %s' \
                         % (current.getVertexID(), next.getVertexID(), next.getDistance()))
-                
-        # Rebuild heap with only unvisited vertexes and new distances b/c distances are stale for next
-        unvisitedQueue = [(v.getDistance(), v) for v in G if not v.visited]
-        heapq.heapify(unvisitedQueue)
     
 if __name__ == '__main__':
 
@@ -78,7 +78,7 @@ if __name__ == '__main__':
 
     path = [destination.getVertexID()]
     shortest(destination, path)
-    print('The shortest path from a to e is: %s' % (path[::-1])) # show in reverse
+    print('The shortest path from a to e is: %s' % (path)) # show in reverse
     
     # graph 2
     G = DiGraph()
@@ -114,6 +114,7 @@ if __name__ == '__main__':
 
     path = [destination.getVertexID()]
     shortest(destination, path)
+    print('The shortest path from a to h is: %s' % (path)) # show in reverse
     
     # graph 3
     G = DiGraph()
@@ -149,6 +150,6 @@ if __name__ == '__main__':
 
     path = [destination.getVertexID()]
     shortest(destination, path)
-    print('The shortest path from s to t is: %s' % (path[::-1])) # show in reverse
+    print('The shortest path from s to t is: %s' % (path)) # show in reverse
     
     
