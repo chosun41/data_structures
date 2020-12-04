@@ -5,6 +5,7 @@ from graph_list import Graph,DiGraph
 # there might be multiple topological sorts unless theres a hamilitonian path, in which case there will be a unique
 # topological sort ordering
 # usually requires vertex in degree and dfs
+# can be used to detect cycles
 
 def mark_as_visited(G, node, visited, topological_ordering): 
     visited.append(node)
