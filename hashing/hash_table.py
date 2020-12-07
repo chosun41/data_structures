@@ -21,18 +21,18 @@ class HashTable:
     
     def rehash(self,value):
         
-        curr_hash_indx = new_hash_indx = self.hashfunction(value)
+        old_hash_indx = new_hash_indx = self.hashfunction(value)
         
         i=1
 #         # linear probing
 #         while self.array[new_hash_indx] is not None:
-#             new_hash_indx=curr_hash_indx+i
+#             new_hash_indx=old_hash_indx+i
 #             new_hash_indx=self.hashfunction(new_hash_indx)
 #             i+=1
            
         #quadratic probing
         while self.array[new_hash_indx] is not None:
-            new_hash_indx=curr_hash_indx + i**2
+            new_hash_indx=old_hash_indx + i**2
             new_hash_indx=self.hashfunction(new_hash_indx)
             i+=1
     
@@ -53,13 +53,21 @@ class HashTable:
         self.array = new_ht.array
         
     def get(self, value):
-        curr_hash_indx = new_hash_indx = self.hashfunction(value)
-        if self.array[curr_hash_indx] is None:
+        old_hash_indx = new_hash_indx = self.hashfunction(value)
+        if self.array[old_hash_indx] is None:
             raise Exception("key not found") # since it should be the hash or some other hash b/c of collision
         else:
-            i=0
+            i=1
+            
+#             # linear probing
+#             while self.array[new_hash_indx] != value:
+#                 new_hash_indx=old_hash_indx+i
+#                 new_hash_indx=self.hashfunction(new_hash_indx)
+#                 i+=1
+            
+            # quadratic probing
             while self.array[new_hash_indx] != value:
-                new_hash_indx=curr_hash_indx + i**2
+                new_hash_indx=old_hash_indx + i**2
                 new_hash_indx=self.hashfunction(new_hash_indx)
                 i+=1
             return new_hash_indx,value
