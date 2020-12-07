@@ -23,15 +23,14 @@ class HashTable:
         
         curr_hash_indx = new_hash_indx = self.hashfunction(value)
         
-        
-#         i=0
+        i=1
 #         # linear probing
 #         while self.array[new_hash_indx] is not None:
-#             new_hash_indx+=1
+#             new_hash_indx=curr_hash_indx+i
+#             new_hash_indx=self.hashfunction(new_hash_indx)
 #             i+=1
            
         #quadratic probing
-        i=0
         while self.array[new_hash_indx] is not None:
             new_hash_indx=curr_hash_indx + i**2
             new_hash_indx=self.hashfunction(new_hash_indx)
