@@ -19,7 +19,7 @@ def has_three_sum(A, t):
 
 if __name__ == '__main__':
     
-    # two sum O(n), three summ O(n^2), space O(1), not necessarily distinct
+    # two sum O(n), three sum O(n^2), space O(1), not necessarily distinct
     
     print(has_two_sum([-2,1,2,4,7,11],6))
     print(has_two_sum([-2,1,2,4,7,11],10))
