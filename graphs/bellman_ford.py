@@ -15,23 +15,22 @@ def BellmanFord(G, source):
     # Set the distance for the source node to zero (from infinity)
     source.setDistance(0)
         
-    for i in range(G.numVertices):
-        for current in G:
-            for next in current.adjacent:
+    for current in G:
+        for next in current.adjacent:
 
-                newDist = current.getDistance() + current.getWeight(next)
+            newDist = current.getDistance() + current.getWeight(next)
 
-                # update adjacent distance if it is lower than the current vertex distance and also the previous vertex
-                # that can be used later for the shortest path
-                if newDist < next.getDistance():
-                    next.setDistance(newDist)
-                    next.setPrevious(current)
+            # update adjacent distance if it is lower than the current vertex distance and also the previous vertex
+            # that can be used later for the shortest path
+            if newDist < next.getDistance():
+                next.setDistance(newDist)
+                next.setPrevious(current)
 
-                    print('Updated : current = %s next = %s newDist = %s' \
-                            % (current.getVertexID(), next.getVertexID(), next.getDistance()))
-                else:
-                    print('Not updated : current = %s next = %s newDist = %s' \
-                            % (current.getVertexID(), next.getVertexID(), next.getDistance()))
+                print('Updated : current = %s next = %s newDist = %s' \
+                        % (current.getVertexID(), next.getVertexID(), next.getDistance()))
+            else:
+                print('Not updated : current = %s next = %s newDist = %s' \
+                        % (current.getVertexID(), next.getVertexID(), next.getDistance()))
                 
     # check for negative-weight cycles
     for current in G:

@@ -11,7 +11,7 @@ def LongestPalindromeSubsequence(A):
             j = i + k - 1
             if A[i] == A[j] and k == 2:
                 L[i][j] = 2
-            if A[i] == A[j]:
+            elif A[i] == A[j]:
                 L[i][j] = 2 + L[i + 1][j - 1] # 2 + entry in next row, prev col
             else:
                 L[i][j] = max(L[i + 1][j] , L[i][j - 1]) # max of prev entry in row, or next row same entry

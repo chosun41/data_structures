@@ -89,8 +89,10 @@ def preorderIterative(root, result):
     while stack:
         node = stack.pop()
         result.append(node.data)
-        if node.right: stack.append(node.right)
-        if node.left: stack.append(node.left)
+        if node.right: 
+            stack.append(node.right)
+        if node.left: 
+            stack.append(node.left)
             
     return result
 
@@ -139,20 +141,20 @@ def postorderIterative(root, result):
 
 def levelOrder(root, result):
     if root is None:
-      return
+        return
  
     q = Queue()
     q.enqueue(root)
     n = None
  
     while not q.isEmpty():
-      n = q.dequeue()  # dequeue FIFO
-      result.append(n.get_data())
-      if n.left is not None:
-        q.enqueue(n.left)
- 
-      if n.right is not None:
-        q.enqueue(n.right)
+        n = q.dequeue()  # dequeue FIFO
+        result.append(n.get_data())
+        if n.left is not None:
+            q.enqueue(n.left)
+
+        if n.right is not None:
+            q.enqueue(n.right)
         
     return result
 

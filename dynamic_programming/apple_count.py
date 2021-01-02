@@ -7,7 +7,7 @@ def apple_2way(Apples, n, m):
 
     # Initialize the first row
     for j in range(1, m):
-        S[0][j] = Apples[0][j] + S[0][j-1]	
+        S[0][j] = Apples[0][j] + S[0][j-1]
 
     # Initialize the first column
     for i in range(1, n):

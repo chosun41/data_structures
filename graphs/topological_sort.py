@@ -8,15 +8,14 @@ from graph_list import Graph,DiGraph
 # can be used to detect cycles
 
 def mark_as_visited(G, node, visited, topological_ordering): 
-    visited.append(node)
-    v = G.getVertex(node)
-    for k in v.getConnections():
+    visited.append(node.id)
+    for k in node.getConnections():
         if k.id not in visited:
-            mark_as_visited(G,k.id, visited, topological_ordering) 
+            mark_as_visited(G,k, visited, topological_ordering) 
 
     # basically ensures that by insert at start, that nodes with less indegree
     # will appear at start of the topolical ordering list
-    topological_ordering.insert(0, node) 
+    topological_ordering.insert(0, node.id) 
     
 def topological_sort(G): 
     
@@ -27,7 +26,7 @@ def topological_sort(G):
     # visited basically becomes sort of dfs
     for v in G:
         if v.id not in visited:
-            mark_as_visited(G,v.id, visited, topological_ordering) 
+            mark_as_visited(G,v, visited, topological_ordering) 
 
     return topological_ordering
 

@@ -1,7 +1,7 @@
 def get_max_trapped_water(heights):
 
     i, j, max_water = 0, len(heights) - 1, 0
-    while i < j:
+    while i < j: # if i<=j then width could be 0
         width = j - i
         max_water = max(max_water, width * min(heights[i], heights[j]))
         if heights[i] > heights[j]:

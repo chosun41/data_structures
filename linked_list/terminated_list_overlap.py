@@ -1,6 +1,6 @@
 from lll import LinkedList,Node
 
-def overlapping_no_cycle_lists(L1: LinkedList,L2: LinkedList):
+def overlapping_no_cycle_lists(L1,L2):
 
     # makes sure that L1 is supposed to refer to the shorter length list
     if L1.length() > L2.length():
@@ -19,33 +19,39 @@ def overlapping_no_cycle_lists(L1: LinkedList,L2: LinkedList):
     
 if __name__ == "__main__":
     
-    # naive: hash table to see which one revisted or compare every node ppinter 0(mn)
+    # naive: hash table to see which one revisted or compare every node pointer 0(mn)
+    # need to advance longer list (L2) by diff in lists
     # time: O(n)
     # space: O(1)
     
     l1 = LinkedList()
     l2 = LinkedList()
 
+    node0 = Node(0)
     node1 = Node(1)
     node2 = Node(2)
     node3 = Node(3)
     node4 = Node(4)
     node5 = Node(5)
     node6 = Node(6)
+    node7 = Node(7)
     
+    l1.addNode(node0)
     l1.addNode(node1)
     l1.addNode(node2)
     l1.addNode(node3)
     l1.addNode(node4)
     l1.addNode(node5)
-    l2.addNode(node6)
-    l2.addNode(node2)
-    l2.addNode(node3)
-    l2.addNode(node4)
     
     print("\n")
     l1.print_list()
     print(l1.length())
+    
+    l2.addNode(node6)
+    l2.addNode(node7)
+    l2.addNode(node3)
+    l2.addNode(node4)
+    l2.addNode(node5)
     
     print("\n")
     l2.print_list()

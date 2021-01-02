@@ -1,7 +1,7 @@
 from lll import LinkedList,Node
 
 # detect if cycle exists
-def has_cycle(L1: LinkedList):
+def has_cycle(L1):
 
     # start at same place
     fast = slow = L1.head
@@ -16,12 +16,11 @@ def has_cycle(L1: LinkedList):
         if slow is fast:
             
             return slow.data
-            break
             
     return None
 
 # which node starts the cycle
-def cycle_start(L1: LinkedList):
+def cycle_start(L1):
 
     if L1.head == None or L1.head.next == None:
         return None
@@ -44,7 +43,7 @@ def cycle_start(L1: LinkedList):
     return slow.get_data()  # beginning of loop
 
 # length of a cycle
-def cycle_length(L1: LinkedList):
+def cycle_length(L1):
                  
     if L1.head == None or L1.head.next == None:
         return 0
@@ -72,8 +71,6 @@ def cycle_length(L1: LinkedList):
 
 if __name__ == "__main__":
 
-    # by the time fast pointer reaches end, the slow pointer will be at the middle pointer
-    # odd then median numbered node, even then n/2+1 node
     # time: O(n)
     # space: O(1)
     
@@ -108,5 +105,7 @@ if __name__ == "__main__":
 
     print("\n")
     print(cycle_length(l1))
+    
+    # cycle start and cycle length both have slow and fast at index 1 and 2 not 0 and 1
 
     

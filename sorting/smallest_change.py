@@ -9,7 +9,8 @@ def smallest_nonconstructible_value(A):
 
 if __name__ == '__main__':
     
-    # smallest change that can't be made by list of coins time: O(n log n)
+    # smallest change that can't be made by list of value 
+    # time: O(n log n)
     
     print(smallest_nonconstructible_value([1,3]))
     print(smallest_nonconstructible_value([1,2]))

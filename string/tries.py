@@ -24,11 +24,11 @@ class Trie():
                 sub_trie = sub_trie[letter]
             else:
                 return False
+
+        if self._end in sub_trie:
+            return True
         else:
-            if self._end in sub_trie:
-                return True
-            else:
-                return False
+            return False
 
     def add_word(self, word):
         if self.find_word(word):

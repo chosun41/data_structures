@@ -17,14 +17,21 @@ class MaxHeap:
         return index//2
     
     def leftChildIndex(self,index):
-        return 2*index
+        if 2*index<=self.size:
+            return 2*index
+        return -1
     
-    def rightChild(self,index):
+    def rightChildIndex(self,index):
+        if 2*index+1<=self.size:
+            return 2*index+1
+        return -1        
+
+    def leftChild(self,index):
         if 2*index<=self.size:
             return self.heapList[2*index]
         return -1
     
-    def leftChild(self,index):
+    def rightChild(self,index):
         if 2*index+1<=self.size:
             return self.heapList[2*index+1]
         return -1
@@ -35,6 +42,7 @@ class MaxHeap:
             if itm==self.heapList[i]:
                 return i
             i+=1
+        return -1
     
     def getMaximum(self):
         
@@ -51,9 +59,7 @@ class MaxHeap:
             maximumChild=self.maximumChild(i)
             
             if self.heapList[i]<self.heapList[maximumChild]:
-                tmp=self.heapList[i]
-                self.heapList[i]=self.heapList[maximumChild]
-                self.heapList[maximumChild]=tmp
+                self.heapList[i],self.heapList[maximumChild]=self.heapList[maximumChild],self.heapList[i]
             i=maximumChild
 
     # find child that is smaller, if only left child use that
@@ -74,9 +80,7 @@ class MaxHeap:
         
         while i//2>0:   
             if self.heapList[i]>self.heapList[i//2]:
-                tmp=self.heapList[i//2]
-                self.heapList[i//2]=self.heapList[i]
-                self.heapList[i]=tmp  
+                self.heapList[i//2],self.heapList[i]=self.heapList[i],self.heapList[i//2] 
             i//=2
          
     # replace start of heap with the end, pop the end
@@ -145,14 +149,21 @@ class MinHeap:
         return index//2
     
     def leftChildIndex(self,index):
-        return 2*index
+        if 2*index<=self.size:
+            return 2*index
+        return -1
     
-    def rightChild(self,index):
+    def rightChildIndex(self,index):
+        if 2*index+1<=self.size:
+            return 2*index+1
+        return -1     
+    
+    def leftChild(self,index):
         if 2*index<=self.size:
             return self.heapList[2*index]
         return -1
     
-    def leftChild(self,index):
+    def rightChild(self,index):
         if 2*index+1<=self.size:
             return self.heapList[2*index+1]
         return -1
@@ -163,6 +174,7 @@ class MinHeap:
             if itm==self.heapList[i]:
                 return i
             i+=1
+        return -1
     
     def getMinimum(self):
         
@@ -179,9 +191,7 @@ class MinHeap:
             minimumChild=self.minimumChild(i)
             
             if self.heapList[i]>self.heapList[minimumChild]:
-                tmp=self.heapList[i]
-                self.heapList[i]=self.heapList[minimumChild]
-                self.heapList[minimumChild]=tmp
+                self.heapList[i],self.heapList[minimumChild]=self.heapList[minimumChild],self.heapList[i]
             i=minimumChild
 
     # find child that is smaller, if only left child use that
@@ -202,9 +212,7 @@ class MinHeap:
         
         while i//2>0:   
             if self.heapList[i]<self.heapList[i//2]:
-                tmp=self.heapList[i//2]
-                self.heapList[i//2]=self.heapList[i]
-                self.heapList[i]=tmp  
+                self.heapList[i//2],self.heapList[i]=self.heapList[i],self.heapList[i//2]
             i//=2
          
     # replace start of heap with the end, pop the end
@@ -246,7 +254,7 @@ class MinHeap:
     
     # just start searching from the middle
     def findMaxinMinHeap(self):
-        max=-1
+        max=-float('infinity')
         for i in range((self.size+1)//2,self.size):
             if(self.heapList[i]>max):
                 max=self.heapList[i]

@@ -29,3 +29,4 @@ if __name__ == '__main__':
     root.getRight().insertRight(7)
     
     print(diameter(root))
+    print(height(root))

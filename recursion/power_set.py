@@ -9,8 +9,7 @@ def generate_power_set(input_set):
 
         directed_power_set(to_be_selected + 1, selected_so_far)
         # Generate all subsets that contain input_set[to_be_selected].
-        directed_power_set(to_be_selected + 1,
-                           selected_so_far + [input_set[to_be_selected]])
+        directed_power_set(to_be_selected + 1, selected_so_far + [input_set[to_be_selected]])
 
     power_set = []
     directed_power_set(0, [])

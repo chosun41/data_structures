@@ -1,7 +1,7 @@
 from cll import LinkedList,Node
 
 # right shift linked list by k nodes with new head and tail
-def cyclically_right_shift_list(L:LinkedList, k:int):
+def cyclically_right_shift_list(L, k):
 
     n=L.length()
 

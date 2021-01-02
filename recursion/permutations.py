@@ -20,3 +20,5 @@ if __name__ == '__main__':
     
     # O(n x n!)
     print(permutations([2,3,5,7]))
+
+    

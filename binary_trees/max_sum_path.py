@@ -18,15 +18,12 @@ def find_max_sum(root):
     # Max of first three cases:
     return_max = max(max(left, right) + root.data, root.data)
 
-    # Max of all four cases:
-    maximum = max(return_max, left + right + root.data)
-
     # Update globalMax:
     global globalMax
-    if maximum > globalMax:
-        globalMax = maximum
+    if return_max > globalMax:
+        globalMax = return_max
 
-    return return_max
+    return globalMax
 
 if __name__ == '__main__':
     

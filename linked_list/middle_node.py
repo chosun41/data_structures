@@ -32,7 +32,7 @@ if __name__ == "__main__":
     
     l1.addNode(node1)
     l1.addNode(node2)
-    l1.addNode(node3)
+#     l1.addNode(node3)
     l1.addNode(node4)
     l1.addNode(node5)
 

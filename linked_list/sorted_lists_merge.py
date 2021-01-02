@@ -1,6 +1,6 @@
 from lll import LinkedList,Node
 
-def merge_two_sorted_lists(L1: LinkedList,L2: LinkedList) -> LinkedList:
+def merge_two_sorted_lists(L1,L2):
 
     # head of both lists
     curr_1 = L1.head

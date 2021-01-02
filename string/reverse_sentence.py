@@ -1,6 +1,3 @@
-import functools
-
-
 # Assume s is a list of strings, each of which is of length 1, e.g.,
 # ['r', 'a', 'm', ' ', 'i', 's', ' ', 'c', 'o', 's', 't', 'l', 'y'].
 def reverse_words(s):

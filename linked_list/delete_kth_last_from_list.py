@@ -1,7 +1,7 @@
 from lll import LinkedList,Node
 
 # Assumes L has at least k nodes, deletes the k-th last node in L.
-def remove_kth_last(L1:LinkedList, k:int):
+def remove_kth_last(L1, k):
 
     # start with two pointers at head
     first=L1.head
@@ -22,6 +22,7 @@ def remove_kth_last(L1:LinkedList, k:int):
 if __name__ == "__main__":
     
     # naive: traverse two times, first to record length of list and to subtract k from it to see which element to stop at
+    # the first is k up ahead, by the time it stops the second will be at kth last
     # time: O(n)
     # space: O(1)
    

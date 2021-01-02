@@ -5,23 +5,23 @@ def isCyclicUtil(G, node, visited, recStack):
 
     # Mark current node as visited and  
     # adds to recursion stack 
-    v = G.getVertex(node)
-    visited.append(v.id)
-    recStack.append(v.id)
+
+    visited.append(node.id)
+    recStack.append(node.id)
 
     # Recur for all neighbours 
     # if any neighbour is visited and in  
     # recStack then graph is cyclic 
-    for k in v.getConnections():
+    for k in node.getConnections():
         if k.id not in visited:
-            if isCyclicUtil(G,k.id, visited, recStack) == True: 
+            if isCyclicUtil(G,k, visited, recStack) == True: 
                 return True
         elif k.id in recStack: 
             return True
 
     # The node needs to be poped from  
     # recursion stack before function ends 
-    recStack.remove(v.id)
+    recStack.remove(node.id)
     return False
 
 # Returns true if graph is cyclic else false 
@@ -30,7 +30,7 @@ def isCyclic(G):
     recStack = []
     for v in G: 
         if v.id not in visited:
-            if isCyclicUtil(G,v.id,visited,recStack) == True: 
+            if isCyclicUtil(G,v,visited,recStack) == True: 
                 return True
     return False
 

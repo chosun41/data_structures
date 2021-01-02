@@ -4,16 +4,17 @@ from heap import MinHeap
             
 def FindKthSmallestEle(orig, k):
     
-    # initially add first minimum onto aux min heap
-    count = 0
+    count=0
     
-    while orig.size>0:
-        itm = orig.deleteMin()
-        count+=1
-        if count==k:
-            return itm
-        
-    return -1
+    if k>orig.size:
+        return -1
+    else:
+        while orig.size>0:
+            x=orig.deleteMin()
+            count+=1
+            if count == k:
+                return x
+    
 
 if __name__=='__main__':
     

@@ -9,9 +9,7 @@ def MirrorOfBinaryTree(root):
         MirrorOfBinaryTree(root.right)
 
         # swap the pointers in this node
-        temp = root.left
-        root.left = root.right
-        root.right = temp
+        root.left,root.right=root.right,root.left
 
     return root
 
@@ -22,7 +20,7 @@ def areMirror(a, b):
         return True
       
     # If only one is empty 
-    if a is None or b is None: 
+    elif a is None or b is None: 
         return False
       
     # Both non-empty, compare them  

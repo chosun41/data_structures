@@ -35,11 +35,11 @@ def Partition(A, low, high) :
     pivot = random.randrange(low,high)
     A[pivot],A[high]=A[high],A[pivot]
     for i in range(low, high):
-        if A[i] <= A[high]:
+        if A[i] <= A[high]: #bc pivot is high now
             A[low],A[i]=A[i],A[low]
             low += 1
  
-    A[low],A[high]=A[high],A[low]
+    A[low],A[high]=A[high],A[low] # place pivot back in middle
     return low
     
 if __name__ == '__main__':
@@ -115,28 +115,3 @@ if __name__ == '__main__':
 
             # low=6,high=6 return
             # low=8,high=8 return
-    
-    from copy import deepcopy
-
-def quickSort(A,low,high):
-    if low >= high:
-        return
-    pivot = A[low]
-    i = low+1
-    j = high
-    while i <= j:
-        while i <= j and A[i] <= pivot:
-            i = i + 1
-        while A[j] >= pivot and j >= i:
-            j = j -1
-        if j < i:
-            break
-        A[i], A[j] = A[j], A[i]
-
-    A[low], A[j] = A[j], A[low]
-    partitionPoint = j
-
-    quickSort(A,low,partitionPoint-1)
-    quickSort(A,partitionPoint+1,high)
-    
-    return A

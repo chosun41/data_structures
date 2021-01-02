@@ -1,4 +1,4 @@
-def longest_subarray_with_distinct_entries(A) -> int:
+def longest_subarray_with_distinct_entries(A):
 
     # Records the most recent occurrences of each entry.
     most_recent_occurrence = {}
@@ -11,8 +11,8 @@ def longest_subarray_with_distinct_entries(A) -> int:
             # A[i] appeared before. Did it appear in the longest current
             # subarray?
             if dup_idx >= longest_dup_free_subarray_start_idx:
-                result = max(result, i - longest_dup_free_subarray_start_idx)
-                longest_dup_free_subarray_start_idx = dup_idx + 1
+                result = max(result, i - longest_dup_free_subarray_start_idx) # result has to be current index - dup free start indx
+                longest_dup_free_subarray_start_idx = dup_idx + 1 # has to be index after the first instance of the repeating key
         most_recent_occurrence[a] = i
     return max(result, len(A) - longest_dup_free_subarray_start_idx)
 

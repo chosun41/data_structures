@@ -6,7 +6,7 @@ from collections import deque
 def MinSlidingWindow(A, k):
     
     D = deque()
-    res, i = [], 0
+    res = []
     
     # tuples in deque
     

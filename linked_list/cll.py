@@ -38,8 +38,8 @@ class LinkedList:
         current=current.next
         count = 1
         while current!=self.head:
-            count+=1
             current=current.next
+            count+=1
         return count
 
     # method to add a node in the linked list -

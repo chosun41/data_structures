@@ -1,7 +1,7 @@
 from lll import LinkedList,Node
 
 # add two numbers that are represented as linked lists
-def add_two_numbers(L1: LinkedList, L2: LinkedList):
+def add_two_numbers(L1, L2):
     
     final_ll = LinkedList()
     

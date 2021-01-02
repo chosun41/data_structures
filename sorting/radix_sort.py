@@ -39,7 +39,7 @@ def radixSort(array):
 
 if __name__ == '__main__':
     
-    # time: O(d(n+k)) compare 1s then 10s then 100th digit
+    # time: O(nk) compare 1s then 10s then 100th digit
     
     data = [121, 432, 564, 23, 1, 45, 788]
     print(radixSort(data))

@@ -4,7 +4,6 @@ def minJumps(A):
     if (n == 0 or A[0] == 0):
         return float('infinity')
 
-    jumps[0] = 0
     for i in range(1, n):
         jumps[i] = float('infinity')
         for j in range(0, i): # up to i

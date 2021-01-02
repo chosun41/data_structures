@@ -19,6 +19,6 @@ def lis(arr):
 if __name__=='__main__':
 
     # time: O(n^2)
-    # longest sincreasing subsequnce not necessarily contiguous, but left to right
+    # longest increasing subsequnce not necessarily contiguous, but left to right
     arr = [10, 22, 9, 33, 21, 50, 41, 60] # 10,22,33,41,60 or 10,22,33,50,60
     print(lis(arr))

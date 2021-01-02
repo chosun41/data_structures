@@ -20,7 +20,6 @@ def orderedInsert(L1, item):
     
     # if empty linked list
     if previous == None:
-        temp.set_next(self.head)
         L1.head = temp
     # if not empty linked list 
     # set temp next to current

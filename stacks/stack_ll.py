@@ -21,7 +21,7 @@ class Node:
     def has_next(self):
         return self.next != None
 
-class Stack(object):
+class Stack:
     
     def __init__(self, data=None):
         self.head = None

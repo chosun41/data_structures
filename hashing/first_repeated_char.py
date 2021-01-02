@@ -5,7 +5,6 @@ def firstRepeatedChar(A):
         count[ord(A[i])]+=1
         if count[ord(A[i])]==2:
             return A[i]
-            break
         if i==size:
             print("no repeated characters")
     

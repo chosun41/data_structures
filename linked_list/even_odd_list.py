@@ -1,7 +1,7 @@
 from lll import LinkedList,Node
 
 # even list followed by odd list from original input
-def even_odd_merge(L: LinkedList):
+def even_odd_merge(L):
     
     curr = L.head
     final_ll = LinkedList()

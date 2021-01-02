@@ -31,7 +31,7 @@ def Fibo4(n):
 if __name__=='__main__':
     
     # Fibo1 - time:O(2^n)
-    # Fibo2,3 - time:O(n), spae:O(n)
+    # Fibo2,3 - time:O(n), space:O(n)
     # Fibo4 - time: O(n), space:O(1)
     print(Fibo1(10))
     print(Fibo2(10))
