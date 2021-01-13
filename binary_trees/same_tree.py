@@ -2,7 +2,7 @@ from binary_tree import BinaryTree
 
 # structurally same mean data doesn't have to agree, but the tree structure should be
 
-def areStructurullySameTrees(root1, root2):
+def areStructurallySameTrees(root1, root2):
     
     # both have leaves, nothing more to process
     if not root1.left and not root1.right and not root2.left and not root2.right:
@@ -14,8 +14,8 @@ def areStructurullySameTrees(root1, root2):
         return False
 
     # recursive on left and right
-    left = areStructurullySameTrees(root1.left, root2.left) if root1.left and root2.left else True
-    right = areStructurullySameTrees(root1.right, root2.right) if root1.right and root2.right else True
+    left = areStructurallySameTrees(root1.left, root2.left) if root1.left and root2.left else True
+    right = areStructurallySameTrees(root1.right, root2.right) if root1.right and root2.right else True
     
     # only true if both true
     return left and right
@@ -38,4 +38,4 @@ if __name__ == '__main__':
     root2.getRight().insertLeft(13)
 #     root2.getRight().insertRight(14)
     
-    print(areStructurullySameTrees(root1, root2))
+    print(areStructurallySameTrees(root1, root2))

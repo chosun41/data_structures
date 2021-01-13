@@ -19,7 +19,7 @@ def dutch_flag_partition(pivot_index, A):
         elif A[equal] == pivot:
             equal += 1
         else:  # A[equal] > pivot.
-            larger -= 1
+            larger -= 1 # why decrement before swap?
             A[equal], A[larger] = A[larger], A[equal]
     return A
 

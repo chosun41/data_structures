@@ -22,6 +22,8 @@ if __name__=='__main__':
     
     # each row is nondecreasing and each row after is a seq>=prev row
     # find leftmost col with a 1
+    # time: O(m+n)
+    # space: O(1)
 
     print(leftMostColumnWithOne([[0,0],[0,0]]))
     print(leftMostColumnWithOne([[0,0],[0,1]]))

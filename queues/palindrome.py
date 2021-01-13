@@ -5,17 +5,14 @@ def palindromeCheckerWithDeque(str1):
 
     for ch in str1:
         d1.addRear(ch)
-        
-    eq1 = True
     
     while d1.size() > 1 and eq1:
         first=d1.removeFront()
         last=d1.removeRear()
         if first!=last:
             return False
-            break
 
-    return eq1
+    return True
 
 if __name__ == "__main__":
     

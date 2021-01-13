@@ -10,13 +10,14 @@ def minRemoveToMakeValid(s: str) -> str:
             indexes_to_remove.add(i)
         else:
             stack.pop()
+    print(stack)
+    print(indexes_to_remove)
     indexes_to_remove = indexes_to_remove.union(set(stack))
     string_builder = []
     for i, c in enumerate(s):
         if i not in indexes_to_remove:
             string_builder.append(c)
     return "".join(string_builder)
-    
     
 if __name__ == '__main__':
     

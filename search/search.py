@@ -12,25 +12,43 @@ def ordered_linear_search(L,value):
             return -1
     return -1
 
-def BinarySearchRecursive(numbersList, value, low=0, high=-1):
-    if not numbersList: 
-        return -1
-    if(high == -1): 
-        high = len(numbersList) - 1
-    if low == high:
-        if numbersList[low] == value: 
-            return low
+def BinarySearchRecursive(arr, low, high, x): 
+  
+    # Check base case 
+    if low<=high: 
+  
+        mid = (high + low) // 2
+  
+        # If element is present at the middle itself 
+        if arr[mid] == x: 
+            return mid 
+  
+        # If element is smaller than mid, then it can only 
+        # be present in left subarray 
+        elif arr[mid] > x: 
+            return BinarySearchRecursive(arr, low, mid - 1, x) 
+  
+        # Else the element can only be present in right subarray 
         else: 
-            return -1
-        
-    mid = low + (high - low) // 2 
-   
-    if numbersList[mid] > value: 
-        return BinarySearchRecursive(numbersList, value, low, mid - 1) # if mid>value then look left in range low,mid-1
-    elif numbersList[mid] < value: 
-        return BinarySearchRecursive(numbersList, value, mid + 1, high) # if mid<value then look right in range mid+1, high
+            return BinarySearchRecursive(arr, mid + 1, high, x) 
+  
     else: 
-        return mid
+        # Element is not present in the array 
+        return -1
+    
+def BinarySearchIterative(numbersList, value):
+    n=len(numbersList)
+    
+    lo, hi = 0, n-1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+
+        if numbersList[mid]>value:
+            hi = mid-1
+        elif numbersList[mid]<value:
+            lo = mid+1
+        else:
+            return mid
 
 if __name__=='__main__':
     
@@ -39,4 +57,5 @@ if __name__=='__main__':
     B = [34,46,93,127,277,321,454,565,1220]
     print(unordered_linear_search(A, 277)) 
     print(ordered_linear_search(B, 565)) 
-    print(BinarySearchRecursive(A, 277))  
+    print(BinarySearchRecursive(A, 0,len(A)-1,277)) 
+    print(BinarySearchIterative(A, 277)) 

@@ -16,6 +16,24 @@ def n_queens(n):
     solve_n_queens(0)
     return result
 
+
 if __name__=='__main__':
-    
+    # time: O(n!)
+    # space: O(n)
     print(n_queens(4))
+    
+    # [[1, 3, 0, 2], [2, 0, 3, 1]]
+    
+    #   0 1 2 3
+    # 0 o x o o
+    # 1 o o o x
+    # 2 x o o o
+    # 3 o o x o
+    
+    #   0 1 2 3
+    # 0 o o x o
+    # 1 x o o o
+    # 2 o o o x
+    # 3 o x o o
+    
+    

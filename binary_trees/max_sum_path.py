@@ -35,6 +35,4 @@ if __name__ == '__main__':
     root.getRight().insertLeft(6)
     root.getRight().insertRight(7)
     
-    find_max_sum(root)
-    
-    print(globalMax)
+    print(find_max_sum(root))

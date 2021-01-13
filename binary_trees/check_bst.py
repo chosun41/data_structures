@@ -8,12 +8,12 @@ def IsBST(root, min, max):
     if root == None:
         return True
     # outside of min and max bounds
-    if root.get_data() <= min or root.get_data() >= max:
+    if root.data <= min or root.data >= max:
         return False
     # min < root.left < root
-    result = IsBST(root.getLeft(), min, root.get_data())
+    result = IsBST(root.left, min, root.data)
     # root < root.right < max
-    result = result and IsBST(root.getRight(), root.get_data(), max)
+    result = result and IsBST(root.right, root.data, max)
     
     return result
 

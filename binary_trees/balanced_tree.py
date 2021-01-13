@@ -1,7 +1,7 @@
 from binary_tree import BinaryTree
 
 # check if tree is balanced
-# height balanced if at mmost the difference b/t left and right subtrees is at most one
+# height balanced if at most the difference b/t left and right subtrees is at most one
 # does not have to a perfect or complete binary tree
 
 def height(root):

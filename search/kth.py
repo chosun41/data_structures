@@ -12,7 +12,7 @@ def kth(arr, l, r, k):
             return arr[pos] 
         elif (pos - l > k - 1): 
             return kth(arr, l, pos - 1, k) 
-        else:
+        else: # less than
             return kth(arr, pos + 1, r, k - pos + l - 1) 
   
     return float('inf')

@@ -10,6 +10,12 @@ def generate_pascal_triangle(n):
             
 if __name__ == '__main__':
      
-    # time: O(n^2) space: O(n^2)
+    # time and space: O(n^2)
     
     print(generate_pascal_triangle(5))
+    
+    # 1
+    # 11
+    # 121
+    # 1331
+    # 14641

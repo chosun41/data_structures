@@ -15,7 +15,6 @@ def generate_power_set(input_set):
     directed_power_set(0, [])
     return power_set
 
-
 if __name__ == '__main__':
     
     # time and space: O(n* 2^n)

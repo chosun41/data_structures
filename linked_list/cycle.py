@@ -35,7 +35,7 @@ def cycle_start(L1):
 
     # start from the head and increment both slow and fast by 1
     # the distance from head to cycle start = current fast to end of cycle
-    slow = L1.head
+    slow = L1.head # traverse from beginning
     while slow != fast:
         slow = slow.next
         fast = fast.next
@@ -60,7 +60,7 @@ def cycle_length(L1):
     # set slow to next so it doesnt conflict with while condition
     # traverse and increment counter until you come back to stationary fast
     loopLength = 1
-    slow = slow.next
+    slow = slow.next # traverse from meeting point
 
     while slow != fast:
         slow = slow.next

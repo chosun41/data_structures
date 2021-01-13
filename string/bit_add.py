@@ -23,7 +23,6 @@ def addBinary1(a, b):
 
     return ''.join(answer)
 
-
 def addBinary2(a, b):
     x, y = int(a, 2), int(b, 2)
     while y:
@@ -32,10 +31,32 @@ def addBinary2(a, b):
         x, y = answer, carry
     return bin(x)[2:]
 
+def addBinary3(a, b):
+
+    res = []
+
+    carry = 0
+    p1 = len(a) - 1
+    p2 = len(b) - 1
+    while p1 >= 0 or p2 >= 0:
+        x1 = ord(a[p1]) - ord('0') if p1 >= 0 else 0
+        x2 = ord(b[p2]) - ord('0') if p2 >= 0 else 0
+        value = (x1 + x2 + carry) % 2
+        carry = (x1 + x2 + carry) // 2
+        res.append(value)
+        p1 -= 1
+        p2 -= 1
+
+    if carry:
+        res.append(carry)
+
+    return ''.join(str(x) for x in res[::-1])
+
 if __name__=='__main__':
     # time: O(max(N,M))
     # space: O(max(N,M))
     print(addBinary1("11", "1"))
+    print(addBinary3("11", "1"))
     # time: O(N+M)
     # space: O(max(N,M))
     print(addBinary2("11", "1"))

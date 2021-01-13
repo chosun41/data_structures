@@ -1,4 +1,4 @@
-def isAlienSorted(self,words,order):
+def isAlienSorted(words,order):
         
     same_base=True
 

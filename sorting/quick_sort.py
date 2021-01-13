@@ -8,9 +8,9 @@ def quickSort(A,low,high):
     j = high
     while i <= j:
         while i <= j and A[i] <= pivot:
-            i = i + 1
+            i += 1
         while A[j] >= pivot and j >= i:
-            j = j -1
+            j -=1
         if j < i:
             break
         A[i], A[j] = A[j], A[i]

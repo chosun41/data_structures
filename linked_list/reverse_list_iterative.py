@@ -33,5 +33,12 @@ if __name__ == "__main__":
     linkedlst.addNode(Node(4))
     
     x = reverseList(linkedlst)
+    
+    # last=None,curr=1->2->3->4
+    # next=2->3->4, curr=1,last=1,curr=2->3->4
+    # next=3->4,curr=2->1,last=2->1,curr=3->4
+    # next=4,curr=3->2->1,last=3->2->1,curr=4
+    # next=None,curr=4->3->2->1,last=4->3->2-1,curr=None
+    
      
     x.print_list()

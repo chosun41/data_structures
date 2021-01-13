@@ -16,8 +16,10 @@ def merge_two_sorted_arrays(A, m, B,n):
         
 if __name__ == '__main__':
     
-    # O(m+n)
+    # time: O(m+n)
+    # space: O(1)
     # A contains enough to fit in b, m and n are numbers of initial entires in A and B respectively
+    # key is to start at the end
     print(merge_two_sorted_arrays([3,13,17,None,None,None,None,None],3,[3,7,11,19],4))
     
     # a=2,b=3,write_idx=6,[3,13,17,None,None,None,None,None]

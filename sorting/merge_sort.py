@@ -9,22 +9,22 @@ def MergeSort(A):
         while i < len(lefthalf) and j < len(righthalf):
             if lefthalf[i] < righthalf[j]:
                 A[k] = lefthalf[i]
-                i = i + 1
+                i += 1
             else:
                 A[k] = righthalf[j]
-                j = j + 1
-            k = k + 1
+                j += 1
+            k += 1
 
         # anything thats left
         while i < len(lefthalf):
             A[k] = lefthalf[i]
-            i = i + 1
-            k = k + 1
+            i += 1
+            k += 1
 
         while j < len(righthalf):
             A[k] = righthalf[j]
-            j = j + 1
-            k = k + 1
+            j += 1
+            k += 1
             
     return A
             
