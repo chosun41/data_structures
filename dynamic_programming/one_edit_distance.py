@@ -3,7 +3,7 @@ def isOneEditDistance(s, t):
         return False
     l1, l2 = len(s), len(t)
     if l1 > l2: # force s no longer than t
-        return self.isOneEditDistance(t, s)
+        return isOneEditDistance(t, s)
     if l2 - l1 > 1:
         return False
     for i in range(len(s)):
@@ -13,7 +13,7 @@ def isOneEditDistance(s, t):
             else:
                 s = s[:i]+t[i]+s[i:]  # insertion
             break
-    return s == t or s == t[:-1]
+    return s == t 
 
 if __name__=='__main__':
     # time: O(s+t)

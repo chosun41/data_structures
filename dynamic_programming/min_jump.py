@@ -9,7 +9,7 @@ def minJumps(A):
         for j in range(0, i): # up to i
             if (i <= j + A[j] and jumps[j] != float('infinity')):
                 jumps[i] = min(jumps[i], jumps[j] + 1)
-                break
+                break # very important
     print(jumps)
     return jumps[n - 1]
 
@@ -17,6 +17,8 @@ if __name__ == '__main__':
     
     # start from 0 index, you can jump up to what value is in that index to another one
     # what is the minimum number of jumps to reach the end
+    # time: O(n^2)
+    # space: O(n)
 
     A = [1, 3, 6, 1, 0, 9]
     print("Minimum number of jumps to reach end is ", minJumps(A))

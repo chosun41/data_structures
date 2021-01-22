@@ -21,6 +21,7 @@ def isMatch(s, p):
                 dp[i+1][j+1] = dp[i][j]
             else:
                 dp[i+1][j+1] = dp[i-1][j+1] or (dp[i+1][j] and (p[i-1] == s[j] or p[i-1] == "."))
+    print(dp)
     return dp[-1][-1]
 
 if __name__ == '__main__':

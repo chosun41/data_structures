@@ -9,6 +9,7 @@ def numDecodings(s):
             dp[i+1] += dp[i]
         if s[i-1] != '0' and 1 <= int(s[i-1:i+1]) <= 26:
             dp[i+1] += dp[i-1]
+    print(dp)
     return dp[n]
     
 if __name__=='__main__':

@@ -4,7 +4,7 @@ def canCompleteTour(petrol, cost):
     minVal = float("inf")
     minPos = -1
     petrolTillNow = 0
-    for i in range(1, len(petrol)):
+    for i in range(1, len(petrol)+1):
         petrolTillNow += petrol[i-1] - cost[i-1]//MPG
         if petrolTillNow < minVal:
             minVal = petrolTillNow

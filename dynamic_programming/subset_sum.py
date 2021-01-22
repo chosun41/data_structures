@@ -7,7 +7,7 @@ def SubsetSum1(A, X):
     subSum = [False] * (X+1)
     subSum[0] = True
     p = 0
-    while not subSum[X] and p < len(A):
+    while not subSum[X] and p < len(A): # p and q close in at each other, see if q-a fits
         a = A[p]
         q = X
         while not subSum[X] and q >= a:

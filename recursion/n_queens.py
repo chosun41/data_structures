@@ -5,16 +5,20 @@ def n_queens(n):
             result.append(col_placement.copy())
             return
         for col in range(n):
-            # Test if a newly placed queen will conflict any earlier queens
-            # placed before.
-            if all(abs(c - col) not in (0, row - i) for i, c in enumerate(col_placement[:row])):
+            if row == 0:
                 col_placement[row] = col
                 solve_n_queens(row + 1)
+            else:
+                if all(r!=row and c!=col and abs(row-r)!=abs(col-c) for r, c in enumerate(col_placement[:row])):
+                    col_placement[row] = col
+                    solve_n_queens(row + 1)
 
     result = []
     col_placement = [0] * n
     solve_n_queens(0)
     return result
+
+print(n_queens(4))
 
 
 if __name__=='__main__':
@@ -29,6 +33,11 @@ if __name__=='__main__':
     # 1 o o o x
     # 2 x o o o
     # 3 o o x o
+    
+    # [0,1] none in row 0, none in col 1, not in [1,0],[1,2],[2,3] 
+    # [1,3] none in row 1, none in col 3, not in [0,2],[2,2],[3,1] 
+    # [2,0] none in row 2, none in col 0, not in [0,2],[1,1],[3,1] 
+    # [3,2] none in row 3, none in col 2, not in [1,0],[2,1],[2,3] 
     
     #   0 1 2 3
     # 0 o o x o

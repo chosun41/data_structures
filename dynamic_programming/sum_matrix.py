@@ -9,7 +9,10 @@ class NumMatrix(object):
             for i in range(1, len(matrix)+1):
                 for j in range(1, len(matrix[0])+1):
                     self.summ[i][j] = self.summ[i-1][j]+self.summ[i][j-1]-self.summ[i-1][j-1]+matrix[i-1][j-1]
-                
+                    
+        # each entry is sum of prev diagonal and prev row and col - diag
+#         for x in self.summ:
+#             print(x)
 
     def sumRegion(self, row1, col1, row2, col2):
         """

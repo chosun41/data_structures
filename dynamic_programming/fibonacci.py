@@ -7,6 +7,7 @@ def Fibo1(n):
         return Fibo1(n-1)+Fibo1(n-2)
     
 def Fibo2(n):
+    # append
     fibTable = [0, 1]
     for i in range(2, n + 1):
         fibTable.append(fibTable[i - 1] + fibTable[i - 2])
@@ -14,6 +15,7 @@ def Fibo2(n):
 
 fibTable = {1:1, 2:1}
 def Fibo3(n):
+    # return recursive
     if n <= 2:
         return 1
     if n in fibTable:
