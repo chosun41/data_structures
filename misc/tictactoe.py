@@ -3,6 +3,7 @@ class TicTacToe:
     def __init__(self, n: int):
         self.board = [[0] * n for i in range(n)]
         self.size = n
+        print(self.board)
 
     def move(self, row: int, col: int, player: int) -> int:
         if self.board[row][col] == 0: 
@@ -27,7 +28,7 @@ class TicTacToe:
                 return player
         
         for i in range(self.size):
-            if self.board[i][self.size-i-1] != player: # check left diagonal
+            if self.board[i][self.size-i-1] != player: # check left diagonal self.size-i-1
                 break
             if i == self.size-1:
                 return player

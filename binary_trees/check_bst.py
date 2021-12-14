@@ -1,34 +1,38 @@
-from binary_tree import BinaryTree
+class TreeNode:
+    def __init__(self,val):
+        self.val=val
+        self.left=None
+        self.right=None
 
 def IsBST(root, min, max):
     
     # shrinking min and max with each recursive calls
     
     # reached end
-    if root == None:
+    if not root:
         return True
     # outside of min and max bounds
-    if root.data <= min or root.data >= max:
+    if root.val <= min or root.val >= max:
         return False
     # min < root.left < root
-    result = IsBST(root.left, min, root.data)
+    left = IsBST(root.left, min, root.val)
     # root < root.right < max
-    result = result and IsBST(root.right, root.data, max)
+    right = IsBST(root.right, root.val, max)
     
-    return result
+    return left and right
 
 if __name__ == '__main__':
     
     # time: O(n)
     # space: O(n)
 
-    root1 = BinaryTree(1)
-    root1.insertLeft(2)
-    root1.insertRight(3)
-    root1.getLeft().insertLeft(4)
-    root1.getLeft().insertRight(5)
-    root1.getRight().insertLeft(6)
-    root1.getRight().insertRight(7)
+    root1 = TreeNode(1)
+    root1.left = TreeNode(2)
+    root1.right = TreeNode(3)
+    root1.left.left = TreeNode(4)
+    root1.left.right = TreeNode(5)
+    root1.right.left = TreeNode(6)
+    root1.right.right = TreeNode(7)
     
     #    1
     #  2   3
@@ -36,13 +40,13 @@ if __name__ == '__main__':
     
     print(IsBST(root1,-float("infinity"),float("infinity")))
     
-    root2 = BinaryTree(4)
-    root2.insertLeft(2)
-    root2.insertRight(6)
-    root2.getLeft().insertLeft(1)
-    root2.getLeft().insertRight(3)
-    root2.getRight().insertLeft(5)
-    root2.getRight().insertRight(7)
+    root2 = TreeNode(4)
+    root2.left = TreeNode(2)
+    root2.right = TreeNode(6)
+    root2.left.left = TreeNode(1)
+    root2.left.right = TreeNode(3)
+    root2.right.left = TreeNode(5)
+    root2.right.right = TreeNode(7)
     
     #      4
     #   2    6

@@ -30,6 +30,6 @@ def findAnagrams(s, p):
     
 if __name__ =='__main__':
     # time: O(ns+np)
-    # space: O(1)
+    # space: O(1) # cannot contain more than 26 letters
     print(findAnagrams(s= "cbaebabacd", p= "abc"))
     print(findAnagrams(s= "abab",p= "ab"))

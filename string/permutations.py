@@ -5,12 +5,12 @@ def permut(array):
     for permutation in permut(array[1:]):
         for i in range(len(array)):
             res.append(permutation[:i] + array[0:1] + permutation[i:])
+    print(res)
     return res
         
 if __name__=='__main__':
     elems = [1, 2, 3]
-    permut(elems)
-    
+    print(permut(elems))
     
     # array=[1,2,3]
     # for permutation in permut([2,3])
@@ -29,6 +29,5 @@ if __name__=='__main__':
             # array=[3]
             # return [[3]]
             
-=
         
         

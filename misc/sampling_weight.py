@@ -20,7 +20,7 @@ class Solution:
         target = self.total_sum * random.random()
         # run a linear search to find the target zone
         for i, prefix_sum in enumerate(self.prefix_sums):
-            if target < prefix_sum:
+            if target < prefix_sum: # target<prefix_sum
                 return i
                 
 if __name__=='__main__':

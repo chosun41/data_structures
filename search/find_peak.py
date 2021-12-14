@@ -1,6 +1,6 @@
 def findPeakElement(nums):
     low, high = 0, len(nums)-1
-    while low < high:
+    while low < high: #important because if last element is the peak, so mid doesn't cause out of bounds index exception
         mid = (high+low)//2
         if nums[mid] < nums[mid+1]: # continue looking right if mid is less than
             low = mid+1

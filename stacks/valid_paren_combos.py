@@ -1,35 +1,31 @@
 def removeInvalidParentheses(s):
-    # define when a combination of parenthesis is still valid
-    def valid(candidate):
-        counter = 0
-        for char in candidate:
-            if char == "(": 
-                counter += 1
-            elif char == ")": 
-                counter -= 1
-            if counter < 0: 
-                return False
-        # balanced?
-        return counter == 0
-
-    res, frontier = set() , set([s])
-    while not res:
-        _next = set()
-        for candidate in frontier:
-            if valid(candidate): 
-                res.add(candidate) 
-                continue
-            # generate more candidates based on this candidate
-            for i, letter in enumerate(candidate):
-                # skip trash
-                if letter not in "()": 
-                    continue
-                _next.add(candidate[:i] + candidate[i+1:])
-        frontier = _next
-    return res
+    def dfs(s):
+        mi = valid(s)
+        if mi == 0:
+            ans.append(s)
+        
+        for i in range(len(s)):
+            if s[i] in ('(', ')'):
+                ns = s[:i] + s[i+1:]
+                if ns not in visited and valid(ns) < mi:
+                    visited.add(ns)
+                    dfs(ns)
+                
+    def valid(s):
+        ans,bal = 0,0
+        for c in s:
+            ans += {'(': 1, ')': -1}.get(c,0)
+            bal += ans < 0
+            ans = max(ans, 0)
+        return ans + bal
+    
+    visited = set([s])
+    ans = []
+    dfs(s)
+    return ans
     
 if __name__ == '__main__':
-    # time: O(2^n)
+    # time: O(2^n) # decide whether to keep or lose the parentheses
     # space: O(n)
     print(removeInvalidParentheses("(a)())()"))
     # (a)())()

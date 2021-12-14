@@ -10,10 +10,13 @@ def countingSort(array):
     for i in range(0, size):
         count[array[i]] += 1
 
+    print(count)
+
     # Store the cummulative count
     for i in range(1, array_max):
         count[i] += count[i - 1]
 
+    print(count)
     # Find the index of each element of the original array in count array
     # place the elements in output array
     i = size - 1

@@ -1,32 +1,31 @@
-def topKFrequent(nums, k):
-    """
-    :type nums: List[int]
-    :type k: int
-    :rtype: List[int]
-    """
-    dic = {}
-    for n in nums:
-        if n not in dic:
-            dic[n] = 1
-        else:
-            dic[n] += 1
+import heapq
+from collections import Counter,defaultdict
 
-    maxFreq = 0
-    freq2num = {}
-    for key,val in dic.items():
-        if val in freq2num:
-            freq2num[val].append(key)
-        else:
-            freq2num[val] = [key]
-        maxFreq = max(maxFreq,val)
+def topKFrequent1(nums,k): 
+    # O(1) time 
+    if k == len(nums):
+        return nums
+    
+    # 1. build hash map : character and how often it appears
+    # O(N) time
+    count = Counter(nums)   
+    # 2-3. build heap of top k frequent elements and
+    # convert it into an output array
+    # O(N log k) time
+    return heapq.nlargest(k, count.keys(), key=count.get) 
 
-    res = []
-    for f in range(maxFreq,-1,-1):
-        if f in freq2num:
-            res += freq2num[f]
-        if len(res) >= k:
-            return res
+def topKFrequent2(nums, k):
+    bucket = [[] for _ in range(len(nums) + 1)]
+    Count = Counter(nums).items()  
+    for num, freq in Count: 
+        bucket[freq].append(num) 
+
+    # bucket is freq:num
+    flat_list = [item for sublist in bucket for item in sublist]
+    print(bucket,flat_list)
+    return flat_list[::-1][:k]
         
 if __name__=='__main__':
     # time and space: O(n) bucket sort
-    print(topKFrequent(nums = [1,1,1,2,2,3], k = 2))
+    print(topKFrequent1(nums = [1,2,2,2,3,3,3], k = 2))
+    print(topKFrequent2(nums = [1,2,2,2,3,3,3], k = 2))

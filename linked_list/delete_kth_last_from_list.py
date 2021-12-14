@@ -1,18 +1,21 @@
-from lll import LinkedList,Node
+class ListNode:
+    def __init__(self,val):
+        self.val=val
+        self.next=None
 
 # Assumes L has at least k nodes, deletes the k-th last node in L.
 def remove_kth_last(L1, k):
 
     # start with two pointers at head
-    first=L1.head
-    second=L1.head
+    first=L1
+    second=L1
 
     # increment first pointer k times
     for _ in range(k):
         first = first.next
 
     # the second should be incremented up to the length left in list, which would be k away from the end
-    while first.next!=None:
+    while first.next:
         first, second = first.next, second.next
         
     # second points to the (k + 1)-th last node, deletes its successor.
@@ -26,24 +29,18 @@ if __name__ == "__main__":
     # time: O(n)
     # space: O(1)
    
-    l1 = LinkedList()
-
-    node1 = Node(1)
-    node2 = Node(2)
-    node3 = Node(3)
-    node4 = Node(4)
-    node5 = Node(5)
-    node6 = Node(6)
-    node7 = Node(7)
-    
-    l1.addNode(node1)
-    l1.addNode(node2)
-    l1.addNode(node3)
-    l1.addNode(node4)
-    l1.addNode(node5)
-    l1.addNode(node6)
-    l1.addNode(node7)
+    l1 = ListNode(1)
+    l1.next=ListNode(2)
+    l1.next.next=ListNode(3)
+    l1.next.next.next=ListNode(4)
+    l1.next.next.next.next=ListNode(5)
+    l1.next.next.next.next.next=ListNode(6)
+    l1.next.next.next.next.next.next=ListNode(7)
     
     x=remove_kth_last(l1,2)
-    print("\n")
-    x.print_list()
+    print(x.val)
+    print(x.next.val)
+    print(x.next.next.val)
+    print(x.next.next.next.val)
+    print(x.next.next.next.next.val)
+    print(x.next.next.next.next.next.val)

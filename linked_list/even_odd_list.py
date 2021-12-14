@@ -1,10 +1,12 @@
-from lll import LinkedList,Node
-
+class ListNode:
+    def __init__(self,val=None):
+        self.val=val
+        self.next=None
+        
 # even list followed by odd list from original input
 def even_odd_merge(L):
     
-    curr = L.head
-    final_ll = LinkedList()
+    curr = L
     
     # if empty linked list return None
     if not curr:
@@ -14,13 +16,12 @@ def even_odd_merge(L):
     else:
         
         # if not empty linked list
-        even_head = even_tail = Node(None)
-        odd_head = odd_tail = Node(None)
+        even_head = even_tail = ListNode()
+        odd_head = odd_tail = ListNode()
         
         count = 0
 
         while curr:
-
             if count == 0:
                 even_tail.next = curr
                 even_tail = even_tail.next
@@ -36,10 +37,8 @@ def even_odd_merge(L):
         # make sure odd_tail which is at end of final_ll is None
         # attach odd to even by connecting odd head to even tail
         # set final linkedlist to even head
-        odd_tail.next = None
         even_tail.next = odd_head.next
-        final_ll.head = even_head.next
-        return final_ll
+        return even_head.next
 
 if __name__ == "__main__":
     
@@ -48,26 +47,22 @@ if __name__ == "__main__":
     # time: O(n)
     # space: O(1)
    
-    l1 = LinkedList()
-
-    node0 = Node(0)
-    node1 = Node(1)
-    node2 = Node(2)
-    node3 = Node(3)
-    node4 = Node(4)
-    node5 = Node(5)
-    node6 = Node(6)
-    node7 = Node(7)
+    l1 = ListNode(0)
+    l1.next = ListNode(1)
+    l1.next.next = ListNode(2)
+    l1.next.next.next = ListNode(3)
+    l1.next.next.next.next = ListNode(4)
+    l1.next.next.next.next.next = ListNode(5)
+    l1.next.next.next.next.next.next = ListNode(6)
+    l1.next.next.next.next.next.next.next = ListNode(7)
     
-    l1.addNode(node0)
-    l1.addNode(node1)
-    l1.addNode(node2)
-    l1.addNode(node3)
-    l1.addNode(node4)
-    l1.addNode(node5)
-    l1.addNode(node6)
-    l1.addNode(node7)
+    x = even_odd_merge(l1)
+    print(x.val)
+    print(x.next.val)
+    print(x.next.next.val)
+    print(x.next.next.next.val)
+    print(x.next.next.next.next.val)
+    print(x.next.next.next.next.next.val)
+    print(x.next.next.next.next.next.next.val)
+    print(x.next.next.next.next.next.next.next.val)
     
-    print("\n")
-    x=even_odd_merge(l1)
-    x.print_list()

@@ -25,6 +25,8 @@ if __name__=='__main__':
     x.right=TreeNode(7)
     x.right.left=TreeNode(6)
     x.right.right=TreeNode(8)
+
+    # in order for bst
     
     print(inorderSuccessor(x,x.left.right).val)
     print(inorderSuccessor(x,x.left).val)

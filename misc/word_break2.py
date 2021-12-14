@@ -9,9 +9,9 @@ def wordBreak(s, wordDict):
             return [""]
         res = []
         for j in range(i, len(s)):
-            head = s[i:j+1]
+            head = s[i:j+1] # prefix
             if head in wordDict:
-                tmp = dfs(j+1)
+                tmp = dfs(j+1) # search for next word
                 for string in tmp:
                     string = head +" "+string
                     res.append(string.strip())

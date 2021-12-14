@@ -1,4 +1,8 @@
-from binary_tree import BinaryTree
+class TreeNode:
+    def __init__(self,val):
+        self.val=val
+        self.left=None
+        self.right=None
 
 def pathFinder(root, val, path, paths):
     if not root:
@@ -6,15 +10,15 @@ def pathFinder(root, val, path, paths):
     
     # when you reached the leaves
     if not root.left and not root.right:
-        if root.data == val:
-            path.append(root.data)
+        if root.val == val:
+            path.append(root.val)
             paths.append(path)
             return True
         else:
             return False
     
-    left = pathFinder(root.left, val - root.data, path + [root.data], paths)
-    right = pathFinder(root.right, val - root.data, path + [root.data], paths)  # make sure it can be executed!
+    left = pathFinder(root.left, val - root.val, path + [root.val], paths)
+    right = pathFinder(root.right, val - root.val, path + [root.val], paths)  # make sure it can be executed!
     return left or right
 
 def hasPathWithSum(root, val):
@@ -25,15 +29,15 @@ def hasPathWithSum(root, val):
 
 if __name__ == '__main__':
     
-    # find a path from root to leave in binary tree which has indicated sum
+    # find a path from root to leaf in binary tree which has indicated sum
     
-    root1 = BinaryTree(1)
-    root1.insertLeft(2)
-    root1.insertRight(3)
-    root1.getLeft().insertLeft(4)
-    root1.getLeft().insertRight(5)
-    root1.getRight().insertLeft(6)
-    root1.getRight().insertRight(7)
+    root1 = TreeNode(1)
+    root1.left = TreeNode(2)
+    root1.right = TreeNode(3)
+    root1.left.left = TreeNode(4)
+    root1.left.right = TreeNode(5)
+    root1.right.left = TreeNode(6)
+    root1.right.right = TreeNode(7)
     
     hasPathWithSum(root1, 4)
     hasPathWithSum(root1, 11)

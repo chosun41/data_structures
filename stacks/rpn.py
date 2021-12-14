@@ -1,33 +1,20 @@
-from stack import Stack
-
 # reverse polish notation evaluate to integer
 def evaluate_rpn(expression: str) -> int:
 
-    rpn_stack=Stack()
-    
-    # delimiter to separate digits
-    delimiter = ','
-    
-    # dictionary of lambda operators
-    operators = {
-        '+': lambda y, x: x + y,
-        '-': lambda y, x: x - y,
-        '*': lambda y, x: x * y,
-        '/': lambda y, x: x // y
-    }
+    stack=[]
 
-    # after split by delimiter
-    # if token in dictionary
-    # push to the stack the lambda function of last two pops
-    # otherwise push the number
-    # take a peek at the end
-    for token in expression.split(delimiter):
-        if token in operators:
-            rpn_stack.push(operators[token](rpn_stack.pop(), rpn_stack.pop()))
-        else:  # token is a number.
-            rpn_stack.push(int(token))
-    return rpn_stack.peek()
+    ops = {'+':lambda y,x:x+y,
+            '-':lambda y,x:x-y,
+            '*':lambda y,x:x*y,
+            '/':lambda y,x: x//y} #y,x not x,y
 
+    for x in expression.split(","):
+        if x in ops:
+            stack.append(ops[x](stack.pop(),stack.pop()))
+        else:
+            stack.append(int(x))
+
+    return stack[0]
 
 if __name__ == "__main__":
     

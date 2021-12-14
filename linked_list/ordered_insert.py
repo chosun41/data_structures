@@ -1,34 +1,33 @@
-from lll import LinkedList,Node
+class ListNode:
+    def __init__(self,val=None):
+        self.val=val
+        self.next=None
 
 # insert into ordered linked list by data value
 def orderedInsert(L1, item):
+
+    sentinel = ListNode()
+    sentinel.next=L1
     
-    current = L1.head
-    previous = None
+    current = L1
+    previous = sentinel
     stop = False
     
     # traverse until you reach where data > item
     # at this point stop is True and youll have the current and previous pointers
-    while current != None and not stop:
-        if current.get_data() > item:
+    while current and not stop:
+        if current.val > item:
             stop = True
         else:
             previous = current
-            current = current.get_next()
+            current = current.next
 
-    temp = Node(item)
+    temp = ListNode(item)
+
+    temp.next = current
+    previous.next = temp
     
-    # if empty linked list
-    if previous == None:
-        L1.head = temp
-    # if not empty linked list 
-    # set temp next to current
-    # and previous next should be temp
-    else:
-        temp.set_next(current)
-        previous.set_next(temp)
-    
-    return L1
+    return sentinel.next
 
 if __name__ == "__main__":
 
@@ -36,19 +35,15 @@ if __name__ == "__main__":
     # time: O(n)
     # space: O(1)
     
-    l1 = LinkedList()
-    
-    node1 = Node(1)
-    node2 = Node(2)
-    node4 = Node(4)
-    node5 = Node(5)
-    
-    l1.addNode(node1)
-    l1.addNode(node2)
-    l1.addNode(node4)
-    l1.addNode(node5)
+    l1 = ListNode(1)
+    l1.next=ListNode(2)
+    l1.next.next=ListNode(4)
+    l1.next.next.next=ListNode(5)
 
-    print("\n")
-    x=orderedInsert(l1,3)
-    x.print_list()
+    x=orderedInsert(l1,0)
+    print(x.val)
+    print(x.next.val)
+    print(x.next.next.val)
+    print(x.next.next.next.val)
+
 

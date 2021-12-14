@@ -37,6 +37,7 @@ if __name__=='__main__':
     # 0 empty land,1 marks building, 2 obstacle
     # what is the shortest dist of new building to rest of buildings
     # bfs from buildings
+    # que of buildings first
     grid=[[1,0,2,0,1],
           [0,0,0,0,0],
           [0,0,1,0,0]]

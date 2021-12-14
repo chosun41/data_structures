@@ -1,8 +1,7 @@
 def isAlienSorted(words,order):
-        
-    same_base=True
 
     for i in range(1,len(words)):
+        same_base=True
         curr_word=words[i]
         prev_word=words[i-1]
 

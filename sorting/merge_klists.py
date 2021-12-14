@@ -11,7 +11,7 @@ def mergeKLists(lists):
     :rtype: ListNode
     """
     heap = [(lists[i].val, i) for i in range(len(lists)) if lists[i]]
-    heapq.heapify(heap)
+    # heapq.heapify(heap)
     head = None
     while heap:
         nex = heapq.heappop(heap)
@@ -49,6 +49,7 @@ if __name__ =='__main__':
     print(x.next.val)
     print(x.next.next.val)
     print(x.next.next.next.val)
+    print(x.next.next.next.next.val)
     
         
         

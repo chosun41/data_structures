@@ -1,7 +1,9 @@
+import collections
+
 def lengthOfLongestSubstringKDistinct(s, k):
-    left, right, dic, ans = 0, 0, {}, 0
+    left, right, dic, ans = 0, 0, collections.Counter(), 0
     while right < len(s):
-        dic[s[right]] = dic.get(s[right], 0) + 1
+        dic[s[right]] +=1
         right += 1
         while len(dic) > k:
             dic[s[left]] -= 1
@@ -10,6 +12,7 @@ def lengthOfLongestSubstringKDistinct(s, k):
             left += 1
         ans = max(ans, right - left)
     return ans
+
 
 if __name__ == '__main__':
     # time: O(n)

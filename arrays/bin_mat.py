@@ -17,7 +17,6 @@ def leftMostColumnWithOne(binaryMatrix) -> int:
     # If we never left the last column, it must have been all 0's.
     return current_col + 1 if current_col != cols - 1 else -1
         
-
 if __name__=='__main__':
     
     # each row is nondecreasing and each row after is a seq>=prev row

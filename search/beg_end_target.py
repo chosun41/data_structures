@@ -8,7 +8,7 @@ def leftsearch(A,tar):
     l = 0
     r = len(A)-1
     tarI = -1#target index
-    while l <= r:
+    while l <= r: # close in on mid
         mid = (l+r)//2
         if A[mid] > tar:
             r = mid - 1
@@ -19,12 +19,11 @@ def leftsearch(A,tar):
             r = mid - 1 # most important
     return tarI
 
-
 def rightsearch(A,tar):
     l = 0
     r = len(A)-1
     tarI = -1
-    while l <= r:
+    while l <= r: # close in on mid
         mid = (l+r)//2
         if A[mid] > tar:
             r = mid -1
@@ -39,5 +38,5 @@ if __name__=='__main__':
     # time: O(logn)
     # space: O(1)
     # return back start and ending index of target
-    print(searchRange(nums = [5,7,7,8,8,10], target = 8))
-    print(searchRange(nums = [5,7,7,8,8,10], target = 6))
+    print(searchRange([5,7,7,8,8,10], target = 8))
+    print(searchRange([5,7,7,8,8,10], target = 6))

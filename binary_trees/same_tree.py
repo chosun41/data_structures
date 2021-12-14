@@ -1,4 +1,8 @@
-from binary_tree import BinaryTree
+class TreeNode:
+    def __init__(self,val):
+        self.val=val
+        self.left=None
+        self.right=None
 
 # structurally same mean data doesn't have to agree, but the tree structure should be
 
@@ -22,20 +26,18 @@ def areStructurallySameTrees(root1, root2):
     
 if __name__ == '__main__':
     
-    root1 = BinaryTree(1)
-    root1.insertLeft(2)
-    root1.insertRight(3)
-    root1.getLeft().insertLeft(4)
-    root1.getLeft().insertRight(5)
-    root1.getRight().insertLeft(6)
-#     root1.getRight().insertRight(7)
+    root1 = TreeNode(1)
+    root1.left = TreeNode(2)
+    root1.right = TreeNode(3)
+    root1.left.left = TreeNode(4)
+    root1.left.right = TreeNode(5)
+    root1.right.left = TreeNode(6)
     
-    root2 = BinaryTree(8)
-    root2.insertLeft(9)
-    root2.insertRight(10)
-    root2.getLeft().insertLeft(11)
-    root2.getLeft().insertRight(12)
-    root2.getRight().insertLeft(13)
-#     root2.getRight().insertRight(14)
+    root2 = TreeNode(8)
+    root2.left = TreeNode(9)
+    root2.right = TreeNode(10)
+    root2.left.left = TreeNode(11)
+    root2.left.right = TreeNode(12)
+    root2.right.left = TreeNode(13)
     
     print(areStructurallySameTrees(root1, root2))

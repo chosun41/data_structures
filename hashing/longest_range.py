@@ -19,7 +19,7 @@ def longest_contained_range(A):
             unprocessed_entries.remove(upper_bound)
             upper_bound += 1
 
-        max_interval_size = max(max_interval_size,upper_bound - lower_bound - 1)
+        max_interval_size = max(max_interval_size,upper_bound - lower_bound - 1) # most important -1
         
     return max_interval_size
 

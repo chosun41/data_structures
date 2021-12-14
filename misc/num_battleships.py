@@ -10,6 +10,7 @@ def countBattleships(board):
                     flag = 0
                 total += flag
     return total
+    # look behind
     
 if __name__ =='__main__':
     # time: O(mn)

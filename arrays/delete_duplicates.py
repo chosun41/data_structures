@@ -7,7 +7,7 @@ def delete_duplicates(A):
 
     write_index = 1
     for i in range(1, len(A)):
-        if A[write_index - 1] != A[i]:
+        if A[write_index - 1] != A[i]: #write index at 1 all here
             A[write_index] = A[i]
             write_index += 1
     return A[:write_index]

@@ -18,7 +18,7 @@ def maxAncestorDiff(root):
         cur_min = min(cur_min, node.val)
         left = helper(node.left, cur_max, cur_min)
         right = helper(node.right, cur_max, cur_min)
-        return max(left, right)
+        return max(left, right) #important
 
     return helper(root, root.val, root.val)
     

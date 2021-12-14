@@ -1,32 +1,43 @@
-from binary_tree import BinaryTree
+class TreeNode:
+    def __init__(self,val):
+        self.val=val
+        self.left=None
+        self.right=None
 
 # diameter is the number of nodes along the longest path b/t any two nodes 
 # basically get the max height from left and right
 
 def diameter(root):
-    if (root == None): 
-        return 0
+    diameter = 0
 
-    lHeight = height(root.left)
-    rHeight = height(root.right)
-    lDiameter = diameter(root.left)
-    rDiameter = diameter(root.right)
-    return max(lHeight + rHeight + 1, max(lDiameter, rDiameter))
+    def longest_path(node):
+        if not node:
+            return 0
+        nonlocal diameter
+        # recursively find the longest path in
+        # both left child and right child
+        left_path = longest_path(node.left)
+        right_path = longest_path(node.right)
 
-def height(root):
-    if (root == None) :
-        return 0
-    return 1 + max(height(root.left), height(root.right))
+        # update the diameter if left_path plus right_path is larger
+        diameter = max(diameter, left_path + right_path)
+
+        # return the longest one between left_path and right_path;
+        # remember to add 1 for the path connecting the node and its parent
+        return max(left_path, right_path) + 1
+
+    longest_path(root)
+    return diameter
 
 if __name__ == '__main__':
     
-    root = BinaryTree(1)
-    root.insertLeft(2)
-    root.insertRight(3)
-    root.getLeft().insertLeft(4)
-    root.getLeft().insertRight(5)
-    root.getRight().insertLeft(6)
-    root.getRight().insertRight(7)
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(7)
     
     print(diameter(root))
-    print(height(root))
+    # print(height(root))

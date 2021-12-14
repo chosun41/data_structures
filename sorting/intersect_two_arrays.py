@@ -22,5 +22,5 @@ if __name__ == '__main__':
     
     # O(m*n)
     print(intersect_two_sorted_arrays1([2,3,3,5,5,6,7,7,8,12],[5,5,6,8,8,9,10,10]))
-    # O(m + n)
+    # time and space: O(m + n)
     print(intersect_two_sorted_arrays2([2,3,3,5,5,6,7,7,8,12],[5,5,6,8,8,9,10,10]))

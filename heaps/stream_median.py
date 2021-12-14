@@ -29,7 +29,7 @@ def online_median(sequence):
          
         # push onto the max heap
         # the negative of popped item x after adding x
-        heapq.heappush(max_heap,-heapq.heappushpop(min_heap,x))
+        heapq.heappush(max_heap,-heapq.heappushpop(min_heap,x)) #heappushpop most important part
         
         # if max_heap > min_heap length
         # push onto the min heap
@@ -48,7 +48,7 @@ def online_median(sequence):
 
 if __name__=='__main__':
     
-    # time: O(log n)
+    # time: O(log n) space: O(n)
     
     print(online_median([1,0,3,5,2,0,1]))
     
@@ -69,7 +69,7 @@ if __name__=='__main__':
     #            L=[3,5],H=[-1,0]
     #            result = [1,0.5,1,2]
     # Read in 2: L=[2,3,5],H=[-1,0]
-    #            L=[3,5],H=[-2,0,-1]
+    #            L=[3,5],H=[-2,-1,0]
     #            L=[2,3,5],H=[-1,0]
     #            result = [1,0.5,1,2,2]
     # Read in 0: L=[0,2,3,5],H=[-1,0]

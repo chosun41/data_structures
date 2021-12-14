@@ -10,9 +10,14 @@ def islandPerimeter(grid):
                 #Checking right neighbours
                 if j < len(grid[i])-1 and grid[i][j+1]:
                     neighbours += 1
+    print(islands)
+    print(neighbours)
     return 4*islands - 2*neighbours
 
 if __name__ == '__main__':
     # time: O(mn)
     # space: O(1)
-    print(islandPerimeter(grid = [[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]]))
+    print(islandPerimeter(grid = [[0,1,0,0],
+                                  [1,1,1,0],
+                                  [0,1,0,0],
+                                  [1,1,0,0]]))

@@ -15,3 +15,8 @@ if __name__ == '__main__':
     # space: O(1)
     # move all zeros to the end and keep order of non zeros
     print(moveZeroes([0,1,0,3,12]))
+    # i=0,j=0,[0,1,0,3,12]
+    # i=0,j=1,[1,0,0,3,12]
+    # i=1,j=2,[1,0,0,3,12]
+    # i=1,j=3,[1,3,0,0,12]
+    # i=2,j=4,[1,3,12,0,0]

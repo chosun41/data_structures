@@ -14,7 +14,7 @@ Space: O(1)
 
 def missingElement(nums,k):
     len_n = len(nums)
-    missing = nums[-1] - nums[0] + 1 - len_n
+    missing = nums[-1] - nums[0] + 1 - len_n # +1 importnat
     if k > missing:
         return nums[-1] + k - missing # second case
 
@@ -22,7 +22,7 @@ def missingElement(nums,k):
     last, left, right = 0, 0, len_n-1
     while left <= right:
         mid = left + (right - left) // 2
-        missing = nums[mid] - nums[last] + 1 - (mid-last+1)
+        missing = nums[mid] - nums[last] + 1 - (mid-last+1) # mid and last, not right and mid
         if k > missing:
             last = mid
             k -= missing

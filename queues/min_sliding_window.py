@@ -31,6 +31,8 @@ def MinSlidingWindow(A, k):
     return res
 
 if __name__ == "__main__":
+
+    # time and space: O(n)
  
     print(MinSlidingWindow([4, 3, 2, 1, 5, 7, 6, 8, 9], 3))
     

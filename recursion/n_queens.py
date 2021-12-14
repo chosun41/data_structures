@@ -5,21 +5,14 @@ def n_queens(n):
             result.append(col_placement.copy())
             return
         for col in range(n):
-            if row == 0:
+            if all(r!=row and c!=col and abs(row-r)!=abs(col-c) for r, c in enumerate(col_placement[:row])):
                 col_placement[row] = col
                 solve_n_queens(row + 1)
-            else:
-                if all(r!=row and c!=col and abs(row-r)!=abs(col-c) for r, c in enumerate(col_placement[:row])):
-                    col_placement[row] = col
-                    solve_n_queens(row + 1)
 
     result = []
     col_placement = [0] * n
     solve_n_queens(0)
     return result
-
-print(n_queens(4))
-
 
 if __name__=='__main__':
     # time: O(n!)

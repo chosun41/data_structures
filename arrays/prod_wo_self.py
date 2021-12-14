@@ -20,7 +20,7 @@ def productExceptSelf(nums):
     # R[i] contains the product of all the elements to the right
     # Note: for the element at index 'length - 1', there are no elements to the right,
     # so the R[length - 1] would be 1
-    R[length - 1] = 1
+    R[-1] = 1
     for i in reversed(range(length - 1)):
 
         # R[i + 1] already contains the product of elements to the right of 'i + 1'

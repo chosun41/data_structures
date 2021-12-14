@@ -16,7 +16,7 @@ def findClosestElements2(arr, k, x):
         return l
 
     index = findIndex(arr, x)
-    l, r = index, index
+    l, r = index, index # start from index out
 
     while r - l < k:
         if l == 0: 

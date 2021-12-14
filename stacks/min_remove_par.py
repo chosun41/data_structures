@@ -1,23 +1,24 @@
 def minRemoveToMakeValid(s: str) -> str:
-    indexes_to_remove = set()
-    stack = []
-    for i, c in enumerate(s):
-        if c not in "()":
-            continue
-        if c == "(":
-            stack.append(i)
-        elif not stack:
-            indexes_to_remove.add(i)
-        else:
-            stack.pop()
-    print(stack)
-    print(indexes_to_remove)
-    indexes_to_remove = indexes_to_remove.union(set(stack))
-    string_builder = []
-    for i, c in enumerate(s):
-        if i not in indexes_to_remove:
-            string_builder.append(c)
-    return "".join(string_builder)
+    indx_remove=set()
+    stk=[]
+
+    for i,x in enumerate(s):
+        if x=='(':
+            stk.append(i)
+        elif x==')':
+            if not stk:
+                indx_remove.add(i)
+            else:
+                stk.pop()
+
+    print(indx_remove,stk)
+    
+    indx_remove = indx_remove.union(set(stk))
+    res=""
+    for i,x in enumerate(s):
+        if i not in indx_remove:
+            res+=x
+    return res
     
 if __name__ == '__main__':
     

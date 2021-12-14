@@ -14,8 +14,9 @@ def wallsAndGates(rooms):
         for j in range(w):
             if rooms[i][j] == 0:
                 q.append((i,j))
+    print(q)
 
-    for row, col in q:
+    for row, col in q: # bfs not dfs, you iterate through neighbors in que not for dfs for one gate after another
         dist = rooms[row][col] + 1
         for dy, dx in (-1, 0), (1, 0), (0, -1), (0, 1):
             r = row + dy
@@ -42,7 +43,7 @@ if __name__=='__main__':
     #                            [2147483647,2147483647,1,-1],
     #                            [1,-1,2147483647,-1],
     #                            [0,-1,2147483647,2147483647]]
-    # q=[(1,2),(2,0)]   rooms = [[2147483647,-1,0,1],
+    # q=[(1,2),(2,0),(0,3)]   rooms = [[2147483647,-1,0,1],
     #                            [2,2,1,-1],
     #                            [1,-1,2,-1],
     #                            [0,-1,2147483647,2147483647]]

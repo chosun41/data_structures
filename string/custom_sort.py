@@ -5,7 +5,7 @@ def customSortString(S, T):
     count = collections.Counter(T)
     ans = []
 
-    # Write all characters that occur in S, in the order of S.
+    # Write all characters that occur in T, in the order of S.
     for c in S:
         ans.append(c * count[c])
         # Set count[c] = 0 to denote that we do not need

@@ -1,32 +1,36 @@
-import functools
 import string
 
 def int_to_string(x):
 
-    is_negative = False
-    if x < 0:
-        x, is_negative = -x, True
+    neg = False
+    if x<0:
+        neg=True
+        x = -x
 
-    s = []
+    ans = []
+
     while True:
-        s.append(chr(ord('0') + x % 10))
-        x //= 10
-        if x == 0:
+        ans.append(str(x%10))
+        x//=10
+        if x==0:
             break
-
-    # Adds the negative sign back if is_negative
-    return ('-' if is_negative else '') + ''.join(reversed(s))
-
+    return "".join(ans[::-1])
 
 def string_to_int(s):
-    
-    # s[0] in '-+' -> s[0] or s[1] depending on boolean
 
-    return (-1 if s[0] == '-' else 1) * functools.reduce(lambda running_sum, c: running_sum * 10 + string.digits.index(c),s[s[0] in '-+':],0)
+    neg=False
+    if s[0]=='-':
+        neg=True
+        s=s[1:]
+
+    num = 0
+    for ch in s:
+        num = num*10 + ord(ch)-ord('0')
+    return (-1 if neg else 1)*num
 
 if __name__=='__main__':
-    
-    x=int_to_string(321)
+
+    x=int_to_string(-321)
     print(x)
     print(type(x))
     y=string_to_int('-321')

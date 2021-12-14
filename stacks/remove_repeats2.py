@@ -28,5 +28,16 @@ if __name__=='__main__':
     # time and space: O(n)
     # remove substrings of size k if they are duplicates
     print(removeDuplicates(s = "deeedbbcccbdaa", k = 3))
+    # [(d,1)]
+    # [(d,1),(e,1)]
+    # [(d,1),(e,2)]
+    # [(d,1),(e,3)] -> [(d,1)]
+    # [(d,2)]
+    # [(d,2),(b,1)]
+    # [(d,2),(b,2)]
+    # [(d,2),(b,2),(c,3)]
+    # [(d,2),(b,3)]
+    # []
+    # [(a,2)]
     print(removeDuplicates(s = "pbbcggttciiippooaais", k = 2))
                        

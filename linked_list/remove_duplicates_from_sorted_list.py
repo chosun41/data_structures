@@ -1,8 +1,11 @@
-from lll import LinkedList,Node
+class ListNode:
+    def __init__(self,val=None):
+        self.val=val
+        self.next=None
 
 def remove_duplicates(L):
 
-    it = L.head
+    it = L
     
     while it:
         
@@ -10,12 +13,12 @@ def remove_duplicates(L):
         next_distinct = it.next
         
         # just keep reattaching next_distinct while data value repeats
-        while next_distinct and next_distinct.data == it.data:
+        while next_distinct and next_distinct.val == it.val:
             next_distinct = next_distinct.next
             
         it.next = next_distinct
         
-        it = next_distinct
+        it = it.next
      
     # return list amended
     return L
@@ -26,29 +29,18 @@ if __name__ == "__main__":
     # time: O(n)
     # space: O(1)
    
-    l1 = LinkedList()
+    l1 = ListNode(1)
+    l1.next=ListNode(2)
+    l1.next.next=ListNode(2)
+    l1.next.next.next=ListNode(3)
+    l1.next.next.next.next=ListNode(4)
+    l1.next.next.next.next.next=ListNode(4)
+    l1.next.next.next.next.next.next=ListNode(4)
+    l1.next.next.next.next.next.next.next=ListNode(5)
 
-    node1 = Node(1)
-    node2 = Node(2)
-    node3 = Node(2)
-    node4 = Node(3)
-    node5 = Node(4)
-    node6 = Node(4)
-    node7 = Node(4)
-    node8 = Node(5)
-    
-    l1.addNode(node1)
-    l1.addNode(node2)
-    l1.addNode(node3)
-    l1.addNode(node4)
-    l1.addNode(node5)
-    l1.addNode(node6)
-    l1.addNode(node7)
-    l1.addNode(node8)
-    
-    print("\n")
-    l1.print_list()
-    
     x=remove_duplicates(l1)
-    print("\n")
-    x.print_list()
+    print(x.val)
+    print(x.next.val)
+    print(x.next.next.val)
+    print(x.next.next.next.val)
+    print(x.next.next.next.next.val)

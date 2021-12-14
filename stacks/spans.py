@@ -1,38 +1,33 @@
-from stack import Stack
-
-# find how long a price has been <= current value (span)
-
 def findingSpans(A):
     
-    D = Stack()
-    S = [None] * len(A)
+    D = []
+    s = [None] * len(A)
     
     # to find the number of consecutive days that price has been <= current
     
     for i in range(len(A)):
         
         # keep popping as long as D is not empty and A i > A peek of D (compare prices to past)
-        # P will become the index of the day where the earlier daily value is equal or greater
+        # P will become the index of the day where the earlier daily value is equal or greater !!!
         # S will calculate the number of days between the current and last greater value
-        while not D.isEmpty() and A[i] > A[D.peek()]:
+        while D and A[i] > A[D[-1]]:
             D.pop()
             
-        if D.isEmpty():
+        if not D:
             P = -1
         else:
-            P = D.peek()
+            P = D[-1]
             
-        S[i] = i - P
+        s[i] = i - P # 0-(-1)=1
         
         # push current index to D
-        D.push(i)
+        D.append(i)
         
-    print(S)
-
+    return s
 
 if __name__ == "__main__":
     
-    findingSpans([6, 3, 4, 5, 2])
+    print(findingSpans([6, 3, 4, 5, 2]))
     
     # 0. D = [0]
     #    S = [1,None,None,None,None]

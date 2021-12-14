@@ -9,10 +9,10 @@ def multiply(num1, num2):
     result = [0] * (len(num1) + len(num2))
     
     # grade school algorithm in reverse
-    for i in reversed(range(len(num1))):
-        for j in reversed(range(len(num2))):
+    for j in reversed(range(len(num2))):
+        for i in reversed(range(len(num1))):
             result[i + j + 1] += num1[i] * num2[j]
-            result[i + j] += result[i + j + 1] // 10
+            result[i + j] += result[i + j + 1] // 10 # res i+j+1 not num1[i]*num2[j]
             result[i + j + 1] %= 10
 
     # Remove the leading zeroes.       
@@ -25,8 +25,8 @@ def multiply2(num1,num2):
     num2=num2[num2[0]=='-':]
     rslt=[0]*(len(num1)+len(num2))
 
-    for i in reversed(range(len(num2))):
-        for j in reversed(range(len(num1))):
+    for j in reversed(range(len(num2))):
+        for i in reversed(range(len(num1))):
             rslt[i+j+1]+=(ord(num2[i])-ord('0'))*(ord(num1[j])-ord('0'))
             rslt[i+j]+=rslt[i+j+1]//10
             rslt[i+j+1]%=10
@@ -39,7 +39,7 @@ def multiply2(num1,num2):
     
 if __name__ == '__main__':
     # time: O(mn)
-    # space: O(m+2)
-    print(multiply([1,2,3],[9,8,7]))
+    # space: O(m+n)
+    print(multiply([-1,2,3],[9,8,7]))
     # as strings
-    print(multiply2(num1 = "123", num2 = "987"))
+    print(multiply2(num1 = "-123", num2 = "987"))

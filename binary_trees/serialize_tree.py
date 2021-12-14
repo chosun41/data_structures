@@ -31,11 +31,11 @@ def deserialize(data):
     while curr_level and i < n:
         next_level = []
         for node in curr_level:
-            if data[i] != None:
+            if data[i]:
                 node.left = TreeNode(data[i])
                 next_level.append(node.left)
             i += 1
-            if data[i] != None:
+            if data[i]:
                 node.right = TreeNode(data[i])
                 next_level.append(node.right)
             i += 1

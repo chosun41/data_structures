@@ -1,4 +1,8 @@
-from binary_tree import BinaryTree
+class TreeNode:
+    def __init__(self,val):
+        self.val=val
+        self.left=None
+        self.right=None
 
 # nodes around the exterior of binary tree
 
@@ -10,7 +14,7 @@ def leaves(root):
           
         # Print it if it is a leaf node 
         if root.left is None and root.right is None: 
-            exterior.append(root.data) 
+            exterior.append(root.val) 
   
         leaves(root.right)
 
@@ -23,11 +27,11 @@ def boundary_left(root):
               
             # to ensure top down order, print the node 
             # before calling itself for left subtree 
-            exterior.append(root.data) 
+            exterior.append(root.val) 
             boundary_left(root.left) 
           
         elif(root.right): 
-            exterior.append(root.data) 
+            exterior.append(root.val) 
             boundary_left(root.right) 
           
         # do nothing if it is a leaf node, this way we 
@@ -43,11 +47,11 @@ def boundary_right(root):
             # to ensure bottom up order, first call for 
             # right subtree, then print this node 
             boundary_right(root.right) 
-            exterior.append(root.data) 
+            exterior.append(root.val) 
           
         elif(root.left): 
             boundary_right(root.left) 
-            exterior.append(root.data) 
+            exterior.append(root.val) 
   
         # do nothing if it is a leaf node, this way we  
         # avoid duplicates in output 
@@ -58,7 +62,7 @@ def boundary(root):
     
     if (root): 
         
-        exterior.append(root.data)
+        exterior.append(root.val)
           
         # Print the left boundary in top-down manner 
         boundary_left(root.left) 
@@ -76,21 +80,21 @@ if __name__ == '__main__':
     
     # 5 pieces - root, left boundary, left leaves, right leaves, right boundary
 
-    root = BinaryTree(1)
-    root.insertLeft(2)
-    root.insertRight(3)
-    root.getLeft().insertLeft(4)
-    root.getLeft().insertRight(5)
-    root.getRight().insertLeft(6)
-    root.getRight().insertRight(7)
-    root.getLeft().getLeft().insertLeft(8)
-    root.getLeft().getLeft().insertRight(9)
-    root.getLeft().getRight().insertLeft(10)
-    root.getLeft().getRight().insertRight(11)
-    root.getRight().getLeft().insertLeft(12)
-    root.getRight().getLeft().insertRight(13)
-    root.getRight().getRight().insertLeft(14)
-    root.getRight().getRight().insertRight(15)
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(7)
+    root.left.left.left = TreeNode(8)
+    root.left.left.right = TreeNode(9)
+    root.left.right.left = TreeNode(10)
+    root.left.right.right = TreeNode(11)
+    root.right.left.left = TreeNode(12)
+    root.right.left.right = TreeNode(13)
+    root.right.right.left = TreeNode(14)
+    root.right.right.right = TreeNode(15)
     print(boundary(root))
     
     #                 1

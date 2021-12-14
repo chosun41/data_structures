@@ -1,38 +1,31 @@
 def exist(board, word):
-    def backtrack(word, i, j, m, n):
-        nonlocal l,is_found
-        if board[i][j] != word[l]:
-            return
-        visited.add((i, j))
-        l += 1
-        if l == len(word):
-            is_found = True
-            return 
-        for di, dj in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
-            i1, j1 = i + di, j + dj
-            if 0 <= i1 < m and 0 <= j1 < n and (i1, j1) not in visited:
-                backtrack(word, i1, j1, m, n)
-                if is_found:
-                    return 
-        visited.remove((i, j))
-        l -= 1
+    visited = {}
 
-    if not board or not board[0]:
-        return False
-    if word == '':
-        return True
-    m, n = len(board), len(board[0])
-    is_found = False
-    l = 0
-    visited = set()
-    for i in range(m):
-        for j in range(n):
-            backtrack(word, i, j, m, n)
-            if is_found:
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            if getWords(board, word, i, j, visited):
                 return True
+    
     return False
 
+def getWords(board, word, i, j, visited, pos = 0):
+    if pos == len(word):
+        return True
+
+    if i < 0 or i == len(board) or j < 0 or j == len(board[0]) or visited.get((i, j)) or word[pos] != board[i][j]:
+        return False
+
+    visited[(i, j)] = True
+    res = getWords(board, word, i, j + 1, visited, pos + 1) \
+            or getWords(board, word, i, j - 1, visited, pos + 1) \
+            or getWords(board, word, i + 1, j, visited, pos + 1) \
+            or getWords(board, word, i - 1, j, visited, pos + 1)
+    visited[(i, j)] = False
+
+    return res
+
 if __name__=='__main__':
+    # time: O(N3^L) space: O(L) - n number of letters on board, l is length of word, 3 is directions
     board = [["A","B","C","E"],
              ["S","F","C","S"],
              ["A","D","E","E"]]

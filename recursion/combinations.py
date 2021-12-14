@@ -1,25 +1,21 @@
-def combinations(n, k):
+def combinations(n,k):
+    def backtrack(first = 1, curr = []):
+        # if the combination is done
+        if len(curr) == k:  
+            output.append(curr[:])
+        for i in range(first, n + 1): # first
+            # add i into the current combination
+            curr.append(i)
+            # use next integers to complete the combination
+            backtrack(i + 1, curr) #i+1 not first+1
+            # backtrack
+            curr.pop()
     
-    def directed_combinations(offset, partial_combination):
-        
-        if len(partial_combination) == k:
-            result.append(partial_combination.copy())
-            return
-
-        # Generate remaining combinations over {offset, ..., n - 1} of size
-        # num_remaining.
-        num_remaining = k - len(partial_combination)
-        i = offset
-        while i <= n and num_remaining <= n - i + 1:
-            directed_combinations(i + 1, partial_combination + [i])
-            i += 1
-
-    result = []
-    directed_combinations(1, [])
-    return result
-
+    output = []
+    backtrack()
+    return output
 
 if __name__ == '__main__':
     
-    # O(n (n k))
-    print(combinations(5, 2))
+    # time: O(k C (k n)) space: O(C (k n)) time because of append and pop
+    print(combinations(5, 3))

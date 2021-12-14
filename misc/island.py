@@ -39,4 +39,5 @@ if __name__=='__main__':
     # time and space: O(n^2)
     # can change at most one 0 to 1, what is the area of the largest island afterwards?
     print(largestIsland( [[1, 0], [0, 1]]))
+    print("\n")
     print(largestIsland( [[1,0,0], [1,0,0],[0,1,0]]))

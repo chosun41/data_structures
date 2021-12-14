@@ -17,4 +17,4 @@ def findMaxLength(nums):
 if __name__=='__main__':
     # time and space: O(n)
     # find max length of contiguous array that have equal number of 0 and 1s
-    print(findMaxLength([0,1,0]))
+    print(findMaxLength([0,1,0,1,0,0,0,0]))

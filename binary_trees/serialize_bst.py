@@ -13,13 +13,13 @@ def serialize(root):
     def dfs(root):
         if not root:
             return 
-        res.append(str(root.val) + ",")
+        res.append(str(root.val))
         dfs(root.left)
         dfs(root.right)
 
     res = []
     dfs(root)
-    return "".join(res)
+    return ",".join(res)
 
 def deserialize(data):
     """Decodes your encoded data to tree.
@@ -28,7 +28,6 @@ def deserialize(data):
     :rtype: TreeNode
     """
     lst = data.split(",")
-    lst.pop()
     stack = []
     head = None
     for n in lst:

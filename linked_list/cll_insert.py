@@ -6,15 +6,15 @@ class Node:
         
 def insert(head, insertVal):
 
-    if head == None:
-        newNode = Node(insertVal, None)
+    if not head:
+        newNode = Node(insertVal)
         newNode.next = newNode
         return newNode
 
     prev, curr = head, head.next
     toInsert = False
 
-    while True:
+    while True: # all in while TRUE
 
         if prev.val <= insertVal <= curr.val:
             # Case #1.
@@ -36,7 +36,7 @@ def insert(head, insertVal):
             break
     # Case #3.
     # did not insert the node in the loop
-    prev.next = Node(insertVal, curr)
+    # prev.next = Node(insertVal, curr)
     return head
     
 if __name__ == '__main__':

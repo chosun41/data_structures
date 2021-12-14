@@ -9,52 +9,23 @@ class TreeNode:
         self.left=None
         self.right=None
         
-def findSize(head):
-    ptr = head
-    c = 0
-    while ptr:
-        ptr = ptr.next
-        c += 1
-    return c
-
 def sortedListToBST(head):
-    """
-    :type head: ListNode
-    :rtype: TreeNode
-    """
-
-    # Get the size of the linked list first
-    size = findSize(head)
-
-    # Recursively form a BST out of linked list from l --> r
-    def convert(l, r):
-        nonlocal head
-
-        # Invalid case
-        if l > r:
-            return None
-
-        mid = (l + r) // 2
-
-        # First step of simulated inorder traversal. Recursively form
-        # the left half
-        left = convert(l, mid - 1)
-
-        # Once left half is traversed, process the current node
-        node = TreeNode(head.val)   
-        node.left = left
-
-        # Maintain the invariance mentioned in the algorithm
-        head = head.next
-
-        # Recurse on the right hand side and form BST out of them
-        node.right = convert(mid + 1, r)
-        return node
-    return convert(0, size - 1)
+    A, n = [], head
+    while n:
+        A.append(n.val)
+        n = n.next
+    def make(i,j):
+        if i<=j:
+            m       =  (i+j)//2
+            n       = TreeNode(A[m])
+            n.left  = make(i  ,m-1)
+            n.right = make(m+1,j  )
+            return n
+    return make(0, len(A)-1)
 
 if __name__=='__main__':
     # time: O(n)
-    # space: O(logn)
+    # space: O(n)
     x=ListNode(-10)
     x.next=ListNode(-3)
     x.next.next=ListNode(0)

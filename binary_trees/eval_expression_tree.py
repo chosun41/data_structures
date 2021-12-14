@@ -1,14 +1,18 @@
-from binary_tree import BinaryTree
+class TreeNode:
+    def __init__(self,val):
+        self.val=val
+        self.left=None
+        self.right=None
 
 def evaluateExpressionTree(root): 
   
     # empty tree 
-    if root is None: 
+    if not root: 
         return 0
   
     # leaf node 
-    if root.left is None and root.right is None: 
-        return int(root.data) 
+    if not root.left and not root.right: 
+        return int(root.val)
   
     # evaluate left tree 
     left_sum = evaluateExpressionTree(root.left) 
@@ -17,38 +21,38 @@ def evaluateExpressionTree(root):
     right_sum = evaluateExpressionTree(root.right) 
   
     # check which operation to apply 
-    if root.data == '+': 
+    if root.val == '+': 
         return left_sum + right_sum 
       
-    elif root.data == '-': 
+    elif root.val == '-': 
         return left_sum - right_sum 
       
-    elif root.data == '*': 
+    elif root.val == '*': 
         return left_sum * right_sum 
       
-    else: 
+    elif root.val == '/': 
         return left_sum / right_sum 
   
 if __name__=='__main__': 
       
     # creating a sample tree 
-    root = BinaryTree('+') 
-    root.left = BinaryTree('*') 
-    root.left.left = BinaryTree('5') 
-    root.left.right = BinaryTree('4') 
-    root.right = BinaryTree('-') 
-    root.right.left = BinaryTree('100') 
-    root.right.right = BinaryTree('20') 
+    root = TreeNode('+') 
+    root.left = TreeNode('*') 
+    root.left.left = TreeNode('5') 
+    root.left.right = TreeNode('4') 
+    root.right = TreeNode('-') 
+    root.right.left = TreeNode('100') 
+    root.right.right = TreeNode('20') 
     print(evaluateExpressionTree(root))
 
     #creating a sample tree 
-    root = BinaryTree('+') 
-    root.left = BinaryTree('*') 
-    root.left.left = BinaryTree('5') 
-    root.left.right = BinaryTree('4') 
-    root.right = BinaryTree('-') 
-    root.right.left = BinaryTree('100') 
-    root.right.right = BinaryTree('/') 
-    root.right.right.left = BinaryTree('20') 
-    root.right.right.right = BinaryTree('2') 
+    root = TreeNode('+') 
+    root.left = TreeNode('*') 
+    root.left.left = TreeNode('5') 
+    root.left.right = TreeNode('4') 
+    root.right = TreeNode('-') 
+    root.right.left = TreeNode('100') 
+    root.right.right = TreeNode('/') 
+    root.right.right.left = TreeNode('20') 
+    root.right.right.right = TreeNode('2') 
     print(evaluateExpressionTree(root))

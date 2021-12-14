@@ -2,7 +2,7 @@ def ReversingString(str):
     s = list(str)
     end = len(str) - 1
     start = 0
-    result = []
+
     while (start < end):
         s[start], s[end] = s[end], s[start]
         start += 1

@@ -1,28 +1,42 @@
-def addBoldTag(S, words):
-    trie, n, mask, res = {}, len(S), set(), ""
-    for w in words:
-        cur = trie
-        for c in w:
-            if c not in cur:
-                cur[c] = {}
-            cur = cur[c]
-        cur["#"] = cur.get("#", set()) | {w}
-    for i in range(n):
-        cur, j = trie, i
-        while j < n and S[j] in cur:
-            cur = cur[S[j]]
-            if "#" in cur:
-                mask |= {ind for ind in range(i, j + 1)}
-            j += 1
-    for i in range(n):
-        if i in mask and (not i or i - 1 not in mask):
-            res += "<b>"
-        res += S[i]
-        if i in mask and (i == n - 1 or i + 1 not in mask):
-            res += "</b>"
-    return res
+def addBoldTag(s,dict):
+    # Initialize a list of booleans for each character in s.
+    bold = [False for _ in range(len(s))]
     
+    # Iterate through the dictionary, marking words to be bolded as True.
+    for word in dict:
+        # Mark every occurrence of the word as True.
+        start = s.find(word)
+        while start != -1:
+            for i in range(start, len(word) + start):
+                bold[i] = True
+            start = s.find(word,start+1) # next index
+    
+    # Initialize the output list of strings.
+    output = []
+    
+    # Traverse the input string, building the output list.
+    i = 0
+    while i < len(s):
+        # If the current character is to be bolded...
+        if bold[i]:
+            # Insert a bold tag.
+            output.append("<b>")
+            # Append characters to be bolded.
+            while i < len(s) and bold[i]: # while i<len(s)
+                output.append(s[i])
+                i += 1
+            # Insert the end tag.
+            output.append("</b>")
+        # Otherwise, just append the character.
+        else:
+            output.append(s[i])
+            i += 1
+    
+    # Join the output list and return it.
+    return "".join(output)
+
 if __name__ =='__main__':
+    # time: O(s*l) s-length of string l - length of longest word in word dict
     S = "abcxyz123"
     words = ["abc","123"]
     print(addBoldTag(S,words))

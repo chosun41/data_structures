@@ -8,7 +8,7 @@ def look_and_say(n):
             while i + 1 < len(s) and s[i] == s[i + 1]:
                 i += 1
                 count += 1
-            result.append(str(count) + s[i])
+            result.append(str(count) + s[i]) # + s[i]
             i += 1
         return ''.join(result)
 

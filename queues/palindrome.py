@@ -1,14 +1,11 @@
-from deque import Deque
+from collections import deque
     
 def palindromeCheckerWithDeque(str1):
-    d1 = Deque()
-
-    for ch in str1:
-        d1.addRear(ch)
-    
-    while d1.size() > 1 and eq1:
-        first=d1.removeFront()
-        last=d1.removeRear()
+    d1 = deque(str1)
+   
+    while len(d1)>1:
+        first=d1.popleft()
+        last=d1.pop()
         if first!=last:
             return False
 

@@ -24,7 +24,7 @@ def binaryTreePaths(root):
             helper(node.right, cur + [str(node.val)] )
 
     helper(node=root, cur=[])
-    return [ *map('->'.join, result) ]
+    return ["->".join(x) for x in result]
 
 if __name__ == '__main__':
     # time and space: O(n)

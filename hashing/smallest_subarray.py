@@ -93,7 +93,7 @@ if __name__ == '__main__':
     # keyword_to_idx = {cat:0,banana:1}, latest_occurrence=[-1,-1],shortest_subarray_length = [float('inf'),float('inf')],
     # shortest_distance = float('inf'),result = Subarray(-1, -1)
 
-    ['apple','banana','apple','apple','dog','cat','apple','dog','banana','apple','cat','dog']
+    # ['apple','banana','apple','apple','dog','cat','apple','dog','banana','apple','cat','dog']
     # i=0,p=apple
     # i=1,p=banana,keyword_idx=1,latest_occurrence=[-1,1]
     # i=2,p=apple
@@ -108,22 +108,5 @@ if __name__ == '__main__':
     # i=10,p=cat,keyword_idx=0,shortest_subarray_length = [1,4],latest_occurrence=[10,8]
     # i=11,p=dog
     # result=Subarray(5,8)
-    
-    for i, p in enumerate(paragraph):
-        if p in keyword_to_idx:
-            keyword_idx = keyword_to_idx[p]
-            if keyword_idx == 0:  # First keyword. # update start of subarray to 1
-                shortest_subarray_length[keyword_idx] = 1
-            elif shortest_subarray_length[keyword_idx - 1] != float('inf'): # update distance to prev keyword
-                distance_to_previous_keyword = (i - latest_occurrence[keyword_idx - 1])
-                shortest_subarray_length[keyword_idx] = (distance_to_previous_keyword + shortest_subarray_length[keyword_idx - 1])
-            latest_occurrence[keyword_idx] = i
-
-            # Last keyword, for improved subarray.
-            # update shortest distance from last keyword and result
-            if (keyword_idx == len(keywords) - 1 and shortest_subarray_length[-1] < shortest_distance):
-                shortest_distance = shortest_subarray_length[-1]
-                result = Subarray(i - shortest_distance + 1, i)
-    return result
     
     print(find_smallest_subarray_ordered(paragraph,['banana','cat']))

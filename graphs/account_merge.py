@@ -1,54 +1,42 @@
 import collections
 
-class UnionFind():
-    def __init__(self, accounts):
-        self.uf = [0]*len(accounts)
-        self.elist = [set()]*len(accounts)
-        for i,a in enumerate(accounts):
-            self.elist[i] = set(a[1:])
-            self.uf[i] = i
-    
-    def find(self, i):
-        while self.uf[i] != i:
-            self.uf[i] = self.uf[self.uf[i]]
-            i = self.uf[i]
-        return i
-    
-    def union(self,x,y):
-        p1 = self.find(x)
-        p2 = self.find(y)
-        if p1==p2:
-            return
-        if p1>p2:
-            x,y=y,x
-            p1,p2=p2,p1
-        self.uf[p2] = p1
-        self.elist[p1] = self.elist[p1].union(self.elist[p2])
-        self.elist[p2] = set()
-
-
 def accountsMerge(accounts):
-    ufind = UnionFind(accounts)
-    emails = collections.defaultdict(int)
-    for i,a in enumerate(accounts):
-        for e in a[1:]:
-            if e not in emails:
-                emails[e] = i
-            else:
-                ufind.union(i,emails[e])
+    res = []
+    cache = collections.defaultdict(list)
+    visited = set()
+    for i, acc in enumerate(accounts):
+        for email in acc[1:]:
+            cache[email].append(i)
 
-    ans = []
-    print(ufind.uf)
-    print(ufind.elist)
-    for i in range(len(accounts)):
-        if len(ufind.elist[i]):
-            ans += [accounts[i][0]] + sorted(list(ufind.elist[i])),
-    return ans
+    print(cache)
+
+    def dfs(idx, sub_res):
+        if idx in visited:
+            return
+        visited.add(idx)
+        for email in accounts[idx][1:]:
+            sub_res.add(email)
+            for records in cache[email]:
+                dfs(records, sub_res)
+        return
+
+    for idx, acc in enumerate(accounts):
+        tmp_res = set()
+        dfs(idx, tmp_res)
+        if tmp_res:
+            res.append([acc[0]] + sorted(list(tmp_res)))
+
+    print(visited)
+    return res
 
 if __name__ == '__main__':
     
     # time: AlogA
     # space: A
-    
+    # Given a list of accounts where each element accounts[i] is a list of strings, where the first element accounts[i][0] is a name, and the rest of the elements are emails representing emails of the account.
+
+    # Now, we would like to merge these accounts. Two accounts definitely belong to the same person if there is some common email to both accounts. Note that even if two accounts have the same name, they may belong to different people as people could have the same name. A person can have any number of accounts initially, but all of their accounts definitely have the same name.
+
+    # After merging the accounts, return the accounts in the following format: the first element of each account is the name, and the rest of the elements are emails in sorted order. The accounts themselves can be returned in any order.
     accounts=[["John","johnsmith@mail.com","john_newyork@mail.com"],["John","johnsmith@mail.com","john00@mail.com"],["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]]
     print(accountsMerge(accounts))

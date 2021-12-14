@@ -1,19 +1,23 @@
-from binary_tree import BinaryTree
+class TreeNode:
+    def __init__(self,val):
+        self.val=val
+        self.left=None
+        self.right=None
 
 def printAncestors(root, target): 
       
     # Base case 
-    if root == None: 
+    if not root: 
         return False 
       
-    if root.data == target: 
+    if root.val == target: 
         return True 
   
     # If target is present in either left or right subtree  
     # of this node, then print this node 
     if (printAncestors(root.left, target) or 
         printAncestors(root.right, target)): 
-        print(root.data) 
+        print(root.val) 
         return True
   
     # Else return False  
@@ -21,12 +25,12 @@ def printAncestors(root, target):
     
 if __name__ == '__main__':
     
-    root = BinaryTree(1)
-    root.insertLeft(2)
-    root.insertRight(3)
-    root.getLeft().insertLeft(4)
-    root.getLeft().insertRight(5)
-    root.getRight().insertLeft(6)
-    root.getRight().insertRight(7)
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(7)
     
     printAncestors(root, 7)

@@ -1,7 +1,7 @@
 def search_entry_equal_to_its_index(A):
 
     left, right = 0, len(A) - 1
-    while left <= right:
+    while left <= right: #important
         mid = (left + right) // 2
         difference = A[mid] - mid
         # A[mid] == mid if and only if difference == 0.

@@ -42,10 +42,10 @@ def alienOrder(words):
 
 if __name__ == '__main__':
     
-    # time: O(c) - letters of every word in words
-    # space: O(1)
+    # time: O(c) - letters of every word in words combined
+    # space: O(u) - total number of unique letters
     
     # basically make a topological ordering out of edges between letters of dictionary order
     print(alienOrder(["wrth","wrt"]))
-    print(alienOrder(["wrt","wrf","er","ett","rftt"]))
+    print(alienOrder(["wrt","wrf","er","ett","rftt"])) # t:f w:e r:t e:r wertf
     print(alienOrder(["wrt","wrf","wrt"]))

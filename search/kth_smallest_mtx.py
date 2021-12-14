@@ -29,6 +29,7 @@ def kthSmallest(matrix, k):
             lo, hi = mid, hi
         else:
             lo, hi = lo, mid
+        print(lo,mid,hi)
 
 if __name__=='__main__':
     # time: O(n x log(max-min))
@@ -42,5 +43,6 @@ if __name__=='__main__':
     print(kthSmallest(matrix, k))
     # lo=1,hi=15
     # mid=8,total=2,lo=8,hi=15
-    # mid=11,total=3,lo=11,hi=15
-    # mid=13,total=3,lo=13,hi=15
+    # mid=11,total=4,lo=11,hi=15
+    # mid=13,total=6,lo=13,hi=15
+    # mid=14,total=8,lo=13,hi=14

@@ -1,31 +1,23 @@
-def trap(height):
-    n = len(height)
-    if n < 3:
+def trap(bars):
+    if not bars or len(bars) < 3:
         return 0
-    l = height[0]
-    r = height[n-1]
-    i = 0
-    j = n - 1  
-    res = 0
-    while i < j:
-        if r < l:
-            j -= 1
-            if height[j] < r:
-                res += r - height[j]
-            else:
-                r = height[j]
+    volume = 0
+    left, right = 0, len(bars) - 1
+    l_max, r_max = bars[left], bars[right]
+    while left < right: 
+        l_max, r_max = max(bars[left], l_max), max(bars[right], r_max)
+        if l_max <= r_max: # important
+            volume += l_max - bars[left]
+            left += 1
         else:
-            i += 1
-            if height[i] < l:
-                res += l - height[i] 
-            else:
-                l = height[i]
-    return res
+            volume += r_max - bars[right]
+            right -= 1
+    return volume
 
 if __name__=='__main__':
     # time: O(n)
     # space: O(1)
-    print(trap(height = [0,1,0,2,1,0,1,3,2,1,2,1]))
+    print(trap(bars = [0,1,0,2,1,0,1,3,2,1,2,1]))
     
     # i=0,j=11,l=0,r=1,i=1,l=1,res=0
     # i=1,j=11,l=1,r=1,i=2,res=1

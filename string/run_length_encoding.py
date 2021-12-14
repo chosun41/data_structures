@@ -5,7 +5,7 @@ def decoding(s):
     count, result = 0, []
     for c in s:
         if c.isdigit():
-            count = count * 10 + int(c)
+            count = count * 10 + int(c) #in case more than 2 digits
         else:  # c is a letter of alphabet.
             result.append(c * count)  # Appends count copies of c to result.
             count = 0
@@ -15,7 +15,7 @@ def decoding(s):
 def encoding(s):
 
     result, count = [], 1
-    for i in range(1, len(s) + 1):
+    for i in range(1, len(s) + 1): # +1 important as well as i==len(s), need last part because we always append i-1
         if i == len(s) or s[i] != s[i - 1]:
             # Found new character so write the count of previous character.
             result.append(str(count) + s[i - 1])

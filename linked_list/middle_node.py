@@ -1,19 +1,22 @@
-from lll import LinkedList,Node
+class ListNode:
+    def __init__(self,val=None):
+        self.val=val
+        self.next=None
 
 def findMiddleNode(L1):
     
-    fast = L1.head
-    slow = L1.head
+    fast = L1
+    slow = L1
 
-    while (fast != None):
-        fast = fast.get_next()
-        if (fast == None):
-            return slow.data
+    while fast:
+        fast = fast.next
+        if not fast:
+            return slow.val
 
-        fast = fast.get_next()   
-        slow = slow.get_next()
+        fast = fast.next   
+        slow = slow.next
         
-    return slow.data
+    return slow.val
     
 if __name__ == "__main__":
 
@@ -22,19 +25,10 @@ if __name__ == "__main__":
     # time: O(n)
     # space: O(1)
     
-    l1 = LinkedList()
-    
-    node1 = Node(1)
-    node2 = Node(2)
-    node3 = Node(3)
-    node4 = Node(4)
-    node5 = Node(5)
-    
-    l1.addNode(node1)
-    l1.addNode(node2)
-#     l1.addNode(node3)
-    l1.addNode(node4)
-    l1.addNode(node5)
+    l1 = ListNode(1)
+    l1.next=ListNode(2)
+    l1.next.next=ListNode(3)
+    l1.next.next.next=ListNode(4)
+    l1.next.next.next.next=ListNode(5)
 
-    print("\n")
     print(findMiddleNode(l1))

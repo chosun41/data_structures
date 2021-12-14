@@ -1,6 +1,6 @@
 def exclusiveTime(N, logs):
     ans = [0] * N
-    stack = []
+    stack = [] # what was the last job
     prev_time = 0
 
     for log in logs:
@@ -9,14 +9,16 @@ def exclusiveTime(N, logs):
 
         if typ == 'start':
             if stack:
-                ans[stack[-1]] += time - prev_time 
+                ans[stack[-1]] += time - prev_time  # += not =
             stack.append(fn)
             prev_time = time
         else:
-            ans[stack.pop()] += time - prev_time + 1
+            ans[stack.pop()] += time - prev_time + 1  
             prev_time = time + 1
 
     return ans
+
+    # basically add to stack time-prev_time if start else add to answer time-prev_time+1
 
 if __name__=='__main__':
     # time and space: O(n)

@@ -21,4 +21,4 @@ def addStrings(num1: str, num2: str) -> str:
 if __name__ == '__main__':
     
     # time space: O(max(n,m))
-    print(addStrings("1","9"))
+    print(addStrings("312","24"))

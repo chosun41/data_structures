@@ -1,31 +1,40 @@
-from cll import LinkedList,Node
+class Node:
+    
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
 
 # kill every m person out of a group of size n, who remains
 # start from index 0
 def getJosephusPosition(n, m):
     
     # create circular linked list
-    final_ll=LinkedList()
+    final_ll=Node()
+    curr = final_ll
     
     for x in range(n):
-        final_ll.addNode(Node(x))
+        curr.next = Node(x)
+        curr = curr.next
+
+    curr.next = final_ll.next
+    curr = curr.next
 
     # extract items from linked list in proper order
-    currentNode = prev = final_ll.head
+    prev = curr
     counter = 0
     
-    while currentNode.get_next() != currentNode:
+    while curr.next != curr:
         counter += 1
         if counter % m == 0:
-            prev.set_next(currentNode.next)
+            prev.next = curr.next
             # kill and set prev.next to currentNode.next
         else:
-            prev = currentNode
+            prev = curr
             # set prev to current node
-        currentNode = currentNode.get_next()
+        curr = curr.next
         # set current to current next
    
-    return currentNode.get_data()
+    return curr.val
     
 if __name__ == "__main__":
     

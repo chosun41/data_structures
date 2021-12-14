@@ -1,9 +1,9 @@
 def apply_permutation(perm, A):
-
+    
     for i in range(len(A)):
         while perm[i] != i:
-            A[perm[i]], A[i] = A[i], A[perm[i]]
-            perm[perm[i]], perm[i] = perm[i], perm[perm[i]]
+            A[perm[i]], A[i] = A[i], A[perm[i]] #perm[i] has to be first
+            perm[perm[i]], perm[i] = perm[i], perm[perm[i]] #perm[perm[i]] has to be first
             print(A)
             print(perm)
     return A
@@ -20,4 +20,3 @@ if __name__ == '__main__':
     # 1. i=1 perm[1] = 1
     # 2. i=2 perm[2]=2
     # 3. i=3 perm[3]=3
- 
