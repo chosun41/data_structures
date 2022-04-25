@@ -22,7 +22,7 @@ def MinSlidingWindow(A, k):
         
         # this is to start appending from k-1 onwards
         if i >= k - 1: 
-            res.append(D[0][0])
+            res.append(D[0][0]) # res append
            
         # if i=D[0][1] that means it matches i+k-1 and has been the min for k times
         if i == D[0][1]: 

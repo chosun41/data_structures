@@ -8,7 +8,7 @@ def suggestedProducts(products, searchWord):
             if i<len(p) and p[i]==searchWord[i]:
                 newProduct.append(p)
         answ.append(newProduct[:3])
-        products=newProduct 
+        products=newProduct # make sure previous letters the same
     return answ
 
 if __name__=='__main__':

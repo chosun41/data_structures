@@ -16,7 +16,7 @@ def findAnagrams(s, p):
         s_count[s[i]] += 1
         # remove one letter 
         # from the left side of the window
-        if i >= np:
+        if i >= np: # most important
             if s_count[s[i - np]] == 1:
                 del s_count[s[i - np]]
             else:

@@ -12,7 +12,7 @@ def divide(dividend, divisor):
             dividend1 -= temp
             temp += temp
             quotient += i
-            i += i
+            i += i # at the end
     if (dividend < 0) ^ (divisor < 0):
         quotient = -quotient
     return min(max(quotient, -pow(2,31)),pow(2,31)-1)

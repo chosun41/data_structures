@@ -12,7 +12,7 @@ def intervalIntersection(A, B):
             ans.append([lo, hi])
 
         # Remove the interval with the smallest endpoint
-        if A[i][1] < B[j][1]:
+        if A[i][1] < B[j][1]: # 1 not 0
             i += 1
         else:
             j += 1

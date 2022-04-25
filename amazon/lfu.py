@@ -9,8 +9,8 @@ class LFUCache:
 
     def __init__(self, capacity: int):
         self.capacity = capacity
-        self._items = defaultdict(int)  # key: frequency.
-        self._freqs = defaultdict(OrderedDict)  # frequency: {key: val}
+        self._items = defaultdict(int)  # key: frequency
+        self._freqs = defaultdict(OrderedDict)  # frequency: {key1: val1, key2:val2}
         self._minFreq = 0  # Mininum used frequency for the keys in the cache.
 
     def _update_freq(self, key: int, value: int = None):
@@ -46,13 +46,17 @@ class LFUCache:
             if len(self._items) == self.capacity:  # Cache is full.
                 # 1. Pop the least frequently used key in _freqs[mininum freq].
                 # 2. Pop the same key from _items as it does not exist any more.
-                self._items.pop(
-                    self._freqs[self._minFreq].popitem(last=False)[0])
+                self._items.pop(self._freqs[self._minFreq].popitem(last=False)[0])
 
             # Add the new key.
             self._minFreq = 1
             self._items[key] = 1
             self._freqs[1][key] = value
+        print()
+        print(self._minFreq)
+        print(self._items)
+        print(self._freqs)
+        print()
 
 if __name__=='__main__':
 

@@ -4,14 +4,14 @@ def alienOrder(words):
 
     # Step 0: create data structures + the in_degree of each unique letter to 0.
     adj_list = defaultdict(set)
-    in_degree = Counter({c : 0 for word in words for c in word})
+    in_degree = Counter({c : 0 for word in words for c in word}) # counter
 
     # Step 1: We need to populate adj_list and in_degree.
     # For each pair of adjacent words... create n-1 pairs out of n words
     for first_word, second_word in zip(words, words[1:]):
         for c, d in zip(first_word, second_word):
             if c != d:
-                if d not in adj_list[c]:
+                if d not in adj_list[c]: # only if not already in adj list for c
                     adj_list[c].add(d)
                     in_degree[d] += 1
                 break
@@ -29,7 +29,7 @@ def alienOrder(words):
         c = queue.popleft()
         output.append(c)
         for d in adj_list[c]:
-            in_degree[d] -= 1
+            in_degree[d] -= 1 # can go to 0
             if in_degree[d] == 0:
                 queue.append(d)
 

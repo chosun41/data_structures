@@ -7,10 +7,10 @@ class TreeNode:
 def rangeSumBST(root, L, R):
     def dfs(node):
         nonlocal ans
-        if node:
+        if node: # important
             if L <= node.val <= R:
                 ans += node.val
-            if L < node.val:
+            if L < node.val: # if not elif
                 dfs(node.left)
             if node.val < R:
                 dfs(node.right)

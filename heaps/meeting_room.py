@@ -7,6 +7,7 @@ def minMeetingRooms(intervals):
         while heap and heap[0] <= interval[0]: # keep popping room until theres a meeting room that can't be occupied
             heapq.heappop(heap)
         heapq.heappush(heap, interval[1])
+        print(heap)
         res = max(res, len(heap))
     return res
 

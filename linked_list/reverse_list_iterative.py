@@ -10,11 +10,12 @@ def reverseList(L1):
 
     # traverse list
     # set previous node (last) to current next
+
     # new last is current
     # current is next node
     while current:
-        nextNode = current.next
-        current.next = prev
+        nextNode = current.next # save nextnode to save to current later
+        current.next = prev # make next of current prev
         prev = current
         current = nextNode
 
