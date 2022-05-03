@@ -4,7 +4,7 @@ def lengthOfLongestSubstringKDistinct(s, k):
     left, right, dic, ans = 0, 0, collections.Counter(), 0
     while right < len(s):
         dic[s[right]] +=1
-        right += 1
+        right += 1 # right after adding to dic
         while len(dic) > k:
             dic[s[left]] -= 1
             if dic[s[left]] == 0:

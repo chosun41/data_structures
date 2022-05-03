@@ -7,7 +7,7 @@ def removeInvalidParentheses(s):
         for i in range(len(s)):
             if s[i] in ('(', ')'):
                 ns = s[:i] + s[i+1:]
-                if ns not in visited and valid(ns) < mi:
+                if ns not in visited and valid(ns) < mi: # have to recursively search for getting rid of more parenthesis
                     visited.add(ns)
                     dfs(ns)
                 

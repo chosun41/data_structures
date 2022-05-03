@@ -28,8 +28,8 @@ def look_and_say_pythonic(n):
 if __name__=='__main__':
     
     # n is which number of sequence
-    # 1,11,21,1211,111221 -> how many of previous there are
+    # 1,11,21,1211,111221.312211,13112211,1113212221,311312113211,132113111221131221, -> how many of previous there are
     # time: O(n*2^n)
     
-    print(look_and_say(3))
-    print(look_and_say_pythonic(3))
+    print(look_and_say(5))
+    print(look_and_say_pythonic(5))

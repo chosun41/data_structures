@@ -15,10 +15,10 @@ Space: O(1)
 def missingElement(nums,k):
     len_n = len(nums)
     missing = nums[-1] - nums[0] + 1 - len_n # +1 importnat
-    if k > missing:
+    if k > missing: # most important
         return nums[-1] + k - missing # second case
 
-    # Now the first missing number must be inside nums.
+    # Now the first missing number must be inside nums. pretty similar to first case, just remember last instead of left
     last, left, right = 0, 0, len_n-1
     while left <= right:
         mid = left + (right - left) // 2

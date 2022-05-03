@@ -14,7 +14,7 @@ def threeSumClosest(nums, target):
                 return curr_sum
             if abs(curr_sum-target) < abs(closest_sum-target):
                 closest_sum = curr_sum
-            if curr_sum < target:
+            if curr_sum < target: #most important
                 j = j+1
             else:
                 k = k-1

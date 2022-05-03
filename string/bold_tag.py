@@ -10,6 +10,7 @@ def addBoldTag(s,dict):
             for i in range(start, len(word) + start):
                 bold[i] = True
             start = s.find(word,start+1) # next index
+    print(bold)
     
     # Initialize the output list of strings.
     output = []

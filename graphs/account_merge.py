@@ -14,7 +14,7 @@ def accountsMerge(accounts):
         if idx in visited:
             return
         visited.add(idx)
-        for email in accounts[idx][1:]:
+        for email in accounts[idx][1:]: # put all forloops in here
             sub_res.add(email)
             for records in cache[email]:
                 dfs(records, sub_res)
@@ -23,7 +23,7 @@ def accountsMerge(accounts):
     for idx, acc in enumerate(accounts):
         tmp_res = set()
         dfs(idx, tmp_res)
-        if tmp_res:
+        if tmp_res: # so it doesn't repeat already visited
             res.append([acc[0]] + sorted(list(tmp_res)))
 
     print(visited)

@@ -6,7 +6,7 @@ def maxSubArrayLen(nums, k):
         s += x # running total
         if s - k in preSums:
             res = max(res, i - preSums[s-k])
-        if s not in preSums: # not an else 
+        if s not in preSums: # not an else (s-k and s check)
             preSums[s] = i
     return res
     

@@ -11,11 +11,11 @@ def addOperators(num, target):
                 continue  # Skip leading zero number
             now = int(num[i:j + 1])
             if i == 0:
-                backtracking(j + 1, path + str(now), resultSoFar + now, now)  # First num, pick it without adding any operator
+                backtracking(j + 1, path + str(now), resultSoFar + now, now)  # resultsofar+now First num, pick it without adding any operator
             else:
                 backtracking(j + 1, path + "+" + str(now), resultSoFar + now, now)
                 backtracking(j + 1, path + "-" + str(now), resultSoFar - now, -now)
-                backtracking(j + 1, path + "*" + str(now), resultSoFar - prev + prev * now, prev * now)  # Can imagine with example: 1+2*3*4
+                backtracking(j + 1, path + "*" + str(now), resultSoFar - prev + prev * now, prev * now)  # resultsofra-prev+prev*now, Can imagine with example: 1+2*3*4
 
     ans = []
     backtracking(0, "", 0, 0)
@@ -26,6 +26,7 @@ if __name__=='__main__':
     # time: O(n * 4^n) - 4 choices between +,-,x,or no operator
     # space: O(n)
     print(addOperators(num = "105", target = 5))
+    print(addOperators(num = "015", target = 5))
     # i=0,path='',resultSoFar=0,prev=0
     # j=0,now=1
         # backtrack(1,'1',1,1)
