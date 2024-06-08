@@ -12,5 +12,13 @@ def findTargetSumWays(A, S):
     return count[S]
 
 if __name__=='__main__':
-    # a list of non negative integers, list all the ways it equals target S
-    print(findTargetSumWays(A=[1, 1, 1, 1, 1], S=3))
+    print(findTargetSumWays(A=[1, 2, 0, 0, 0], S=3))
+    # You want to build an expression out of nums by adding one of the symbols '+' and '-' before each integer in nums and then concatenate all the integers.
+    # + 1 + 2 + 0 + 0 + 0
+    # + 1 + 2 + 0 + 0 - 0
+    # + 1 + 2 + 0 - 0 + 0
+    # + 1 + 2 - 0 + 0 + 0
+    # + 1 + 2 - 0 + 0 - 0
+    # + 1 + 2 + 0 + 0 - 0
+    # + 1 + 2 - 0 + 0 + 0
+    # + 1 + 2 - 0 - 0 - 0

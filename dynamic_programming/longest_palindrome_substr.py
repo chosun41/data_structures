@@ -1,34 +1,17 @@
-def longestPalSubstr(str):
-     
-    # Get length of input String
-    n = len(str)
-     
-    # All subStrings of length 1
-    # are palindromes
-    maxLength = 1
-    start = 0
-     
-    # Nested loop to mark start
-    # and end index
-    for i in range(n):
-        for j in range(i, n):
-            flag = 1
-             
-            # Check palindrome
-            for k in range(0, ((j - i) // 2) + 1):
-                if (str[i + k] != str[j - k]):
-                    flag = 0
- 
-            # Palindrome
-            if (flag != 0 and (j - i + 1) > maxLength):
-                start = i
-                maxLength = j - i + 1
-                 
-    print("Longest palindrome subString is: ", end = "")
-    print(str[start:start + maxLength])
- 
-    # Return length of LPS
-    return maxLength
+def longestPalSubstr(s):
+    p = ''
+    for i in range(len(s)):
+        # these palindrome functions starting from the center and expanding out
+        p1 = get_palindrome(s, i, i+1)
+        p2 = get_palindrome(s, i, i)
+        p = max([p, p1, p2], key=len)
+    return p
+
+def get_palindrome(s,l,r):
+    while l >= 0 and r < len(s) and s[l] == s[r]:
+        l -= 1
+        r += 1
+    return s[l+1:r]
 
 if __name__ == '__main__':
     

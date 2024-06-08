@@ -1,21 +1,28 @@
-def levenshtein_distance(A, B):
-    def compute_distance_between_prefixes(A_idx, B_idx):
-        if A_idx < 0:
-            # A is empty so add all of B's characters.
-            return B_idx + 1
-        elif B_idx < 0:
-            # B is empty so delete all of A's characters.
-            return A_idx + 1
+def levenshtein_distance(word1,word2):
+    memo = {}
+    
+    def dfs(i, j):
+        if i == 0 or j == 0: return j or i
+                    
+        if (i,j) in memo:
+            return memo[(i,j)]
+        
+        if word1[i-1] == word2[j-1]:
+            ans = dfs(i-1, j-1)
+        else: 
 
-        if A[A_idx] == B[B_idx]:
-            return compute_distance_between_prefixes(A_idx - 1, B_idx - 1)
-
-        substitute_last = compute_distance_between_prefixes(A_idx - 1, B_idx - 1)
-        add_last = compute_distance_between_prefixes(A_idx, B_idx - 1)
-        delete_last = compute_distance_between_prefixes(A_idx - 1, B_idx)
-        return 1 + min(substitute_last, add_last, delete_last)
-
-    return compute_distance_between_prefixes(len(A) - 1, len(B) - 1)
+            ans = 1 + min(
+                dfs(i, j-1),  # insert
+                dfs(i-1, j),  # delete
+                dfs(i-1, j-1) # replace
+                )
+            
+        memo[(i,j)] = ans
+        print(i,j, memo)
+        print()
+        return memo[(i,j)]
+    
+    return dfs(len(word1), len(word2))
 
 if __name__ == '__main__':
     

@@ -22,6 +22,7 @@ if __name__ == '__main__':
     
     # time: O(nX), space: O(X)
     
+    # is there at least one noncontiguous subset that adds up to sum?
     A = [3, 2, 4, 19, 3, 7, 13, 10, 6, 11]
     print(SubsetSum1(A,17))
 

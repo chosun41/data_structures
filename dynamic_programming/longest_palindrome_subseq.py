@@ -1,28 +1,31 @@
-def LongestPalindromeSubsequence(A):
-    n = len(A)
-    L = [[0 for x in range(n)] for x in range(n)]
-    # palindromes with length 1 (diagonals)
-    for i in range(0, n):
-        L[i][i] = 1
-
-    # palindromes with length up to j+1 (basically proceeding to close in on upper right diagonal
-    for k in range(2, n + 1):
-        for i in range(0, n - k + 1):
-            j = i + k - 1
-            if A[i] == A[j] and k == 2:
-                L[i][j] = 2
-            elif A[i] == A[j]:
-                L[i][j] = 2 + L[i + 1][j - 1] # 2 + entry in next row, prev col
+def LongestPalindromeSubsequence(s):
+    n = len(s)
+    dp = [[0] * n for _ in range(n)]
+    
+    # Base case: a single character is a palindrome of length 1
+    for i in range(n):
+        dp[i][i] = 1
+        
+    # Iterate over substrings of length 2 to n
+    for l in range(2, n+1):
+        for i in range(n-l+1):
+            j = i + l - 1
+            if s[i] == s[j]:
+                # If the two characters match, we can add two to the
+                # length of the longest palindrome in the substring
+                dp[i][j] = dp[i+1][j-1] + 2
             else:
-                L[i][j] = max(L[i + 1][j] , L[i][j - 1]) # max of prev entry in row, or next row same entry
-
-    print(L)
-    return L[0][n - 1]
+                # If the two characters don't match, we take the max
+                # of the longest palindromes in the two substrings
+                dp[i][j] = max(dp[i+1][j], dp[i][j-1])
+    
+    return dp[0][n-1]
 
 if __name__ == '__main__':
     
     # time: O(n^2)
     print(LongestPalindromeSubsequence("AGTCMCTGA"))
+    print(LongestPalindromeSubsequence("ABCBAMCTGA"))
     
     # L
     #       0  1  2  3  4  5  6  7  8
