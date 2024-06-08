@@ -9,6 +9,8 @@ def interLeavingQueue(que):
     for i in range(halfsize):
         stk.append(deq.popleft())
 
+    print(stk)
+
     for i in range(halfsize):
         deq.append(stk.pop())
 
@@ -17,9 +19,6 @@ def interLeavingQueue(que):
 
     for i in range(halfsize):
         stk.append(deq.popleft())
-
-    print(stk)
-    print(deq)
 
     for i in range(halfsize):
         deq.append(stk.pop())

@@ -10,8 +10,6 @@ def minRemoveToMakeValid(s: str) -> str:
                 indx_remove.add(i)
             else:
                 stk.pop()
-
-    print(indx_remove,stk)
     
     indx_remove = indx_remove.union(set(stk))
     res=""

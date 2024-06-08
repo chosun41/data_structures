@@ -1,5 +1,5 @@
 def find_nearest_repetition(paragraph):
-
+    
     word_to_latest_index = {}
     nearest_repeated_distance = float('inf')
     nearest_repeated_word=None

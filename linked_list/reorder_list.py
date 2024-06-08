@@ -14,19 +14,26 @@ def reorderList(head):
         slow = slow.next
         fast = fast.next.next 
 
+    # head, slow, fast = 1, 4, None
+
     # reverse the second part of the list [Problem 206]
-    # convert 1->2->3->4->5->6 into 1->2->3->4 and 6->5->4
+    # convert 1->2->3->4->5 into 1->2->3 and 5->4
     # reverse the second half in-place
     prev, curr = None, slow
     while curr:
         curr.next, prev, curr = prev, curr, curr.next       
     
-    # 4->None       4,    5         None, 4,5
-    # 5->4->None,   5,    6          4,   5, 6
-    # 6->5->4->None 6,  None         5,   6,  None
+    #                   prev, curr 
+    # 1->2->3->4->5,    None, 3
+    # 1->2->3->None,    3,4
+    # 1->2->3->None,    4,5
+    #    4->
+    # 1->2->3->None,    5, None
+    #    4->
+    #  5->
 
     # merge two sorted linked lists [Problem 21]
-    # merge 1->2->3->4 and 6->5->4 into 1->6->2->5->3->4
+    # merge 1->2->3 and 5->4 into 1->5->2->4->3
     first, second = head, prev
     while second.next:
         first.next, first = second, first.next

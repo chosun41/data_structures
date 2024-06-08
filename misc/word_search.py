@@ -25,7 +25,7 @@ def getWords(board, word, i, j, visited, pos = 0):
     return res
 
 if __name__=='__main__':
-    # time: O(N3^L) space: O(L) - n number of letters on board, l is length of word, 3 is directions
+    # time: O(n4^L) space: O(L) - n number of letters on board, l is length of word, 3 is directions
     board = [["A","B","C","E"],
              ["S","F","C","S"],
              ["A","D","E","E"]]

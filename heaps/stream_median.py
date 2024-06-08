@@ -39,7 +39,7 @@ def online_median(sequence):
            
         # if the min and max heap length are same (even number of items) append 0.5 of
         # else append the smallest of the min heap
-        if len(min_heap)==len(max_heap):
+        if len(min_heap)==len(max_heap): # if not elif
             result.append(0.5*(min_heap[0] + -max_heap[0]))
         else:
             result.append(min_heap[0])
@@ -48,7 +48,7 @@ def online_median(sequence):
 
 if __name__=='__main__':
     
-    # time: O(log n) space: O(n)
+    # time: O(n log n) space: O(n)
     
     print(online_median([1,0,3,5,2,0,1]))
     

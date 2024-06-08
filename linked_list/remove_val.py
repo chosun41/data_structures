@@ -4,7 +4,7 @@ class ListNode:
         self.next=None
 
 def removeElements(head, val):
-    sentinel = ListNode(0)
+    sentinel = ListNode(0) # sentinel
     sentinel.next = head
 
     prev, curr = sentinel, head

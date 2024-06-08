@@ -35,7 +35,6 @@ if __name__=='__main__':
     # Explanation: The same as example 1, except countUniqueChars("ABA") = 1.
     # B, AB, BA, ABA
 
-
     print(uniqueLetterString(s = "ABC"))
     print(uniqueLetterString(s = "ABA"))
 

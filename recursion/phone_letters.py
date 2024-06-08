@@ -11,7 +11,7 @@ def phone_mnemonic(digits):
 
 if __name__ == '__main__':
     
-    # time: 0(n*4^n) space: O(n)
+    # time and space: 0(4^n) 
     # N is the length of digits. Note that 44 in this expression is referring to the maximum value length in the hash map, and not to the length of the input.
     # The worst-case is where the input consists of only 7s and 9s. In that case, we have to explore 4 additional paths for every extra digit. Then, for each combination, it costs up to NN to build the combination. 
     # For the problem constraints, we're given, M = 4M=4, because of digits 7 and 9 having 4 letters each.

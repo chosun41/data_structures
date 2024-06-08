@@ -5,7 +5,7 @@ def addBoldTag(s,dict):
     # Iterate through the dictionary, marking words to be bolded as True.
     for word in dict:
         # Mark every occurrence of the word as True.
-        start = s.find(word)
+        start = s.find(word) # so you dont have to recompute
         while start != -1:
             for i in range(start, len(word) + start):
                 bold[i] = True

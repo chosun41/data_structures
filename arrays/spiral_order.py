@@ -1,20 +1,30 @@
 def matrix_in_spiral_order(matrix):
+    result = []
     if not matrix or not matrix[0]:
-        return []
-    ans = []
+        return result
     m, n = len(matrix), len(matrix[0])
-    u, d, l, r = 0, m - 1, 0, n - 1
-    while l < r and u < d:
-        ans.extend([matrix[u][j] for j in range(l, r)])
-        ans.extend([matrix[i][r] for i in range(u, d)])
-        ans.extend([matrix[d][j] for j in range(r, l, -1)])
-        ans.extend([matrix[i][l] for i in range(d, u, -1)])
-        u, d, l, r = u + 1, d - 1, l + 1, r - 1
-    if l == r:
-        ans.extend([matrix[i][r] for i in range(u, d + 1)])
-    elif u == d:
-        ans.extend([matrix[u][j] for j in range(l, r + 1)])
-    return ans
+    top, bottom, left, right = 0, m - 1, 0, n - 1
+    while top <= bottom and left <= right:
+        # Traverse right
+        for i in range(left, right + 1):
+            result.append(matrix[top][i])
+        top += 1
+        # Traverse down
+        for i in range(top, bottom + 1):
+            result.append(matrix[i][right])
+        right -= 1
+        # Traverse left
+        if top <= bottom:
+            for i in range(right, left - 1, -1):
+                result.append(matrix[bottom][i])
+            bottom -= 1
+        # Traverse up
+        if left <= right:
+            for i in range(bottom, top - 1, -1):
+                result.append(matrix[i][left])
+            left += 1
+
+    return result
 
 if __name__ == '__main__':
 

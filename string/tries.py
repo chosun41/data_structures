@@ -50,9 +50,9 @@ if __name__ == '__main__':
     # node with children for each letter of the alphabet
     # huge memory but O(L) - L is length of the word
     my_trie = Trie()
-    print(my_trie.add_word('head'))
-    print(my_trie.add_word('hi'))
-    print(my_trie.add_word('howdy'))
+    my_trie.add_word('head')
+    my_trie.add_word('hi')
+    my_trie.add_word('howdy')
     print(my_trie)
 
     print(my_trie.find_word("hi"))

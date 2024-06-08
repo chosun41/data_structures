@@ -8,7 +8,8 @@ def accountsMerge(accounts):
         for email in acc[1:]:
             cache[email].append(i)
 
-    print(cache)
+    # cache - dictionary of email to account index
+    # visited - visited account indexes
 
     def dfs(idx, sub_res):
         if idx in visited:
@@ -23,10 +24,9 @@ def accountsMerge(accounts):
     for idx, acc in enumerate(accounts):
         tmp_res = set()
         dfs(idx, tmp_res)
-        if tmp_res:
+        if tmp_res: # important to get rid of no emails left
             res.append([acc[0]] + sorted(list(tmp_res)))
 
-    print(visited)
     return res
 
 if __name__ == '__main__':

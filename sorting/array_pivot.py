@@ -1,11 +1,11 @@
 
 def search(nums,target):
     start, end = 0, len(nums) - 1
-    while start <= end:
+    while start <= end: # <= not <
         mid = start + (end - start) // 2
         if nums[mid] == target:
             return mid
-        elif nums[mid] >= nums[start]:
+        elif nums[mid] >= nums[start]: ## check this condition
             if target >= nums[start] and target < nums[mid]:
                 end = mid - 1
             else:
@@ -21,3 +21,4 @@ if __name__ == '__main__':
     # time: O(logn)
     # space: O(1)
     print(search(nums = [4,5,6,7,0,1,2], target = 0))
+    print(search(nums = [6,7,0,1,2,4,5], target = 0))

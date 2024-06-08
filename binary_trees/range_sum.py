@@ -5,19 +5,18 @@ class TreeNode:
         self.right=None
 
 def rangeSumBST(root, L, R):
-    def dfs(node):
-        nonlocal ans
-        if node:
-            if L <= node.val <= R:
-                ans += node.val
-            if L < node.val:
-                dfs(node.left)
-            if node.val < R:
-                dfs(node.right)
 
-    ans = 0
-    dfs(root)
-    return ans
+    res = 0
+    if not root:
+        return 0
+    elif root.val<L or root.val>R:
+        return 0
+    elif L<=root.val<=R:
+        res+=root.val
+        res+=rangeSumBST(root.left, L, root.val)
+        res+=rangeSumBST(root.right, root.val, R)
+
+    return res
 
 if __name__=='__main__':
     
@@ -33,4 +32,4 @@ if __name__=='__main__':
     x.left.right=TreeNode(7)
     x.right.right=TreeNode(18)
     
-    print(rangeSumBST(x,7,15))
+    print(rangeSumBST(x,5,15))

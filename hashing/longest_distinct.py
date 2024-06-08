@@ -14,8 +14,19 @@ def longest_subarray_with_distinct_entries(A):
                 result = max(result, i - longest_dup_free_subarray_start_idx) # result has to be current index - dup free start indx
                 longest_dup_free_subarray_start_idx = dup_idx + 1 # has to be index after the first instance of the repeating key
         most_recent_occurrence[a] = i
-    return max(result, len(A) - longest_dup_free_subarray_start_idx)
+    return max(result, len(A) - longest_dup_free_subarray_start_idx) # if no repeats
 
+def longest_subarray_with_distinct_entries2(A):
+    
+    ht = {}
+    l = 0
+    res = 0
+    for i,c in enumerate(A):
+        if c in ht:
+            res = max(res, i-l)
+            l= ht[c]+1 # move to index to char after first instance where repeated char appeared
+        ht[c] = i
+    return res if ht else len(A)
 
 if __name__ == '__main__':
     
@@ -103,4 +114,6 @@ if __name__ == '__main__':
     #    result = max(result, i - longest_dup_free_subarray_start_idx)=max(4,9-4)=5
     
     # max(result, len(A) - longest_dup_free_subarray_start_idx) = max(5,10-7)=max(5,3)=5
+
+    print(longest_subarray_with_distinct_entries2(A))
     

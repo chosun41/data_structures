@@ -7,7 +7,7 @@ def validWordAbbreviation(word,abbr):
         if word[i] == abbr[j]: # if not while
             i += 1
             j += 1
-            continue
+            continue # skip all the other logic
         
         if not abbr[j].isnumeric():
             return False

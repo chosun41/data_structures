@@ -25,4 +25,30 @@ def calculate(s: str) -> int:
 
 if __name__=='__main__':
     print(calculate(" 3+5 / 2 "))
+
+    # c = "3"
+    # num, pre_op, stack = 0, +, []
+    # num, pre_op, stack = 3, +, []
+
+    # c = "+"
+    # num, pre_op, stack = 3, +, []
+    # num, pre_op, stack = 0, +, [3]
+
+    # c = "5"
+    # num, pre_op, stack = 0, +, [3]
+    # num, pre_op, stack = 5, +, [3]
+
+    # c = "/"
+    # num, pre_op, stack = 5, +, [3]
+    # num, pre_op, stack = 0, /, [3,5]
+
+    # c = "2"
+    # num, pre_op, stack = 0, /, [3,5]
+    # num, pre_op, stack = 2, /, [3,5]
+
+    # c = "+"
+    # num, pre_op, stack = 2, /, [3,5]
+    # num, pre_op, stack = 0, +, [3, 2]
+    # sum = 5
+
     print(calculate("3+2*2"))

@@ -2,19 +2,18 @@ import string
 
 def int_to_string(x):
 
-    neg = False
+    neg=False
     if x<0:
         neg=True
-        x = -x
+        x=-x
 
-    ans = []
+    res=[]
 
-    while True:
-        ans.append(str(x%10))
+    while x:
+        res.append(str(x%10))
         x//=10
-        if x==0:
-            break
-    return "".join(ans[::-1])
+    return ''.join(['-']+res[::-1] if neg else res[::-1])
+
 
 def string_to_int(s):
 
@@ -23,10 +22,13 @@ def string_to_int(s):
         neg=True
         s=s[1:]
 
-    num = 0
-    for ch in s:
-        num = num*10 + ord(ch)-ord('0')
-    return (-1 if neg else 1)*num
+    num=0
+
+    for c in s:
+        num = num*10 + (ord(c)-ord('0'))
+
+    return -1*num if neg else num 
+
 
 if __name__=='__main__':
 
@@ -36,4 +38,5 @@ if __name__=='__main__':
     y=string_to_int('-321')
     print(y)
     print(type(y))
+    
     

@@ -6,7 +6,7 @@ class TreeNode:
         self.left=None
         self.right=None
 
-# trim bst in b/t min and max values
+# trim bst for everything outside of min and max values
 
 def trimBST(root, minVal, maxVal): 
     
@@ -44,11 +44,18 @@ if __name__ == '__main__':
     print(x.left.right.val)
     print(x.right.left.val)
     print(x.right.right)
-    
+    print()
+    #     4
+    #   2   6
+    #    3 5
+
     x=trimBST(deepcopy(root2),3,5)
     print(x.val)
     print(x.left.val)
     print(x.right.val)
+    print()
+    #      4
+    #   3    5
     
     x=trimBST(deepcopy(root2),1,6)
     print(x.val)
@@ -58,6 +65,11 @@ if __name__ == '__main__':
     print(x.left.right.val)
     print(x.right.left.val)
     print(x.right.right)
+    print()
+
+    #      4
+    #   2    6
+    # 1  3 5   
     
     x=trimBST(deepcopy(root2),2,7)
     print(x.val)
@@ -67,4 +79,8 @@ if __name__ == '__main__':
     print(x.left.right.val)
     print(x.right.left.val)
     print(x.right.right.val)
+    print()
+    #      4
+    #   2    6
+    #    3 5   7
  

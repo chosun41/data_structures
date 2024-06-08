@@ -5,20 +5,17 @@ def factorial1(n):
 
 factTable = {}
 
-def factorial2(n):
-    try:
-        return factTable[n]
-    except KeyError:
-        if n == 0:
-            factTable[0] = 1
-            return 1
-        else:
-            factTable[n] = n * factorial2(n - 1)
-            return factTable[n]
+def factorial2(n): 
+       
+    res = 1
+      
+    for i in range(2, n+1): 
+        res *= i 
+    return res 
 
 if __name__=='__main__':
     
-    # factorial1 - time: O(n+m), space: O(max(m,n))
-    # factorial2 - time: O(max(m,n)), space:O(max(m,n))
+    # factorial1 - time and space: O(n)
+    # factorial2 - time: O(n) space: 0(1)
     print(factorial1(6))
     print(factorial2(6))

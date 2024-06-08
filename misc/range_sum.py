@@ -8,7 +8,9 @@ class NumMatrix(object):
             self.summ = [[0]*(len(matrix[0])+1) for _ in range(len(matrix)+1)]
             for i in range(1, len(matrix)+1):
                 for j in range(1, len(matrix[0])+1):
-                    self.summ[i][j] = self.summ[i-1][j]+self.summ[i][j-1]-self.summ[i-1][j-1]+matrix[i-1][j-1]
+                    self.summ[i][j] = self.summ[i-1][j]+self.summ[i][j-1]-self.summ[i-1][j-1]+matrix[i-1][j-1] # matrix at end
+        print(matrix)
+        print(self.summ)
                 
 
     def sumRegion(self, row1, col1, row2, col2):
@@ -41,7 +43,11 @@ if __name__ == '__main__':
     # C D
 
     # The return value is D-B-C+A
-    numMatrix = NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]);
+    numMatrix = NumMatrix([[3, 0, 1, 4, 2], 
+                           [5, 6, 3, 2, 1], 
+                           [1, 2, 0, 1, 5], 
+                           [4, 1, 0, 1, 7], 
+                           [1, 0, 3, 0, 5]]);
     print(numMatrix.sumRegion(2, 1, 4, 3)); # return 8 (i.e sum of the red rectangle)
     print(numMatrix.sumRegion(1, 1, 2, 2)); # return 11 (i.e sum of the green rectangle)
     print(numMatrix.sumRegion(1, 2, 2, 4)); # return 12 (i.e sum of the blue rectangle)

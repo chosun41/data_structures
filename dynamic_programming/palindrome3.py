@@ -18,3 +18,11 @@ if __name__=='__main__':
     # string is k palindrome if it is palindrome after removing k characters
     # time and space: O(n^2)
     print(isValidPalindrome(s = "abcdeca", k = 2))
+    # [[0, 1, 2, 3, 4, 5, 6, 7], 
+    # [1, 0, 1, 2, 3, 4, 5, 6], 
+    # [2, 1, 2, 3, 4, 5, 4, 5], 
+    # [3, 2, 1, 2, 3, 4, 5, 6], 
+    # [4, 3, 2, 3, 2, 3, 4, 5], 
+    # [5, 4, 3, 2, 3, 4, 5, 6], 
+    # [6, 5, 4, 3, 4, 3, 4, 5], 
+    # [7, 6, 5, 4, 5, 4, 5, 4]]

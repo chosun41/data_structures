@@ -12,11 +12,11 @@ def shortestDistance(grid):
     for i in range(n):
         for j in range(m):
             if grid[i][j] == 1:
-                builds.append((i, j, 0))
+                builds.append((i, j, 0)) # important too appending dist
     print(builds)
     distances = collections.defaultdict(list)
     for build in builds:
-        queue=[build]
+        queue=[build] # important
         visited = set()
         while queue:
             i, j, d = queue.pop(0)

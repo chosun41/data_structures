@@ -1,3 +1,4 @@
+from collections import deque
 class TreeNode:
     def __init__(self,val):
         self.val=val
@@ -5,21 +6,20 @@ class TreeNode:
         self.right=None
 
 def sumNumbers(root):
-    root_to_leaf = 0
-    stack = [(root, 0) ]
-    
-    while stack:
-        root, curr_number = stack.pop()
-        if root: # if node
-            curr_number = curr_number * 10 + root.val
-            # if it's a leaf, update root-to-leaf sum
-            if not root.left and not root.right:
-                root_to_leaf += curr_number
-            else:
-                stack.append((root.right, curr_number)) # append even if none
-                stack.append((root.left, curr_number))
-                    
-    return root_to_leaf
+
+    q = deque([(root,0)])
+    res = 0
+    while q:
+        node, summ = q.popleft()
+        summ = 10 * summ + int(node.val)
+        if not node.left and not node.right:
+            res+=summ
+        if node.left:
+            q.append((node.left,node.val))
+        if node.right:
+            q.append((node.right,node.val))
+
+    return res
 
 if __name__ == '__main__':
 

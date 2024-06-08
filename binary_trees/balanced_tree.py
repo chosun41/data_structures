@@ -23,7 +23,7 @@ def isBalanced(root):
     lh = height(root.left) 
     rh = height(root.right) 
   
-    # allowed values for (lh - rh) are 1, -1, 0 
+    # allowed values for (lh - rh) are 0 or 1 - other side can be one height less
     if (abs(lh - rh) <= 1) and isBalanced(root.left) is True and isBalanced(root.right) is True: 
         return True
   

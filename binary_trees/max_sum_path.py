@@ -9,25 +9,21 @@ class TreeNode:
 # This function returns overall maximum path sum in 'res' 
 # And returns max path sum going through root 
 
-globalMax = float("-inf") 
+max_sum = 0
 
 def find_max_sum(root):
+
+    global max_sum
     if not root:
         return 0
-
-    # Recursive calls to children:
+    if not root.left and not root.right:
+        return root.val
     left = find_max_sum(root.left)
     right = find_max_sum(root.right)
-
-    # Max of first three cases:
-    return_max = max(max(left, right) + root.val, root.val)
-
-    # Update globalMax:
-    global globalMax
-    if return_max > globalMax:
-        globalMax = return_max
-
-    return globalMax
+    cand = max(left,right)
+    max_sum = max(max_sum, cand + root.val)
+    return max_sum
+    
 
 if __name__ == '__main__':
     

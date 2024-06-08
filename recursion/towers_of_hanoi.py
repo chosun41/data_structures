@@ -20,6 +20,7 @@ def compute_tower_hanoi(num_rings):
 if __name__ == '__main__':
     
     # time: O(2^n)
+    # space: O(n)
     
     # shows all the moves
     x=compute_tower_hanoi(6)

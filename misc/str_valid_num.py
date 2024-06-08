@@ -7,7 +7,7 @@ def isNumber(s):
     met_dot = met_e = met_digit = False
     for i, char in enumerate(s):
         if char in '+-':
-            if i > 0 and s[i-1] != 'e': # only time you have it after 1st index is right after an e
+            if i > 0 and s[i-1] != 'e': # !!!only time you have it after 1st index is right after an e
                 return False
         elif char == '.':
             if met_dot or met_e: # dot must be before e and only one dot

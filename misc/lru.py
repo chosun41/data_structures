@@ -27,7 +27,7 @@ class LRUCache(OrderedDict):
         :rtype: void
         """
         if key in self:
-            self.move_to_end(key)
+            self.move_to_end(key) # only move to end, if key already in dict
         self[key] = value
         if len(self) > self.capacity:
             self.popitem(last = False) # pop 

@@ -2,7 +2,7 @@ def searchRange(A, target):
 
     lmost = leftsearch(A,target)
     rmost = rightsearch(A,target)
-    return[lmost,rmost]
+    return [lmost,rmost]
 
 def leftsearch(A,tar):
     l = 0
@@ -16,7 +16,7 @@ def leftsearch(A,tar):
             l = mid + 1
         else:
             tarI = mid
-            r = mid - 1 # most important
+            r = mid - 1 # most important because of the l<=r condition or else while condition continues
     return tarI
 
 def rightsearch(A,tar):

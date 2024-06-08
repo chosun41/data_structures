@@ -21,7 +21,7 @@ if __name__=='__main__':
 
     # We can safely use mid+1 as long as we initialized hi as len(nums)-1. As the maximum value of mid is hi-1, otherwise lo <= hi and loop breaks, mid+1
     # will not exceed len(nums)-1.
-    print(findPeakElement( nums = [1,2,1,3,5,6,4]))
+    print(findPeakElement( nums = [1,2,1,3,5,6,4])) # there is a peak at 1,2,1 but this is not strictly greater
     # low=0,high=6
     # mid=3 3<5 low=4
     # mid=5 6>4 high=5

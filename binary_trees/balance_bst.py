@@ -20,6 +20,7 @@ def balanceBST(root):
             return cur
     inorder(root)
     n=len(vals)
+
     return balance(0, n-1)
 
 if __name__ == '__main__':

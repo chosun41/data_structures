@@ -6,27 +6,24 @@ class ListNode:
 import heapq
 
 def mergeKLists(lists):
-    """
-    :type lists: List[ListNode]
-    :rtype: ListNode
-    """
-    heap = [(lists[i].val, i) for i in range(len(lists)) if lists[i]]
-    # heapq.heapify(heap)
-    head = None
-    while heap:
-        nex = heapq.heappop(heap)
-        node = ListNode(nex[0])
-        index = nex[1]
-        if not head:
-            head = node
-            trav = head
-        else:
-            trav.next = node
-            trav = trav.next
-        if lists[index].next:
-            lists[index] = lists[index].next
-            heapq.heappush(heap, (lists[index].val, index))
-    return head 
+    head = ListNode(None)
+    curr = head
+    h = []
+    # just put on first nodes and set them to next
+    for i in range(len(lists)):
+        if lists[i]:
+            heapq.heappush(h, (lists[i].val, i))
+            lists[i] = lists[i].next
+    
+    while h:
+        val, i = heapq.heappop(h)
+        curr.next = ListNode(val)
+        curr = curr.next
+        if lists[i]:
+            heapq.heappush(h, (lists[i].val, i))
+            lists[i] = lists[i].next
+    
+    return head.next
 
 if __name__ =='__main__':
     

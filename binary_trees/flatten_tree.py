@@ -30,6 +30,9 @@ if __name__=='__main__':
     x.left.left=TreeNode(3)
     x.left.right=TreeNode(4)
     x.right.right=TreeNode(6)
+    #   1
+    #  2  5
+    # 3 4  6
     y=flatten(x)
     print(y.val)
     print(y.right.val)

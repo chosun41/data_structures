@@ -6,17 +6,17 @@ def minWindow(s, t):
     :type t: str
     :rtype: str
     """
-    length = len(s) + 1
+    length = len(s)
     ans = ''
     counter_t = collections.Counter(t)
-    i, required, find =0, len(counter_t), 0
+    i, required, find = 0, len(counter_t), 0
     counter = collections.Counter()
     
     for j in range(len(s)):
         counter[s[j]] += 1
         if s[j] in counter_t and counter[s[j]] == counter_t[s[j]]: #increement num of find to see if it matches required
             find += 1
-        while i <= j and find == required: # rest is in while i<=j
+        while i <= j and find == required: # !!! i<=j
             if length > j - i + 1: # trying to find shortest length here
                 ans = s[i: j+1]
                 length = j - i + 1
@@ -30,4 +30,5 @@ def minWindow(s, t):
 if __name__=='__main__':
     # time and space: O(s+t)
     # cache - counter for t, to_find - number of letters to still search for
+    # shortest substr of s that contains all characters of t
     print(minWindow(s = "ADOBECODEBANC", t = "ABC"))

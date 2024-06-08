@@ -44,3 +44,11 @@ if __name__ == "__main__":
     print(x.next.next.next.val)
     print(x.next.next.next.next.val)
     print(x.next.next.next.next.next.val)
+
+    # first, second
+    # 3,1
+    # 4,2
+    # 5,3
+    # 6,4
+    # 7,5
+    # second.next = 7  

@@ -4,8 +4,10 @@ def longest_contained_range(A):
     unprocessed_entries = set(A)
 
     max_interval_size = 0
+    print(unprocessed_entries)
     while unprocessed_entries:
-        a = unprocessed_entries.pop()
+        a = unprocessed_entries.pop() # set pop?
+        print(a)
 
         # Finds the lower bound of the largest range containing a.
         lower_bound = a - 1

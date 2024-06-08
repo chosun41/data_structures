@@ -10,7 +10,7 @@ def pathFinder(root, val, path, paths):
     
     # when you reached the leaves
     if not root.left and not root.right:
-        if root.val == val:
+        if root.val == val: # here
             path.append(root.val)
             paths.append(path)
             return True

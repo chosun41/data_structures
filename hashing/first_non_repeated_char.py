@@ -7,7 +7,7 @@ def firstNonRepeatedChar(A):
     for i in range(size):
         if count[ord(A[i])]==1:
             return A[i]
-        if i==size:
+        if i==size-1:
             print("All characters repeating")
     
 if __name__ =='__main__':

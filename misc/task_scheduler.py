@@ -8,10 +8,15 @@ def leastInterval(tasks, n):
     f_max = max(frequencies)
     print(f_max)
     # count number of times max shows up
-    n_max = frequencies.count(f_max)
+    n_max = frequencies.count(f_max) # count
     print(n_max)
 
+    # max len tasks
     return max(len(tasks), (f_max - 1) * (n + 1) + n_max) # pattern is freq max -1 sets of n+1 windows and n max at the end
+    # rationale for formula 
+    # f_max - 1 - number of groups made
+    # (n+1) - number of members in each group
+    # n_max - leftover that didnt fit into any group
 
 if __name__=='__main__':
     # time: O(n) number of tasks

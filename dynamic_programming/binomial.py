@@ -1,15 +1,19 @@
-def compute_binomial_coefficient(n, k):
-
-    if k in (0, n):
+def binomialCoeff(n, k):
+     
+    if k > n:
+        return 0
+    if k == 0 or k == n:
         return 1
-
-    without_k = compute_binomial_coefficient(n - 1, k)
-    with_k = compute_binomial_coefficient(n - 1, k - 1)
-    return without_k + with_k
+ 
+    # Recursive Call
+    return binomialCoeff(n-1, k-1) + binomialCoeff(n-1, k)
 
 if __name__ == '__main__':
+
+    # Time : O(n*max(k,n-k)) 
+    # Space: O(n*max(k,n-k))
     
-    # O(nk)
-    # (n k) = (n-1 k) + (n-1 k-1)
+    # C(n, k) = C(n-1, k-1) + C(n-1, k) C(5,2) = C(4,3) + C(4,2)  10 = 4+6
+    # C(n, 0) = C(n, n) = 1
     
-    print(compute_binomial_coefficient(5,2))
+    print(binomialCoeff(5,2))

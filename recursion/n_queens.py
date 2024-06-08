@@ -2,9 +2,9 @@ def n_queens(n):
     def solve_n_queens(row):
         if row == n:
             # All queens are legally placed.
-            result.append(col_placement.copy())
+            result.append(col_placement[:])
             return
-        for col in range(n):
+        for col in range(n): # abs(row-r)!=abs(col-c)
             if all(r!=row and c!=col and abs(row-r)!=abs(col-c) for r, c in enumerate(col_placement[:row])):
                 col_placement[row] = col
                 solve_n_queens(row + 1)
@@ -15,11 +15,11 @@ def n_queens(n):
     return result
 
 if __name__=='__main__':
-    # time: O(n!)
+    # time: O(n!) number of possibilities dwindle
     # space: O(n)
     print(n_queens(4))
     
-    # [[1, 3, 0, 2], [2, 0, 3, 1]]
+    # [[1, 3, 0, 2], [2, 0, 3, 1]] locations in each row
     
     #   0 1 2 3
     # 0 o x o o

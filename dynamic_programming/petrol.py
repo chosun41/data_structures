@@ -1,30 +1,36 @@
 MPG=20
 
-def canCompleteTour(petrol, cost):
-    minVal = float("inf")
-    minPos = -1
-    petrolTillNow = 0
-    for i in range(1, len(petrol)+1):
-        petrolTillNow += petrol[i-1] - cost[i-1]//MPG
-        if petrolTillNow < minVal:
-            minVal = petrolTillNow
-            minPos = i
-    return minPos
+def canCompleteTour(gas,cost):
+
+        #sum of gas>= sum cost array
+        sum_cost = sum(cost)//MPG
+        sum_gas = sum(gas)
+        # Check if it is possible to complete the journey
+        if sum_cost > sum_gas:
+            return -1
+
+        current_gas = 0
+        starting_index = 0
+
+        for i in range(len(gas)):
+            current_gas += gas[i] - cost[i]//MPG
+            if current_gas < 0: # only when gas below 0 update gas and starting index
+                current_gas = 0
+                starting_index = i + 1 
+        return starting_index
 
 if __name__ == '__main__':
     
     # time: O(n), space: O(1)
     # return position if you can travel around the circuit once starting from index i station
+    # decide whether you can stop there
     
     print(canCompleteTour([50,20,5,30,25,10,10],[900,600,200,400,600,200,100]))
     
-    # gallons left - [5,-10,-5,10,-5,0,5]
-
-    # minval=inf,minpos=01,petrolTillNow=0
-    # i=1,petrolTillNow=0+5=5,minval=5,minpos=0
-    # i=2,petrolTillNow=5-10=-5,minval=-5,minpos=1
-    # i=3,petrolTillNow=-5-5=-10,minval=-10,minpos=2
-    # i=4,petrolTillNow=-10+10=0,minval=-10,minpos=2
-    # i=5,petrolTillNow=-5,minval=-10,minpos=2
-    # i=6,petrolTillNow=-5,minval=-10,minpos=2
-    # i=7,petrolTillNow=0,minval=-10,minpos=2
+    # i,current_gas,starting_indx = 0,50-900/20=5,0
+    # i,current_gas,starting_indx = 1,5+20-600/20=-5->0,2
+    # i,current_gas,starting_indx = 2,0+5-200/20=-5->0,3
+    # i,current_gas,starting_indx = 3,30-400/20=10,3
+    # i,current_gas,starting_indx = 4,10 + 25-600/20=5,3  
+    # i,current_gas,starting_indx = 5,5 + 10-200/20=5,3  
+    # i,current_gas,starting_indx = 5,5 + 10-100/20=10,3 

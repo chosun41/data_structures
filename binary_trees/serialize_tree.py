@@ -34,7 +34,7 @@ def deserialize(data):
             if data[i]:
                 node.left = TreeNode(data[i])
                 next_level.append(node.left)
-            i += 1
+            i += 1 # increment regardless
             if data[i]:
                 node.right = TreeNode(data[i])
                 next_level.append(node.right)

@@ -7,7 +7,7 @@ def findDiagonalOrder(matrix):
     for i in range(len(ans)):
         ans[i] = matrix[r][c]
         # Up Direction
-        if (r+c)%2 == 0:
+        if (r+c)%2 == 0: # most important
             if c == m-1:
                 r += 1
             elif r == 0:

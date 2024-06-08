@@ -17,6 +17,7 @@ def wallsAndGates(rooms):
     print(q)
 
     for row, col in q: # bfs not dfs, you iterate through neighbors in que not for dfs for one gate after another
+        # not going as deep as you can with one, but 1 step with starters
         dist = rooms[row][col] + 1
         for dy, dx in (-1, 0), (1, 0), (0, -1), (0, 1):
             r = row + dy

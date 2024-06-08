@@ -8,7 +8,7 @@ def findMiddleNode(L1):
     fast = L1
     slow = L1
 
-    while fast:
+    while fast: # pause between next next operation of fast
         fast = fast.next
         if not fast:
             return slow.val

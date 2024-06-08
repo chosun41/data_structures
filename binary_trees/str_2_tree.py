@@ -18,7 +18,7 @@ def str2tree(s):
                     stack[-1].right = node
                 else:
                     stack[-1].left = node # everything usually becomes a left of stack top
-                stack.append(node)
+                stack.append(node) # append node and also attach node to stack -1, two different entries
                 num = ''
     return stack[0].left
 
@@ -28,3 +28,7 @@ if __name__ == '__main__':
     print(x.val)
     print(x.left.val)
     print(x.right.val)
+
+    #   -4
+    #  2   6
+    # 3 1 5 7

@@ -16,7 +16,7 @@ def addOperators(num, target):
                 backtracking(j + 1, path + "+" + str(now), resultSoFar + now, now)
                 backtracking(j + 1, path + "-" + str(now), resultSoFar - now, -now)
                 backtracking(j + 1, path + "*" + str(now), resultSoFar - prev + prev * now, prev * now)  # Can imagine with example: 1+2*3*4
-
+                # ex. 10 + 2 * 4 not 12*4 but 12-2 + (2*4)
     ans = []
     backtracking(0, "", 0, 0)
     return ans

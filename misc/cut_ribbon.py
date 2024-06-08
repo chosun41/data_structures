@@ -7,8 +7,8 @@ def maxLength(ribbons,k):
     lo, hi = 1, min(total // k, max(ribbons)) # minimum max of ribbon lengths or sum ribbons//k pieces, lo hi stand for max ribbon length
     
     while lo < hi: # binary search
-        mid = (lo + hi+1) // 2
-        if sum(x // mid for x in ribbons) >= k: #>=
+        mid = (lo + hi + 1) // 2
+        if sum(x // mid for x in ribbons) >= k: # divide the ribbons by mid and sum up number of pieces
             lo = mid
         else:
             hi = mid - 1

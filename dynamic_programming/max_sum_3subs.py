@@ -29,6 +29,7 @@ def maxSumOfThreeSubarrays(nums, k):
         else:
             take3[i] = take3[i - 1]
 
+    print(take3)
     return take3[-1][1]
     
 if __name__ == '__main__':

@@ -11,7 +11,7 @@ def largestIsland(grid):
         grid[x][y] = index # dfs marks the color
         for i, j in move(x, y):
             if grid[i][j] == 1:
-                res += dfs(i, j, index)
+                res += dfs(i, j, index) #!!! dont need visited because marking islands with number
         return res + 1 # also returns the area
 
     # dfs to get the area of the island

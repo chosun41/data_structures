@@ -2,12 +2,14 @@ def removeInvalidParentheses(s):
     def dfs(s):
         mi = valid(s)
         if mi == 0:
-            ans.append(s)
+            ans.append(s) # dont care about if it was in visited
+            return
         
         for i in range(len(s)):
-            if s[i] in ('(', ')'):
+            if s[i] in ('(', ')'): # check only parenthetical characters
                 ns = s[:i] + s[i+1:]
-                if ns not in visited and valid(ns) < mi:
+                if ns not in visited and valid(ns) < mi: 
+                    # number of paren to remove in candidate has to be less than current num of parens to remove
                     visited.add(ns)
                     dfs(ns)
                 

@@ -32,5 +32,9 @@ if __name__ == '__main__':
     root.left.right = TreeNode(5)
     root.right.left = TreeNode(6)
     root.right.right = TreeNode(7)
+
+    #    1
+    #  2  3 
+    # 4 5 6 7
     
     printAncestors(root, 7)

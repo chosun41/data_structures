@@ -13,7 +13,7 @@ def validPalindrome2(s):
     """
     def check_palindrome(i, j):
         if i >= j:
-            return True
+            return True # odd length string
         while i < j:
             if s[i] == s[j]:
                 i += 1
@@ -33,7 +33,7 @@ def validPalindrome2(s):
                 return True
             else:
                 return False
-    return True
+    return True # true either way ex. abba -> aba abcba -> abba
 
 if __name__ == '__main__':
     # if you remove one letter, is it a valid palindrome

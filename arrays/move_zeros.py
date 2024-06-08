@@ -4,8 +4,8 @@ def moveZeroes(nums):
     :rtype: void Do not return anything, modify nums in-place instead.
     """
     i = 0
-    for j in range(len(nums)):
-        if nums[j] != 0:
+    for j in range(len(nums)): 
+        if nums[j] != 0: # j not i, i is for zeros that are to be swapped
             nums[i], nums[j] = nums[j], nums[i]
             i += 1
     return nums

@@ -8,14 +8,15 @@ def checkSubarraySum(nums, k):
     summ = 0
     for i, n in enumerate(nums):
         if k != 0:
-            summ = (summ + n) % k
+            summ = (summ + n) % k # mod remainder
         else:
             summ += n
         if summ not in dic:
             dic[summ] = i
         else:
             if i - dic[summ] >= 2:
-                return True
+                return True    
+        print(dic)
     return False
 
 if __name__=='__main__':

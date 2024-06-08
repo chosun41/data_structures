@@ -6,13 +6,12 @@ def numSubseq(nums, target):
     #one length subsequence
     i,j = 0,n-1
 
-
-    for i in range(n):
-        while i<=j and nums[i]+nums[j] > target:
+    while i<=j:
+        if nums[i]+nums[j]<=target:
+            res+=pow(2,(j-i))
+            i+=1
+        else:
             j-=1
-
-        if i<=j and nums[i] + nums[j] <= target:
-            res += pow(2,(j-i))
 
     return res
     

@@ -24,7 +24,7 @@ def has_three_sum(A, t):
 
     A.sort()
     # Finds if the sum of two numbers in A equals to t - a.
-    return any(has_two_sum(A, t - a) for a in A)
+    return any(has_two_sum(A, t - a) for a in A) # two sum plus a equal to t
 
 def threeSum(nums):
     res = []

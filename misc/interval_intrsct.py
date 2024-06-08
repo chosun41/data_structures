@@ -8,11 +8,11 @@ def intervalIntersection(A, B):
         # hi - the endpoint of the intersection
         lo = max(A[i][0], B[j][0])
         hi = min(A[i][1], B[j][1])
-        if lo <= hi:
+        if lo <= hi: # important
             ans.append([lo, hi])
 
         # Remove the interval with the smallest endpoint
-        if A[i][1] < B[j][1]:
+        if A[i][1] < B[j][1]: # end of interval not start of interval
             i += 1
         else:
             j += 1

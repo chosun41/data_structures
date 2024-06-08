@@ -12,7 +12,7 @@ def isMatch(s, p):
         for j in range(-1, n):
             if j == -1:
                 if p[i] == "*":
-                    dp[i+1][j+1] = dp[i-1][j+1]
+                    dp[i+1][j+1] = dp[i-1][j+1] # i -1?
                 continue
             if p[i].isalpha():
                 if p[i] == s[j]:

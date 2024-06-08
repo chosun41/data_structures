@@ -3,7 +3,6 @@
 def reverse_words(s):
     
     s=list(s)
-    print(s)
     def reverse_range(s, start, finish):
         while start < finish:
             s[start], s[finish] = s[finish], s[start]
@@ -11,6 +10,7 @@ def reverse_words(s):
 
     # First, reverse the whole string.
     reverse_range(s, 0, len(s) - 1)
+    print(s)
 
     start = 0
     while True:

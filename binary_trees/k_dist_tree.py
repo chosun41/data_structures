@@ -7,7 +7,7 @@ class TreeNode:
 import collections
 
 def distanceK(root, target, k):
-    def dfs(node, par = None):
+    def dfs(node, par = None): # two arugments
         if node:
             node.par = par
             dfs(node.left, node)
@@ -46,5 +46,10 @@ if __name__ == '__main__':
     x.left.right.right = TreeNode(4)
     x.right.left = TreeNode(0)
     x.right.right = TreeNode(8)
+
+    #       3
+    #   5      1
+    #  6  2   0  8
+    #   7  4
 
     print(distanceK(x, target = x.left, k = 2))

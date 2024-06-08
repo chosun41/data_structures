@@ -2,7 +2,7 @@ def reorderLogFiles(logs):
     letters, digits = [], []
     for log in logs:
         try:
-            int(log.split()[1]) 
+            int(log.split()[1]) # 1 not 1:
             digits.append(log)
         except ValueError:
             letters.append(log)

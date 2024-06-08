@@ -19,7 +19,7 @@ def insert(head, insertVal):
         if prev.val <= insertVal <= curr.val:
             # Case #1.
             toInsert = True
-        elif prev.val > curr.val: # ex. 1,2,3,4 prev=4,curr=1
+        elif prev.val > curr.val: # ex. 1,2,3,4 prev=4,curr=1 !!! most important
             # Case #2. where we locate the tail element
             # 'prev' points to the tail, i.e. the largest element!
             if insertVal >= prev.val or insertVal <= curr.val:
@@ -31,7 +31,7 @@ def insert(head, insertVal):
             return head
 
         prev, curr = curr, curr.next
-        # loop condition
+        # this conditional afterwards
         if prev == head:
             break
     # Case #3.
@@ -49,3 +49,16 @@ if __name__ == '__main__':
     y=insert(x,2)
     print(y.next.next.next.val)
     print(y.next.next.next.next.val)
+
+    # 3-4-1, insertVal=2
+    # prev, head, toInsert - 3,4,False
+    # prev, head, toInsert - 4,1,False
+    # prev, head, toInsert - 1,3,True 1<=2<=3
+
+    x=Node(3)
+    x.next=Node(4)
+    x.next.next=Node(1)
+    x.next.next.next=x
+    y=insert(x,5)
+    print(y.next.next.val)
+    print(y.next.next.next.val)

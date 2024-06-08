@@ -12,6 +12,8 @@ class BSTIterator:
         # Array containing all the nodes in the sorted order
         self.nodes_sorted = []
 
+        self.length = len(self.nodes_sorted)
+
         # Pointer to the next smallest element in the BST
         self.index = -1
 
@@ -30,13 +32,15 @@ class BSTIterator:
         @return the next smallest number
         """
         self.index += 1
+        if self.index > self.length:
+            return -1
         return self.nodes_sorted[self.index]
 
     def hasNext(self) -> bool:
         """
         @return whether we have a next smallest number
         """
-        return self.index + 1 < len(self.nodes_sorted)
+        return self.index + 1 < self.length
 
 if __name__ == '__main__':
 
@@ -56,6 +60,9 @@ if __name__ == '__main__':
     x.right = TreeNode(15)
     x.right.left = TreeNode(9)
     x.right.right = TreeNode(20)
+    #   7
+    # 3   15
+    #    9  20
     bSTIterator = BSTIterator(x)
     print(bSTIterator.next());    # return 3
     print(bSTIterator.next());    # return 7
@@ -66,3 +73,4 @@ if __name__ == '__main__':
     print(bSTIterator.hasNext()); # return True
     print(bSTIterator.next());    # return 20
     print(bSTIterator.hasNext()); # return False
+    print(bSTIterator.next());

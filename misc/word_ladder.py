@@ -22,6 +22,7 @@ def findLadders(beginWord, endWord, wordList):
         layer = newlayer # move down to new layer
 
     return []
+    
 
 if __name__=='__main__':
     # change one word into the end word by only changing one letter at a time

@@ -96,6 +96,8 @@ if __name__ == '__main__':
     root.right.right.left = TreeNode(14)
     root.right.right.right = TreeNode(15)
     print(boundary(root))
+
+    # bounday left and right excludes leaves
     
     #                 1
     #            2         3

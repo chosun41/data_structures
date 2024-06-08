@@ -1,26 +1,18 @@
-# rotate once clockwise
-# bit complement of x is -x-1
-def rotate_matrix(square_matrix):
+def rotate_matrix(matrix):
 
-    matrix_size = len(square_matrix) - 1
-    
-    # start from corners and move right
-    for i in range(len(square_matrix) // 2):
-        for j in range(i, matrix_size - i):
-            # Perform a 4-way exchange. Note that A[~i] for i in [0, len(A) - 1]
-            # is A[-(i + 1)].
-            
-            #  0,0 -1,0  -1,-1 0,-1
-            # -1,0 -1,-1  0,-1 0,0
-            
-            #  0,1  -2,0  -1,-2 1,-1
-            # -2,0 -1,-2  1,-1  0,1
-            
-            # ...
-            
-            (square_matrix[i][j], square_matrix[~j][i], square_matrix[~i][~j],square_matrix[j][~i]) = \
-            (square_matrix[~j][i],square_matrix[~i][~j],square_matrix[j][~i],square_matrix[i][j])
-    return square_matrix
+    # reverse
+    l = 0
+    r = len(matrix) -1
+    while l < r:
+        matrix[l], matrix[r] = matrix[r], matrix[l]
+        l += 1
+        r -= 1
+    # transpose 
+    for i in range(len(matrix)):
+        for j in range(i):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+    return matrix
             
 if __name__ == '__main__':
      
@@ -28,18 +20,23 @@ if __name__ == '__main__':
     
     A=[[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
     print(rotate_matrix(A))
-    
-    #   0  1  2  3
-    # 0 1  2  3  4
-    # 1 5  6  7  8
-    # 2 9  10 11 12
-    # 3 13 14 15 16
-    
-    #   0  1  2  3
-    # 0 13 9  5  1
-    # 1 14 10 6  2
-    # 2 15 11 7  3
-    # 3 16 12 8  4
-    
-    # 1 - 0,0 -> 0,3
-    # 13 - 3,0 -> 0,0
+
+    # We can do this in two steps.
+    # Reversing the matrix does this:
+    # [1,2,3],
+    # [4,5,6],
+    # [7,8,9]]
+    # ->
+    # [7, 8, 9],
+    # [4, 5, 6],
+    # [1, 2, 3]
+
+    # Transposing means: rows become columns, columns become rows.
+
+    # [7, 8, 9],
+    # [4, 5, 6],
+    # [1, 2, 3]
+    # ->
+    # [7,4,1],
+    # [8,5,2],
+    # [9,6,3]

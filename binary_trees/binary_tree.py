@@ -1,50 +1,11 @@
-import sys
-sys.path.append('../queues')
-from queues import Queue
+from collections import deque
 
-# classic binary tree, no heirarchical order
 class BinaryTree:
     
     def __init__(self, data):
         self.data = data  # root node
         self.left = None  # left child
         self.right = None  # right child
-    # set data
-    def set_data(self, data):
-        self.data = data
-    # get data   
-    def get_data(self):
-        return self.data
-    # get left child of a node
-    def getLeft(self):
-        return self.left
-    # get right child of a node
-    def getRight(self):
-        return self.right
-    # get left child of a node
-    def setLeft(self, left):
-        self.left = left
-    # get right child of a node
-    def setRight(self, right):
-        self.right = right
-          
-    def insertLeft(self, val):
-        if self.left == None:
-            self.left = BinaryTree(val)
-        # makes current left a left of new left
-        else:
-            temp = BinaryTree(val)
-            temp.left = self.left
-            self.left = temp
-
-    def insertRight(self, val):
-        if self.right == None:
-            self.right = BinaryTree(val)
-        # makes current right a right of new right
-        else:
-            temp = BinaryTree(val)
-            temp.right = self.right
-            self.right = temp
 
 # Pre-order recursive traversal. The nodes' values are appended to the result list in traversal order (D L R)
 def preorderRecursive(root, result):
@@ -143,38 +104,38 @@ def levelOrder(root, result):
     if root is None:
         return
  
-    q = Queue()
-    q.enqueue(root)
+    q = deque()
+    q.append(root)
     n = None
  
-    while not q.isEmpty():
-        n = q.dequeue()  # dequeue FIFO
-        result.append(n.get_data())
+    while q:
+        n = q.popleft()  # dequeue FIFO
+        result.append(n.data)
         if n.left is not None:
-            q.enqueue(n.left)
+            q.append(n.left)
 
         if n.right is not None:
-            q.enqueue(n.right)
+            q.append(n.right)
         
     return result
 
 if __name__ == '__main__':
     
     root = BinaryTree(1)
-    root.insertLeft(2)
-    root.insertRight(3)
-    root.getLeft().insertLeft(4)
-    root.getLeft().insertRight(5)
-    root.getRight().insertLeft(6)
-    root.getRight().insertRight(7)
-    root.getLeft().getLeft().insertLeft(8)
-    root.getLeft().getLeft().insertRight(9)
-    root.getLeft().getRight().insertLeft(10)
-    root.getLeft().getRight().insertRight(11)
-    root.getRight().getLeft().insertLeft(12)
-    root.getRight().getLeft().insertRight(13)
-    root.getRight().getRight().insertLeft(14)
-    root.getRight().getRight().insertRight(15)
+    root.left = BinaryTree(2)
+    root.right = BinaryTree(3)
+    root.left.left = BinaryTree(4)
+    root.left.right = BinaryTree(5)
+    root.right.left = BinaryTree(6)
+    root.right.right = BinaryTree(7)
+    root.left.left.left = BinaryTree(8)
+    root.left.left.right = BinaryTree(9)
+    root.left.right.left = BinaryTree(10)
+    root.left.right.right = BinaryTree(11)
+    root.right.left.left = BinaryTree(12)
+    root.right.left.right = BinaryTree(13)
+    root.right.right.left = BinaryTree(14)
+    root.right.right.right = BinaryTree(15)
     
     #           1 
     #      2          3

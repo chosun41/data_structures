@@ -1,3 +1,5 @@
+from collections import deque
+
 class TreeNode:
     def __init__(self,val):
         self.val=val
@@ -6,45 +8,39 @@ class TreeNode:
         
 def serialize(root):
     """Encodes a tree to a single string.
-
-    :type root: TreeNode
-    :rtype: str
     """
-    def dfs(root):
-        if not root:
-            return 
-        res.append(str(root.val))
-        dfs(root.left)
-        dfs(root.right)
-
-    res = []
-    dfs(root)
-    return ",".join(res)
+    if not root: return ''
+    tree = []
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        if node:
+            tree.append(str(node.val))
+            queue.extend([node.left, node.right])
+        else:
+            tree.append('*')
+    return ','.join(tree)
+    
 
 def deserialize(data):
     """Decodes your encoded data to tree.
-
-    :type data: str
-    :rtype: TreeNode
     """
-    lst = data.split(",")
-    stack = []
-    head = None
-    for n in lst:
-        n = int(n)
-        if not head:
-            head = TreeNode(n)
-            stack.append(head)
-        else:
-            node = TreeNode(n)
-            if n < stack[-1].val:
-                stack[-1].left = node
-            else:
-                while stack and stack[-1].val < n: 
-                    u = stack.pop()
-                u.right = node
-            stack.append(node)
-    return head
+    if not data: return None
+    tree = deque(data.split(','))
+    root = TreeNode(int(tree.popleft()))
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        
+        if (left := tree.popleft()) != '*':
+            node.left = TreeNode(int(left))
+            queue.append(node.left)
+        
+        if (right := tree.popleft()) != '*':
+            node.right = TreeNode(int(right))
+            queue.append(node.right)
+            
+    return root
 
 if __name__=='__main__':
     # time: O(n) for both

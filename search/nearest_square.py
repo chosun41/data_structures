@@ -1,5 +1,5 @@
 def square_root(k):
-
+    
     left, right = 0, k
     # Candidate interval [left, right] where everything before left has square
     # <= k, everything after right has square > k.

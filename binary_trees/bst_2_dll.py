@@ -36,8 +36,8 @@ def treeToDoublyList(root):
     first, last = None, None
     helper(root)
     # close DLL
-    last.right = first
-    first.left = last
+    # last.right = first
+    # first.left = last
     return first
 
 if __name__=='__main__':
@@ -49,10 +49,13 @@ if __name__=='__main__':
     x.right=Node(5)
     x.left.left=Node(1)
     x.left.right=Node(3)
+    #    4
+    #  2 5
+    # 1 3
     y=treeToDoublyList(x)
     print(y.val)
     print(y.right.val)
     print(y.right.right.val)
     print(y.right.right.right.val)
     print(y.right.right.right.right.val)
-    print(y.right.right.right.right.right.val)
+    print(y.right.right.right.right.left.val)

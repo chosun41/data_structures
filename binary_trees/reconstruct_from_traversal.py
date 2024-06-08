@@ -1,32 +1,35 @@
-from binary_tree import BinaryTree,levelOrder
-
-# reconstruct a tree from preorder and inorder traversal lists
+class TreeNode:
+    def __init__ (self,val):
+        self.val=val
+        self.left=None
+        self.right=None
 
 def buildTree(preorder, inorder):
     
     # both have to be lists that are populated and same size
-    if not inorder or not preorder or len(inorder)!=len(preorder): 
-        return None 
-    
-    # attached root
-    root = BinaryTree(preorder[0])
-    
-    # search for index of preorder in inorder
-    # anything before this index indicates left subtree and anything after indicates right subtree
-    # follow this logic recursively to rebuild tree
-    rootPos = inorder.index(preorder[0])
-    root.left = buildTree(preorder[1 : 1 + rootPos], inorder[ : rootPos])
-    root.right = buildTree(preorder[rootPos + 1 : ], inorder[rootPos + 1 : ])
-    return root
+    if inorder: 
+        ind = inorder.index(preorder.pop(0))
+        root = TreeNode(inorder[ind])
+        root.left = buildTree(preorder, inorder[:ind])
+        root.right = buildTree(preorder, inorder[ind+1:])
+        return root
     
 if __name__ == '__main__':
     
     root=buildTree([1, 2, 4, 8, 9, 5, 10, 11, 3, 6, 12, 13, 7, 14, 15],[8, 4, 9, 2, 10, 5, 11, 1, 12, 6, 13, 3, 14, 7, 15])
-    print(levelOrder(root,[]))
+    print(root.val)
+    print(root.left.val)
+    print(root.right.val)
+    print(root.left.left.val)
+    print(root.right.right.val)
     
     # preorder - [1, 2, 4, 8, 9, 5, 10, 11, 3, 6, 12, 13, 7, 14, 15]
     # inorder - [8, 4, 9, 2, 10, 5, 11, 1, 12, 6, 13, 3, 14, 7, 15]
-    
+
+    #          1 
+    #     2          3    
+    #  4    5      6    7
+    # 8 9  10 11 12 13 14 15 
     #    root - 1
     #    rootPos - 7
     #    root.left = buildTree(preorder[1:8],inorder[:7]) -> buildTree([2, 4, 8, 9, 5, 10, 11],[8, 4, 9, 2, 10, 5, 11])

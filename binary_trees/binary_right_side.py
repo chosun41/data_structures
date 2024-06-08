@@ -19,7 +19,7 @@ def rightSideView(root):
         next_level = deque()
 
         while curr_level:
-            node = curr_level.popleft()
+            node = curr_level.popleft() #popleft not pop
                 
             # add child nodes of the current level
             # in the queue for the next level

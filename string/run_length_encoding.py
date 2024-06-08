@@ -1,5 +1,3 @@
-import itertools
-
 def decoding(s):
 
     count, result = 0, []

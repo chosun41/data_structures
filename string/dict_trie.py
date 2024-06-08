@@ -17,7 +17,7 @@ class WordDictionary:
             if not ch in node:
                 node[ch] = {}
             node = node[ch]
-        node['$'] = True
+        node['$'] = True # at end
         
     def search(self, word: str) -> bool:
         """
