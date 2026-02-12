@@ -1,23 +1,25 @@
-
 def maxLength(ribbons,k):
-    total = sum(ribbons)
-    if k > total:
-        return 0
-    
-    lo, hi = 1, min(total // k, max(ribbons)) # minimum max of ribbon lengths or sum ribbons//k pieces, lo hi stand for max ribbon length
-    
-    while lo < hi: # binary search
-        mid = (lo + hi + 1) // 2
-        if sum(x // mid for x in ribbons) >= k: # divide the ribbons by mid and sum up number of pieces
-            lo = mid
+    l=1
+    r=max(ribbons)
+
+    while l<=r:
+        mid = (l+r)//2
+
+        if can_cut(ribbons, k, mid):
+            l = mid+1
         else:
-            hi = mid - 1
-    
-    return lo
+            r = mid-1
+    return r
+
+def can_cut(ribbons, k, length):
+    cut = 0
+    for ribbon in ribbons:
+        cut+= ribbon//length
+    return cut>=k
 
 if __name__ == '__main__':
 
-    # time: O(logn)
+    # time: O(log max(r) - max of ribbons)
     # space: O(1)
 
     # You are given an integer array ribbons, where ribbons[i] represents the length of the ith ribbon, and an integer k. You may cut any of the ribbons into any number of segments of positive integer lengths, or perform no cuts at all.

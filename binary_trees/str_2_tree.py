@@ -19,8 +19,8 @@ def str2tree(s):
                 else:
                     stack[-1].left = node # everything usually becomes a left of stack top
                 stack.append(node) # append node and also attach node to stack -1, two different entries
-                num = ''
-    return stack[0].left
+                num = ''     
+    return stack[0].left # stack[0] not stack[-1]
 
 if __name__ == '__main__':
     # time: O(n)
@@ -32,3 +32,13 @@ if __name__ == '__main__':
     #   -4
     #  2   6
     # 3 1 5 7
+
+    # stack [Null]
+    # stack [-4-> Null, -4]
+    # stack [2->-4-> Null, 2 -> -4, 2]
+    # stack [3->2->4->Null, 3->2->-4, 3->2, 3]
+    # stack [3->2->4->Null, 3->2->-4, 3->2]
+    # stack [3->2->1 4->Null, 3->2->1 -4, 3->2 -> 1]
+    # stack [3->2->1 4->Null, 3->2->1 -4]
+    # stack [3->2->1 4->Null]
+    #...

@@ -5,40 +5,39 @@ class Node:
         self.right=None
         
 def treeToDoublyList(root):
-    def helper(node):
+    def dfs(node):
         """
         Performs standard inorder traversal:
         left -> node -> right
         and links all nodes into DLL
         """
-        nonlocal last, first
-        if node:
-            # left
-            helper(node.left)
-            # node 
-            if last:
-                # link the previous node (last)
-                # with the current one (node)
-                last.right = node
-                node.left = last
-            else:
-                # keep the smallest node
-                # to close DLL later on
-                first = node        
-            last = node
-            # right
-            helper(node.right)
+        nonlocal head, tail
+        if not node:
+            return
 
-    if not root:
-        return None
+        # left
+        dfs(node.left)
+        # node 
+        if tail:
+            # link the previous node (last)
+            # with the current one (node)
+            tail.right = node
+            node.left = tail
+        else:
+            # keep the smallest node
+            # to close DLL later on
+            head = node        
+        tail = node
+        # right
+        dfs(node.right)
 
     # the smallest (first) and the largest (last) nodes
-    first, last = None, None
-    helper(root)
+    head, tail = None, None
+    dfs(root)
     # close DLL
-    # last.right = first
-    # first.left = last
-    return first
+    head.left = tail
+    tail.right = head
+    return head
 
 if __name__=='__main__':
     

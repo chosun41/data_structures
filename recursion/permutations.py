@@ -4,16 +4,11 @@ def permutations(nums):
     :rtype: List[List[int]]
     """
     def backtrack(first = 0):
-        # if all integers are used up
         if first == n:  
             output.append(nums[:])
-        for i in range(first, n): # !!! most important
-            # place i-th integer first 
-            # in the current permutation
+        for i in range(first, n):
             nums[first], nums[i] = nums[i], nums[first]
-            # use next integers to complete the permutations
-            backtrack(first + 1)
-            # backtrack
+            backtrack(first + 1) # !!! first not i
             nums[first], nums[i] = nums[i], nums[first]
     
     n = len(nums)
@@ -23,7 +18,6 @@ def permutations(nums):
 
 if __name__ == '__main__':
     
-    # time: O(n x n!) space: O(n!)
+    # time and space: O(n!)
     print(permutations([2,3,5,7]))
-
     

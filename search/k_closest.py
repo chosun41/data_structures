@@ -1,9 +1,4 @@
-def findClosestElements1(arr, k, x):
-    diffTuples = sorted((abs(x - num), num) for num in arr)
-    return sorted(map(lambda x: x[1], diffTuples[:k])) 
-
-
-def findClosestElements2(arr, k, x):
+def findClosestElements(arr, k, x):
 
     def findIndex(arr, target):
         l, r = 0, len(arr) - 1
@@ -17,6 +12,7 @@ def findClosestElements2(arr, k, x):
 
     index = findIndex(arr, x)
     l, r = index, index # start from index out
+    print(l,r)
 
     while r - l < k:
         if l == 0: 
@@ -30,9 +26,6 @@ def findClosestElements2(arr, k, x):
     return arr[l:r]
 
 if __name__ == '__main__':
-    # time: O(nlogn)
+    # time: O(logn)
     # space: O(k)
-    print(findClosestElements1(arr = [1,2,3,4,5], k = 4, x = 3))
-    # time: O(logn + k)
-    # space: O(k)
-    print(findClosestElements2(arr = [1,2,3,4,5], k = 4, x = 3))
+    print(findClosestElements(arr = [1,2,3,4,5], k = 4, x = 3))

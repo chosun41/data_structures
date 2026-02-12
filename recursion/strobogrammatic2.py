@@ -27,3 +27,4 @@ if __name__=='__main__':
     # time: O(5^n) 5 options in each slot
     # space: O(5^n)
     print(len(findStrobogrammatic(5)))
+    print(findStrobogrammatic(5))

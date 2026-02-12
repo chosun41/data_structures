@@ -1,3 +1,5 @@
+from collections import deque
+
 class TreeNode:
     def __init__(self,val):
         self.val=val
@@ -5,26 +7,18 @@ class TreeNode:
         self.right=None
         
 def binaryTreePaths(root):
-
-    result = []
-
-    def helper(node, cur):
-
-        if not node:
-            # base case
-            return
-
-        if not node.left and not node.right:
-            # stop condition
-            result.append( cur + [str(node.val)] )
-
-        else:
-            # general case
-            helper(node.left, cur + [str(node.val)] )
-            helper(node.right, cur + [str(node.val)] )
-
-    helper(node=root, cur=[])
-    return ["->".join(x) for x in result]
+    q = deque([(root,[str(root.val)])])
+    res = []
+    while q:
+        node, path = q.popleft()
+        if node:
+            if not node.left and not node.right:
+                res.append('->'.join(path))
+            if node.left:
+                q.append((node.left,path + [str(node.left.val)]))
+            if node.right:
+                q.append((node.right, path + [str(node.right.val)]))
+    return res
 
 if __name__ == '__main__':
     # time and space: O(n)

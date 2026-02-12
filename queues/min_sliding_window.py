@@ -1,14 +1,11 @@
 from collections import deque
 
-# also contains appendleft in addition to popleft for deque
-# produce minimum value for every sliding window of size k
- 
+# use q not stk
+
 def MinSlidingWindow(A, k):
     
     D = deque()
     res = []
-    
-    # tuples in deque
     
     for i in range(len(A)):
         

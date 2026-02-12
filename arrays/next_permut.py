@@ -1,22 +1,3 @@
-# def nextPermutation(nums):
-#     i = j = len(nums)-1
-#     while i > 0 and nums[i-1] >= nums[i]: # decrement until you find index where not less than next index
-#         i -= 1
-#     if i == 0:   # nums are in descending order
-#         nums.reverse()
-#         return nums
-#     k = i - 1    # find the last "ascending" position
-#     while nums[j] <= nums[k]: #<= since right side is already in descending order
-#         j -= 1
-#     nums[k], nums[j] = nums[j], nums[k]  
-#     l, r = k+1, len(nums)-1  # reverse the second part (k+1 here)
-#     while l < r:
-#         nums[l], nums[r] = nums[r], nums[l]
-#         l +=1
-#         r -= 1
-
-#     return nums
-
 def nextPermutation(nums):
     """
     Do not return anything, modify nums in-place instead.

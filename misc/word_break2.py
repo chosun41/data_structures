@@ -6,7 +6,7 @@ def wordBreak(s, wordDict):
     """
     def dfs(i):
         if i == len(s):
-            return [""]
+            return [""] #!!! dont forget about this
         res = []
         for j in range(i, len(s)):
             head = s[i:j+1] # prefix
@@ -15,7 +15,7 @@ def wordBreak(s, wordDict):
                 for string in tmp:
                     string = head +" "+string
                     res.append(string.strip())
-        return res
+        return res # res inside dfs not outside
 
     return dfs(0)
 
