@@ -6,10 +6,11 @@ def minJumps(A):
 
     for i in range(1, n):
         for j in range(0, i): # up to i
-            if (i <= j + A[j] and jumps[j] != float('infinity')):
+            if (i <= j + A[j] and jumps[j] != float('infinity')): # !! i <= j + A[j]
+                print(jumps, i,j)
                 jumps[i] = min(jumps[i], jumps[j] + 1)
                 break # very important
-    print(jumps)
+            print(jumps, i,j)
     return jumps[n - 1]
 
 if __name__ == '__main__':

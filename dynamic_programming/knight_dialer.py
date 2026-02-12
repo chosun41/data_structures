@@ -3,7 +3,7 @@ def knightDialer(n):
     memo, res = [[4,6],[6,8],[7,9],[8,4],[0,3,9],[],[1,7,0],[2,6],[1,3],[2,4]],[1]*10
     for i in range(1,n):
         res = [sum(res[j] for j in x) for x in memo ]
-    print(res)
+        print(res)
     return sum(res) % (10 ** 9 + 7)
 if __name__ == '__main__':
 

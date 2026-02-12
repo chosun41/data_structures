@@ -18,8 +18,6 @@ def levenshtein_distance(word1,word2):
                 )
             
         memo[(i,j)] = ans
-        print(i,j, memo)
-        print()
         return memo[(i,j)]
     
     return dfs(len(word1), len(word2))

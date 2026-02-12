@@ -5,8 +5,6 @@ def Fibo2(n):
         fibTable.append(fibTable[i - 1] + fibTable[i - 2])
     return fibTable[n]
 
-fibTable = {1:1, 2:1}
-
 def Fibo4(n):
     a, b = 0, 1
     for i in range(n):
