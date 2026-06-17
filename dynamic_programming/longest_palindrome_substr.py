@@ -18,3 +18,5 @@ if __name__ == '__main__':
     # time: O(n^2)
     
     print(longestPalSubstr('cabcbaabac'))
+    print(longestPalSubstr('babad'))
+    print(longestPalSubstr('cbbd'))
