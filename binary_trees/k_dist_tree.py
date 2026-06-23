@@ -7,6 +7,7 @@ class TreeNode:
 import collections
 
 def distanceK(root, target, k):
+    # create parent for every node
     def dfs(node, par = None): # two arugments
         if node:
             node.par = par
@@ -15,10 +16,11 @@ def distanceK(root, target, k):
 
     dfs(root)
 
+    # load target onto q and add increment to neighbor until you reach k
     queue = collections.deque([(target, 0)])
     seen = {target}
     while queue:
-        if queue[0][1] == k: # can check any in queue, but once it equals k. guaranteed all in q==k
+        if queue[0][1] == k: # can check any in queue, but once it equals k. guaranteed all in q==k b/c of bfs
             return [node.val for node, d in queue]
         node, d = queue.popleft()
         if node:

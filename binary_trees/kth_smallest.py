@@ -8,13 +8,16 @@ def kthSmallest(root, k):
     stack = []
     
     while True:
+        # append lefts to stk
         while root:
             stack.append(root)
             root = root.left
+        # pop and decrement k
         root = stack.pop()
         k -= 1
         if not k:
             return root.val
+        # check if anything on the right
         root = root.right
 
 if __name__ == '__main__':

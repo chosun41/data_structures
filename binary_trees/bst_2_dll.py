@@ -15,6 +15,7 @@ def treeToDoublyList(root):
         if not node:
             return
 
+        # just inorder traversal
         # left
         dfs(node.left)
         # node 

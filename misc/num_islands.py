@@ -5,9 +5,9 @@ def numIslands(grid):
     """
     def dfs_visit(grid, u):
         i,j=u[0],u[1]
+        visited.add((i,j))
         for x,y in ((0,1),(1,0),(-1,0),(0,-1)):
             if 0<=i+x<m and 0<=j+y<n and grid[i+x][j+y]=='1' and (i+x,j+y) not in visited:
-                visited.add((i+x,j+y))
                 dfs_visit(grid,(i+x,j+y))     
         
     count=0

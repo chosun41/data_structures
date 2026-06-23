@@ -7,7 +7,7 @@ def findAnagrams(s, p):
 
     p_count = Counter(p)
     s_count = Counter()
-
+ 
     output = []
     # sliding window on the string s
     for i in range(ns):

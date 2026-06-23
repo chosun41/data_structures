@@ -10,6 +10,8 @@ def maxPathSum2(root):
     :type root: TreeNode
     :rtype: int
     """
+
+    # like diameter problem but node.val + left + right
     def max_gain(node):
         nonlocal max_sum
         if not node:

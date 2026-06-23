@@ -13,6 +13,7 @@ class Solution:
             tmp_min = n * cur_min
             cur_max = max(tmp_max, tmp_min, n)
             cur_min = min(tmp_max, tmp_min, n)
+            print(cur_max,cur_min)
             res = max(res, cur_max)
             
         return res

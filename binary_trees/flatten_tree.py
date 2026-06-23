@@ -6,11 +6,13 @@ class TreeNode:
         
 def flatten(root):
 
+    # flatten into right leaning tree
     def dfs(node): 
         if node.right: 
             dfs(node.right)
         if node.left:
             dfs(node.left)
+        # save right, switch left to right, traverse all the way right and attach the prev right to the end
         right = node.right
         node.left, node.right = None, node.left
         while node.right: 
@@ -39,6 +41,26 @@ if __name__=='__main__':
     print(y.right.right.val)
     print(y.right.right.right.val)
     print(y.right.right.right.right.val)
+
+    #   1
+    #  2  5
+    # 3 4  6
+
+
+    #    1
+    #      2
+    #     3  4
+    #         5
+    #          6
+
+    #    1
+    #      2
+    #       3
+    #        4
+    #         5
+    #          6
+
+
 
     # 1
     # node, node.right = 1,5 ^
