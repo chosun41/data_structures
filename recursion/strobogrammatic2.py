@@ -1,7 +1,7 @@
 def findStrobogrammatic(n):
     result = []
     hash = {'0':'0', '1':'1', '6':'9', '8':'8', '9':'6'}
-    def helper(result, item, start, end): # need to separate functions because of result capture not sub function
+    def helper(item, start, end): # need to separate functions because of result capture not sub function
         if start > end:
             result.append(''.join(item))
             return
@@ -15,9 +15,9 @@ def findStrobogrammatic(n):
             
             item[start], item[end] = key, hash[key]
 
-            helper(result, item, start+1, end-1)
+            helper(item, start+1, end-1)
 
-    helper(result, [None]*n, 0, n-1)
+    helper([None]*n, 0, n-1)
     
     return result
         
