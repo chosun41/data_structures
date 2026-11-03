@@ -11,7 +11,7 @@ def kthSmallest(matrix, k):
         j = n - 1
         # Count the number of elements in the matrix that are less than or equal to mid
         for i in range(n):
-            while j >= 0 and matrix[i][j] > mid:
+            while j >= 0 and matrix[i][j] > mid: #***
                 j -= 1
             count += j + 1
         # Update the range of the search

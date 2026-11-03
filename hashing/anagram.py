@@ -14,7 +14,7 @@ def find_anagrams(dictionary):
 
 if __name__ =='__main__':
     
-    # time: O(n logm) - n calls to sort and n insertions into the hash table. n length of list, m string length
+    # time: O(n logn)
     
     # basically when strings are sorted, we can check if they are equivalent and group them together 
     print(find_anagrams(['debitcard','elvis','silent','badcredit','lives','freedom','listen','levis','money']))

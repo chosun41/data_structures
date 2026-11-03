@@ -12,13 +12,12 @@ class BSTIterator:
         # Array containing all the nodes in the sorted order
         self.nodes_sorted = []
 
-        self.length = len(self.nodes_sorted)
-
         # Pointer to the next smallest element in the BST
         self.index = -1
 
         # Call to flatten the input binary search tree
         self._inorder(root)
+        self.length = len(self.nodes_sorted)
 
     def _inorder(self, root):
         if not root:
@@ -32,7 +31,7 @@ class BSTIterator:
         @return the next smallest number
         """
         self.index += 1
-        if self.index > self.length:
+        if self.index >= self.length:
             return -1
         return self.nodes_sorted[self.index]
 

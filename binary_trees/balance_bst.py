@@ -19,6 +19,7 @@ def balanceBST(root):
             cur.right = balance(mid+1, r)
             return cur
     inorder(root)
+    print([node.val for node in vals])
     n=len(vals)
 
     return balance(0, n-1)

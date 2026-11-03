@@ -1,11 +1,3 @@
-def validPalindrome1(s):
-    for i in range(len(s)):
-        t = s[:i] + s[i+1:]
-        if t == t[::-1]: 
-            return True
-
-    return s == s[::-1]
-
 def validPalindrome2(s):
     """
     :type s: str
@@ -36,8 +28,5 @@ def validPalindrome2(s):
     return True # true either way ex. abba -> aba abcba -> abba
 
 if __name__ == '__main__':
-    # if you remove one letter, is it a valid palindrome
-    # time: O(n^2) space: O(n)
-    print(validPalindrome1("abca"))
     # time: O(n) space: O(n)
     print(validPalindrome2("abca"))

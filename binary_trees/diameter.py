@@ -10,23 +10,23 @@ class TreeNode:
 def diameter(root):
     diameter = 0
 
-    def longest_path(node):
+    def dfs(node):
         if not node:
             return 0
         nonlocal diameter
         # recursively find the longest path in
         # both left child and right child
-        left_path = longest_path(node.left)
-        right_path = longest_path(node.right)
+        left_height = dfs(node.left)
+        right_height = dfs(node.right)
 
         # update the diameter if left_path plus right_path is larger
-        diameter = max(diameter, left_path + right_path) # diameter is b/t any two nodes even through the root along the way
+        diameter = max(diameter, left_height + right_height) # diameter is b/t any two nodes even through the root along the way
 
         # return the longest one between left_path and right_path;
         # remember to add 1 for the path connecting the node and its parent
-        return max(left_path, right_path) + 1
+        return max(left_height, right_height) + 1
 
-    longest_path(root)
+    dfs(root)
     return diameter
 
 if __name__ == '__main__':
@@ -38,6 +38,8 @@ if __name__ == '__main__':
     root.left.right = TreeNode(5)
     root.right.left = TreeNode(6)
     root.right.right = TreeNode(7)
+
+    # diameter is number of lengths in b/t nodes, not number of nodes along path
     
     print(diameter(root))
     # print(height(root))

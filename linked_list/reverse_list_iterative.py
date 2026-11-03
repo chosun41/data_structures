@@ -5,32 +5,12 @@ class ListNode:
 
 def reverseList(L1):
     
-    prev = None
-    current = L1
+    prev, curr = None, L1
 
-    # traverse list
-    # set previous node (last) to current next
+    while curr:
+        curr.next, prev, curr = prev, curr, curr.next
 
-    # new last is current
-    # current is next node
-    while current:
-        nextNode = current.next # save nextnode to save to current later
-        current.next = prev # make next of current prev
-        prev = current
-        current = nextNode
-
-    
-    # prev, current, nextNode, ll
-    # None  1        2         1->2->3->4
-    # 1     2        2         1->None 2->3->4
-    # 1     2        3         1->None 2->3->4
-    # 2     3        3         2->1->None 3->4   
-    # 3     4        4         3->2->1->None 
-    # 4     None     None      4->3->2->1->None          
-
-    # set the head to the very last node
     L1 = prev
-    
     return L1
     
 if __name__ == "__main__":

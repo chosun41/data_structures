@@ -13,7 +13,6 @@ def intersect_two_sorted_arrays(A, B):
             j+=1
     return intersection_A_B
 
-
 if __name__ == '__main__':
 
     # time and space: O(m + n)

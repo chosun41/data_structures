@@ -5,7 +5,7 @@ def isOneEditDistance(s, t):
     if l1 > l2: # force s no longer than t
         return isOneEditDistance(t, s)
     if l2 - l1 > 1:
-        return False
+        return False # !!! important edge case
     for i in range(len(s)):
         if s[i] != t[i]:
             if l1 == l2:

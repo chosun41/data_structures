@@ -6,19 +6,19 @@ class TreeNode:
         self.right=None
 
 def sumNumbers(root):
-
+    
     q = deque([(root,0)])
     res = 0
     while q:
         node, summ = q.popleft()
-        summ = 10 * summ + int(node.val)
-        if not node.left and not node.right:
-            res+=summ
-        if node.left:
-            q.append((node.left,node.val))
-        if node.right:
-            q.append((node.right,node.val))
-
+        if node:
+            summ = summ*10 + int(node.val)
+            if not node.left and not node.right:
+                res+=summ
+            if node.left:
+                q.append((node.left, summ))
+            if node.right:
+                q.append((node.right, summ))
     return res
 
 if __name__ == '__main__':

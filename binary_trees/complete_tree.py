@@ -14,7 +14,7 @@ def isCompleteTree(root):
         if node:
             nodes.append((node.left, 2*v))
             nodes.append((node.right, 2*v+1))
-
+    print(nodes)
     return  nodes[-1][1] == len(nodes)
     
 if __name__=='__main__':

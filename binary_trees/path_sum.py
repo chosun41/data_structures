@@ -23,7 +23,7 @@ def pathFinder(root, val, path, paths):
 
 def hasPathWithSum(root, val):
     paths = []
-    pathFinder(root, val, [], paths)
+    return pathFinder(root, val, [], paths)
     print('sum:', val)
     print('paths:', paths)
 
@@ -39,6 +39,6 @@ if __name__ == '__main__':
     root1.right.left = TreeNode(6)
     root1.right.right = TreeNode(7)
     
-    hasPathWithSum(root1, 4)
-    hasPathWithSum(root1, 11)
-    hasPathWithSum(root1, 8)
+    print(hasPathWithSum(root1, 4))
+    print(hasPathWithSum(root1, 11))
+    print(hasPathWithSum(root1, 8))

@@ -7,40 +7,55 @@ class TreeNode:
         self.right=None
         
 def serialize(root):
-    """Encodes a tree to a single string.
-    """
-    if not root: return ''
-    tree = []
-    queue = deque([root])
-    while queue:
-        node = queue.popleft()
-        if node:
-            tree.append(str(node.val))
-            queue.extend([node.left, node.right])
-        else:
-            tree.append('*')
-    return ','.join(tree)
+
+    if not root:
+        return ''
+
+    res = []
+    current_layer = [root]
+    while current_layer:
+        new_layer = []
+        has_value = False
+        for node in current_layer:
+            if node != "*":
+                res.append(str(node.val))
+                if node.left:
+                    has_value=True
+                    new_layer.append(node.left)
+                else:
+                    new_layer.append("*")
+                if node.right:
+                    has_value=True
+                    new_layer.append(node.right)
+                else:
+                    new_layer.append("*")
+            else:
+                res.append("*")
+        current_layer = new_layer if has_value else []
+
+
+    return ','.join(res)
     
 
 def deserialize(data):
-    """Decodes your encoded data to tree.
-    """
-    if not data: return None
-    tree = deque(data.split(','))
-    root = TreeNode(int(tree.popleft()))
-    queue = deque([root])
-    while queue:
-        node = queue.popleft()
-        
-        if (left := tree.popleft()) != '*':
-            node.left = TreeNode(int(left))
-            queue.append(node.left)
-        
-        if (right := tree.popleft()) != '*':
-            node.right = TreeNode(int(right))
-            queue.append(node.right)
-            
+    inp = data.split(",")
+    root = TreeNode(inp[0])
+    current_level = [root]
+    i=1
+    while current_level and i<len(inp):
+        new_level = []
+        for node in current_level:
+            if inp[i]!="*":
+                node.left = TreeNode(inp[i])
+                new_level.append(node.left)
+            i+=1
+            if inp[i]!="*":
+                node.right = TreeNode(inp[i])
+                new_level.append(node.right)
+            i+=1
+        current_level = new_level
     return root
+
 
 if __name__=='__main__':
     # time: O(n) for both

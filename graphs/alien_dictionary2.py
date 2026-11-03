@@ -1,48 +1,45 @@
-from collections import defaultdict, Counter, deque
+import collections
 
-def alienOrder(words):
 
-    # Step 0: create data structures + the in_degree of each unique letter to 0.
-    adj_list = defaultdict(set)
-    in_degree = Counter({c : 0 for word in words for c in word}) # counter
+def accountsMerge(accounts):
+    res = []
+    cache = collections.defaultdict(list)
+    visited = set()
+    for i, acc in enumerate(accounts):
+        for email in acc[1:]:
+            cache[email].append(i)
 
-    # Step 1: We need to populate adj_list and in_degree.
-    # For each pair of adjacent words... create n-1 pairs out of n words
-    for first_word, second_word in zip(words, words[1:]):
-        for c, d in zip(first_word, second_word):
-            if c != d:
-                if d not in adj_list[c]: # only if not already in adj list for c
-                    adj_list[c].add(d)
-                    in_degree[d] += 1
-                break
-        else: # executed if break not executed, thus all letters agree !!! most important
-            if len(second_word) < len(first_word): 
-                return ""
+    # cache - dictionary of email to account index
+    # visited - visited account indexes
 
-    # Step 2: We need to repeatedly pick off nodes with an indegree of 0.
-    output = []
-    queue = deque([c for c in in_degree if in_degree[c] == 0])
-    while queue:
-        c = queue.popleft()
-        output.append(c)
-        for d in adj_list[c]:
-            in_degree[d] -= 1 # can go to 0
-            if in_degree[d] == 0:
-                queue.append(d)
+    def dfs(idx, sub_res):
+        if idx in visited:
+            return
+        visited.add(idx)
+        for email in accounts[idx][1:]:
+            sub_res.add(email)
+            for records in cache[email]:
+                dfs(records, sub_res)
+        return
 
-    # If not all letters are in output, that means there was a cycle and so
-    # no valid ordering. Return "" as per the problem description.
-    if len(output) < len(in_degree):
-        return ""
-    # Otherwise, convert the ordering we found into a string and return it.
-    return "".join(output)
+    for idx, acc in enumerate(accounts):
+        tmp_res = set()  # always a set
+        dfs(idx, tmp_res)
+        if tmp_res:  # important to get rid of no emails left
+            res.append([acc[0]] + sorted(list(tmp_res)))
+
+    return res
+
 
 if __name__ == '__main__':
-    
-    # time: O(c) - letters of every word in words combined
-    # space: O(u) - total number of unique letters
-    
-    # basically make a topological ordering out of edges between letters of dictionary order
-    print(alienOrder(["wrth","wrt"]))
-    print(alienOrder(["wrt","wrf","er","ett","rftt"])) # t:f w:e r:t e:r wertf
-    print(alienOrder(["wrt","wrf","wrt"]))
+    # time: AlogA
+    # space: A
+    # Given a list of accounts where each element accounts[i] is a list of strings, where the first element accounts[i][0] is a name, and the rest of the elements are emails representing emails of the account.
+
+    # Now, we would like to merge these accounts. Two accounts definitely belong to the same person if there is some common email to both accounts. Note that even if two accounts have the same name, they may belong to different people as people could have the same name. A person can have any number of accounts initially, but all of their accounts definitely have the same name.
+
+    # After merging the accounts, return the accounts in the following format: the first element of each account is the name, and the rest of the elements are emails in sorted order. The accounts themselves can be returned in any order.
+    accounts = [["John", "johnsmith@mail.com", "john_newyork@mail.com"],
+                ["John", "johnsmith@mail.com", "john00@mail.com"], ["Mary", "mary@mail.com"],
+                ["John", "johnnybravo@mail.com"]]
+    print(accountsMerge(accounts))

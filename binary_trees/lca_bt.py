@@ -34,10 +34,15 @@ if __name__ == '__main__':
     root1.left.right = TreeNode(5)
     root1.right.left = TreeNode(6)
     root1.right.right = TreeNode(7)
+    root1.left.left.left = TreeNode(8)
+    root1.left.left.right = TreeNode(9)
+    root1.left.right.left = TreeNode(10)
+    root1.left.right.right = TreeNode(11)
     
-    #    1
-    #  2   3
-    # 4 5 6 7
+    #          1
+    #     2          3
+    #  4    5     6     7
+    # 8 9 10 11 
     
     # deep copy since MirrorofBinaryTree will change the original parameter root
     # makes sure that with areMirror function root1 is unchanged
@@ -46,3 +51,4 @@ if __name__ == '__main__':
     # print(lca(root1, 4, 5).val)
     # print(lca(root1, 2, 3).val)
     print(lca(root1, root1.left, root1.right.left).val)
+    print(lca(root1, root1.left.left.left, root1.left.right.right).val)

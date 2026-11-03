@@ -22,7 +22,7 @@ def accountsMerge(accounts):
         return
 
     for idx, acc in enumerate(accounts):
-        tmp_res = set()
+        tmp_res = set() # always a set
         dfs(idx, tmp_res)
         if tmp_res: # important to get rid of no emails left
             res.append([acc[0]] + sorted(list(tmp_res)))

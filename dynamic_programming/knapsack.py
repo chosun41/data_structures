@@ -1,19 +1,16 @@
 def Knapsack(cap, val, wt):
-    n=len(val)
-    M = [[0 for x in range(cap + 1)] for x in range(n+1)] 
-  
-    # Build table K[][] in bottom up manner 
-    for i in range(n+1): 
-        for j in range(cap + 1): 
-            if i == 0 or j == 0: # 0s for first col and first row
-                M[i][j] = 0
-            elif wt[i-1] <= j: # if you can fit item i-1 size, take max of prev row and item value + value from prev row and j-item weight
-                M[i][j] = max(val[i-1] + M[i-1][j-wt[i-1]], M[i-1][j]) 
-            else: 
-                M[i][j] = M[i-1][j] # else copy value from prev row
-  
-    print(M)
-    return M[n][cap] 
+    n = len(val)
+    dp = [[0 for j in range(cap+1)] for i in range(n+1)]
+    
+    for i in range(1,n+1):
+        for j in range(1, cap+1):
+            if wt[i-1]<=j:
+                dp[i][j] = max(dp[i-1][j], val[i-1] + dp[i-1][j-wt[i-1]])
+            else:
+                dp[i][j] = dp[i-1][j]
+
+    print(dp)
+    return dp[n][cap]
 
 
 if __name__=='__main__':
@@ -30,4 +27,4 @@ if __name__=='__main__':
     # 1  [0, 0, 0,  0,  0,  60], 5
     # 2  [0, 0, 0,  50, 50, 60], 3
     # 3  [0, 0, 0,  50, 70, 70], 4
-    # 4  [0, 0, 30, 50, 70, 80]] 2
+    # 4  [0, 0, 30, 50, 70, 80]] 2 50 + 30 from 3,3 vs 3,5

@@ -24,11 +24,11 @@ def sumInBinaryTreeLevelOrder(root):
         node = q.popleft()  # dequeue FIFO
         if node:
             sum += node.val
-        if node.left:
-            q.append(node.left)
+            if node.left:
+                q.append(node.left)
 
-        if node.right:
-            q.append(node.right)
+            if node.right:
+                q.append(node.right)
     return sum
     
 if __name__ == '__main__':

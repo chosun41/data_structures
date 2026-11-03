@@ -2,9 +2,9 @@ def calculate_largest_rectangle(heights):
 
     indx=[]
     max_area=0
-    for i,h in enumerate(heights + [0]): # dont forget [0]
+    for i,h in enumerate(heights + [0]): # !!! dont forget [0]
         while indx and heights[indx[-1]]>=h:
-            height= heights[indx.pop()]
+            height = heights[indx.pop()] # !!! height is from pop, not separate
             width= i if not indx else i - indx[-1]-1
             max_area=max(max_area,height*width)
         indx.append(i)

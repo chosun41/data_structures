@@ -16,7 +16,7 @@ def canCompleteTour(gas,cost):
             current_gas += gas[i] - cost[i]//MPG
             if current_gas < 0: # only when gas below 0 update gas and starting index
                 current_gas = 0
-                starting_index = i + 1 
+                starting_index = (i + 1) % len(gas)
         return starting_index
 
 if __name__ == '__main__':

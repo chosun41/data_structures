@@ -9,6 +9,7 @@ def topKFrequent1(nums,k):
     # 1. build hash map : character and how often it appears
     # O(N) time
     count = Counter(nums)   
+
     # 2-3. build heap of top k frequent elements and
     # convert it into an output array
     # O(N log k) time
@@ -19,6 +20,8 @@ def topKFrequent2(nums, k):
     Count = Counter(nums).items()  
     for num, freq in Count: 
         bucket[freq].append(num) 
+
+    print(bucket)
 
     # bucket is freq:num
     flat_list = [item for sublist in bucket for item in sublist]
